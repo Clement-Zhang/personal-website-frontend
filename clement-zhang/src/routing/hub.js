@@ -2,21 +2,22 @@ import {
         createBrowserRouter,
         RouterProvider,
         createRoutesFromElements,
-        Route,        
+        Route,
     } from "react-router-dom";
 import Home from "../pages/home";
+import Nothing from "../pages/nothing";
 
-const routes = createBrowserRouter(
-    createRoutesFromElements(
-        <Route
-            path="/"
-            element={<Home />}
-        />
-    )
-);
-
-const Routes = () => (
-    <RouterProvider router={routes}/>
+const Router = () => (
+    <RouterProvider router={
+        createBrowserRouter(
+            createRoutesFromElements(
+                [
+                    <Route path="/" element={<Home />}/>,
+                    <Route path="/projects" element={<Nothing />}/>
+                ]
+            )
+        )
+    }/>
 );
   
-export default Routes;
+export default Router;
