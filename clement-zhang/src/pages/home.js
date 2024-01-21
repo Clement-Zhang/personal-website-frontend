@@ -1,9 +1,9 @@
-import Template from "./template";
+import Default from "../templates/default";
 
 const Home = () => {
     return (
         <div>
-            <Template />
+            <Default />
             <p>
                 Hello there! I'm Clement Zhang, a Computer Science student at Toronto Metropolitan University 
                 (formerly Ryerson University). I'm interested in software engineering and web development. 

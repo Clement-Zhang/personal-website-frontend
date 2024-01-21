@@ -1,6 +1,6 @@
 import Header from "../components/header";
 
-const Template = () => {
+const Default = () => {
     return (
         <div>
             <Header />
@@ -8,4 +8,4 @@ const Template = () => {
     );
 }
 
-export default Template;
+export default Default;
