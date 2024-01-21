@@ -5,8 +5,8 @@ import Nav from 'react-bootstrap/Nav';
 const MyNavbar = () => {
     return (
         <Navbar >
-            <Navbar.Brand href="/">About Me</Navbar.Brand>
-            <Nav.Link href="/projects">Projects</Nav.Link>
+            <Navbar.Brand><Link to="/">About Me</Link></Navbar.Brand>
+            <Nav.Link><Link to="/projects">Projects</Link></Nav.Link>
         </Navbar>
     );
 }
