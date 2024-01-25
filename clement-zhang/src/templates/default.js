@@ -1,8 +1,9 @@
 import Header from "../components/header";
+import styles from "../styling/default.module.css";
 
 const Default = ({children}) => {
     return (
-        <div>
+        <div className={styles.all}>
             <Header />
             {children}
         </div>
