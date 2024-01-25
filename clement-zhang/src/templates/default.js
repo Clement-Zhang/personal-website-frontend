@@ -1,9 +1,10 @@
 import Header from "../components/header";
 
-const Default = () => {
+const Default = ({children}) => {
     return (
         <div>
             <Header />
+            {children}
         </div>
     );
 }
