@@ -4,11 +4,9 @@ import styles from "../styles/nothing.module.css";
 
 const Nothing = () => {
     return (
-        <div>
-            <Default>
-                <img src={img} alt="Under Construction" className={styles.img}/>
-            </Default>
-        </div>
+        <Default>
+            <img src={img} alt="Under Construction" className={styles.img}/>
+        </Default>
     );
 }
 
