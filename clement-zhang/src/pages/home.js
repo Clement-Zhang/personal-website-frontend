@@ -9,6 +9,11 @@ const Home = () => {
                 I'm currently looking for a 2024 summer internship. I made this website to showcase my skills in 
                 React. In the future, I will improve the pages and add more content.
             </p>
+            <p>
+                You may notice that I use very little styling. In fact, the most noticeable styling is just the dark mode.
+                My styling preferences are very minimalistic, so don't expect more than the minimum required styling to make
+                major elements stand out from each other.
+            </p>
         </Default>
     );
 }
