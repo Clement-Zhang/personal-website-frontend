@@ -6,6 +6,7 @@ import {
     } from "react-router-dom";
 import Home from "../pages/home";
 import Nothing from "../pages/nothing";
+import Projects from "../pages/projects";
 
 const Router = () => (
     <RouterProvider router={
@@ -13,7 +14,7 @@ const Router = () => (
             createRoutesFromElements(
                 [
                     <Route path="/" element={<Home />}/>,
-                    <Route path="/projects" element={<Nothing />}/>
+                    <Route path="/projects" element={<Projects />}/>
                 ]
             )
         )

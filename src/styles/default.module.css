@@ -1,6 +1,9 @@
 .all {
     font-family: "Comic Sans MS";
 }
-.all * {
+.all_spaced * {
+    margin: 10px;
+}
+.surface_spaced {
     margin: 10px;
 }

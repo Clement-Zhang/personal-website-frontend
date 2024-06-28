@@ -5,7 +5,9 @@ const Default = ({children}) => {
     return (
         <div className={styles.all}>
             <Header />
-            {children}
+            <div className={styles.surface_spaced}>
+                {children}
+            </div>
         </div>
     );
 }
