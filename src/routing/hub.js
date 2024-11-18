@@ -7,6 +7,7 @@ import {
 import Home from "../pages/home";
 import Nothing from "../pages/nothing";
 import Projects from "../pages/projects";
+import Sim from "../pages/cell_growth_sim.tsx";
 
 const Router = () => (
     <RouterProvider router={
@@ -14,7 +15,8 @@ const Router = () => (
             createRoutesFromElements(
                 [
                     <Route path="/" element={<Home />}/>,
-                    <Route path="/projects" element={<Projects />}/>
+                    <Route path="/projects" element={<Projects />}/>,
+                    <Route path="/sim" element={<Sim />}/>
                 ]
             )
         )

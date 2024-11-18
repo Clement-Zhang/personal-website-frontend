@@ -2,6 +2,7 @@ import Default from "../templates/default";
 import ecommerce_img from "../assets/ecommerce.jpg";
 import aope_img from "../assets/AoPE.jpg";
 import styles from "../styles/projects.module.css";
+import { Link } from "react-router-dom";
 
 const Projects = () => {
     return (
@@ -12,19 +13,25 @@ const Projects = () => {
             <p>
                 I have contributed to many other projects, but I am not listing them here due to lack of group permission.
             </p>
-            <h>
+            <h3>
                 <a href="https://github.com/Clement-Zhang/ecommerce-system">Ecommerce Website</a>
-            </h>
+            </h3>
             <img src={ecommerce_img} alt="Screenshot of an online shopping website" className={styles.img}/>
             <p>
                 This is a generic e-commerce website that can be extended and customized for specific businesses. Since it is generic, I didn't give it a name. The two product images are identical, that is intentional.
             </p>
-            <h>
+            <h3>
                 <a href="https://github.com/Clement-Zhang/Attack-on-Planet-Earth">Attack on Planet Earth</a>
-            </h>
+            </h3>
             <img src={aope_img} alt="Screenshot of gameplay of a Space Invaders style game" className={styles.img}/>
             <p>
                 Attack on Planet Earth is a remake of Space Invaders, the well known arcade game.
+            </p>
+            <h3>
+                <Link to="/sim">Cell Growth Simulator</Link>
+            </h3>
+            <p>
+                This is a simulation of cell growth in a petri dish. The cells divide and cover the dish, and the user can control a number of parameters.
             </p>
         </Default>
     );
