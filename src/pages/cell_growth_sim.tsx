@@ -1,5 +1,5 @@
 import { SyntheticEvent, useState } from "react";
-let styles = require("../styles/cell_growth_sim.module.css");
+require("../styles/cell_growth_sim.module.css");
 
 const play = require("../assets/play_button.jpg")
 const pause = require("../assets/pause_button.jpg")
@@ -27,8 +27,8 @@ const Sim = () => {
         change_controls(values => ({ ...values, [name]: value }))
     }
     return (
-        <div className={styles.row}>
-            <div className={styles.left}>
+        <div style={{display: "flex"}}>
+            <div style={{flex: "50%"}}>
                 <ul>
                     <li>
                         <img src={play} alt="play button" data-active-button="play" onClick={change_button}/>
@@ -52,7 +52,7 @@ const Sim = () => {
                     <input type="number" name="cell_life" min={1} value={controls.cell_life || 1} onChange={adjust} />
                 </form>
             </div>
-            <div className={styles.right}>
+            <div style={{flex: "50%"}}>
                 <p>test</p>
             </div>
         </div>

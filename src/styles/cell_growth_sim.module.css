@@ -6,19 +6,7 @@ img {
 li {
     display: inline;
 }
-/* 
+
 label {
     display: block;
-} */
-
-.row {
-    display: flex;
-}
-
-.left {
-    flex-basis: 50%;
-}
-
-.right {
-    flex-basis: 50%;
 }
