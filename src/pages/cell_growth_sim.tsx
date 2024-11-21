@@ -1,4 +1,4 @@
-import { SyntheticEvent, useState, useRef } from "react";
+import { SyntheticEvent, useState, useRef, useEffect} from "react";
 require("../styles/cell_growth_sim.module.css");
 
 const play = require("../assets/play_button.jpg")
@@ -6,7 +6,61 @@ const pause = require("../assets/pause_button.jpg")
 const reset = require("../assets/reset_button.jpg")
 
 const Sim = () => {
-    const [controls, change_controls] = useState({ "div_time": 1, "div_fail_rate": 0, "cell_life": 1 });
+    class Cell {
+        x: number
+        y: number
+        constructor(x: number, y: number) {
+            this.x = x
+            this.y = y
+        }
+    }
+    class Dish {
+        cells: (Cell | null)[][]
+        ctx: CanvasRenderingContext2D
+        constructor(ctx: CanvasRenderingContext2D) {
+            let tmp: (Cell | null)[][] = []
+            for (let i = 0; i < 200; i++) {
+                let row = []
+                for (let i = 0; i < 200; i++) {
+                    row.push(null)
+                }
+                tmp.push(row)
+            }
+            this.cells = tmp
+            this.ctx = ctx
+        }
+        interact(e: React.MouseEvent<HTMLCanvasElement>, mouse: number[]) {
+            e.preventDefault()
+            let x = Math.floor(mouse[0] / 2)
+            let y = Math.floor(mouse[1] / 2)
+            if (e.button === 0) {
+                this.create_cell(x, y)
+            } else {
+                this.delete_cell(x, y)
+            }
+            for (let i = 0; i < 200; i++) {
+                for (let j = 0; j < 200; j++) {
+                    if (this.cells[i][j] !== null) {
+                        console.log(i, j, this.cells[i][j])
+                    }
+                }
+            }
+        }
+        create_cell(x: number, y: number) {
+            this.cells[x][y] = new Cell(x, y)
+            this.ctx.fillStyle = "green"
+            this.ctx.fillRect(x * 2, y * 2, 2, 2)
+        }
+        delete_cell(x: number, y: number) {
+            this.cells[x][y] = null
+            this.ctx.clearRect(x * 2, y * 2, 2, 2)
+        }
+    }
+    const [controls, change_controls] = useState({
+        "div_time": 1,
+        "div_fail_rate": 0,
+        "cell_life": 1
+    });
     const adjust = (e: SyntheticEvent) => {
         const target = e.target as typeof e.target & {
             name: string,
@@ -17,7 +71,16 @@ const Sim = () => {
         change_controls(values => ({ ...values, [name]: value }))
     }
     const canvas_ref = useRef<HTMLCanvasElement | null>(null);
-    const [mouse, move_mouse] = useState([0, 0]);
+    const [mouse, update_mouse] = useState([0, 0]);
+    const cells = useRef<Dish | null>(null);
+    useEffect(() => {
+        if (canvas_ref.current) {
+            const ctx = canvas_ref.current.getContext("2d");
+            if (ctx) {
+                cells.current = new Dish(ctx);
+            }
+        }
+    }, []);
     function change_button(e: SyntheticEvent) {
         let element = e.target as HTMLImageElement
         if (element.getAttribute("data-active-button") === "play") {
@@ -33,23 +96,15 @@ const Sim = () => {
         element.setAttribute("data-active-button", "play")
         element.src = play
     }
-    function update_mouse(e: React.MouseEvent<HTMLCanvasElement>) {
-        move_mouse([e.clientX - (canvas_ref.current as HTMLCanvasElement).getBoundingClientRect().left, e.clientY - (canvas_ref.current as HTMLCanvasElement).getBoundingClientRect().top])
-    }
-    function interact(e: React.MouseEvent<HTMLCanvasElement>) {
-        e.preventDefault()
-        let ctx = (canvas_ref.current as HTMLCanvasElement).getContext("2d") as CanvasRenderingContext2D
-        let x = mouse[0] - (mouse[0] % 2)
-        let y = mouse[1] - (mouse[1] % 2)
-        if (e.button === 0) {
-            put_cell(x, y, ctx)
-        } else {
-            ctx.clearRect(x, y, 2, 2)
+    function move_mouse(e: React.MouseEvent<HTMLCanvasElement>) {
+        if (canvas_ref.current) {
+            update_mouse([e.clientX - canvas_ref.current.getBoundingClientRect().left, e.clientY - canvas_ref.current.getBoundingClientRect().top])
         }
     }
-    function put_cell(x: number, y: number, ctx: CanvasRenderingContext2D) {
-        ctx.fillStyle = "green"
-        ctx.fillRect(x, y, 2, 2)
+    function interact(e: React.MouseEvent<HTMLCanvasElement>) {
+        if (cells.current) {
+            cells.current.interact(e, mouse)
+        }
     }
     return (
         <div style={{ display: "flex" }}>
@@ -78,8 +133,7 @@ const Sim = () => {
                 </form>
             </div>
             <div style={{ flex: "50%" }}>
-                <canvas ref={canvas_ref} width={400} height={400} onMouseMove={update_mouse} onClick={interact} onContextMenu={interact}>
-
+                <canvas ref={canvas_ref} width={400} height={400} onMouseMove={move_mouse} onClick={interact} onContextMenu={interact}>
                 </canvas>
             </div>
         </div>
