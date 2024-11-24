@@ -1,4 +1,4 @@
-import Default from "../templates/default";
+import Default from "../templates/default"
 
 const Home = () => {
     return (
@@ -18,4 +18,4 @@ const Home = () => {
     );
 }
 
-export default Home;
+export default Home

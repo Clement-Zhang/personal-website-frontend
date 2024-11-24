@@ -1,8 +1,8 @@
-import Default from "../templates/default";
-import ecommerce_img from "../assets/ecommerce.jpg";
-import aope_img from "../assets/AoPE.jpg";
-import styles from "../styles/projects.module.css";
-import { Link } from "react-router-dom";
+import Default from "../templates/default"
+import ecommerce_img from "../assets/ecommerce.jpg"
+import aope_img from "../assets/AoPE.jpg"
+import styles from "../styles/projects.module.css"
+import { Link } from "react-router-dom"
 
 const Projects = () => {
     return (
@@ -37,4 +37,4 @@ const Projects = () => {
     );
 }
 
-export default Projects;
+export default Projects
