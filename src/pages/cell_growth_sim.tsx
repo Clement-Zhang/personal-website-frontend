@@ -193,7 +193,7 @@ const Sim = () => {
                     <label>
                         Division Time (seconds)
                     </label>
-                    <input type="number" name="div_time" min={1} value={controls.div_time || 1} onChange={adjust} />
+                    <input type="number" name="div_time" min={.1} step={.1} value={controls.div_time || 1} onChange={adjust} />
                     <label>
                         Division Failure Rate (0-1)
                     </label>
@@ -201,7 +201,7 @@ const Sim = () => {
                     <label>
                         Cell Lifespan (seconds)
                     </label>
-                    <input type="number" name="cell_life" min={1} value={controls.cell_life || 1} onChange={adjust} />
+                    <input type="number" name="cell_life" min={.1} step={.1} value={controls.cell_life || 1} onChange={adjust} />
                 </form>
             </div>
             <div style={{ flex: "50%" }}>
