@@ -1,15 +1,27 @@
 class Cell {
-    create_time: number
+    time: number
     cycle: number
     lifetime: number | undefined
     div_time: number | undefined
     div_fail_rate: number | undefined
-    constructor(create_time: number, lifetime: number, div_time: number, div_fail_rate: number) {
+    constructor(lifetime: number, div_time: number, div_fail_rate: number) {
         this.lifetime = lifetime
         this.div_time = div_time
         this.div_fail_rate = div_fail_rate
-        this.create_time = create_time
+        this.time = 0
         this.cycle = 0
+    }
+    update(delta_time: number) {
+        this.time += delta_time
+        if (this.time >= this.lifetime!) {
+            return "die"
+        } else if (Math.floor(this.time / this.div_time!) > this.cycle) {
+            if (Math.random() >= this.div_fail_rate!) {
+                return "divide"
+            }
+            this.cycle++
+        }
+        return 0
     }
 }
 
