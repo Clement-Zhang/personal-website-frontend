@@ -91,7 +91,8 @@ const Sim = () => {
                     width={400}
                     height={400}
                     onMouseMove={move_mouse}
-                    onMouseDown={(e) => interact(e, grid)}
+                    onClick={(e) => interact(e, grid)}
+                    onContextMenu={(e) => interact(e, grid)}
                 />
             </div>
         </div>

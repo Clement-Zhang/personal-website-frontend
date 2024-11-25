@@ -26,12 +26,10 @@ class Grid {
         e.preventDefault()
         let x = Math.floor(location[0] / 2)
         let y = Math.floor(location[1] / 2)
-        if (!this.cells[y][x]) {
-            if (e.button === 0) {
-                this.create_cell(x, y, lifetime, div_time, div_fail_rate)
-            } else {
-                this.delete_cell(x, y)
-            }
+        if (e.button === 0) {
+            this.create_cell(x, y, lifetime, div_time, div_fail_rate)
+        } else {
+            this.delete_cell(x, y)
         }
     }
     create_cell(x: number, y: number, lifetime: number, div_time: number, div_fail_rate: number) {
