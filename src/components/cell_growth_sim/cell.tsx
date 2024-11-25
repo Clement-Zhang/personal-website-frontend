@@ -16,8 +16,10 @@ class Cell {
         if (this.time >= this.lifetime!) {
             return "die"
         } else if (Math.floor(this.time / this.div_time!) > this.cycle) {
+            console.log("cycle")
             this.cycle++
             if (Math.random() >= this.div_fail_rate!) {
+                console.log("divide")
                 return "divide"
             }
         }
