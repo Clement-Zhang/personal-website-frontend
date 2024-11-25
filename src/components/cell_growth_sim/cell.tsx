@@ -16,10 +16,10 @@ class Cell {
         if (this.time >= this.lifetime!) {
             return "die"
         } else if (Math.floor(this.time / this.div_time!) > this.cycle) {
+            this.cycle++
             if (Math.random() >= this.div_fail_rate!) {
                 return "divide"
             }
-            this.cycle++
         }
         return 0
     }
