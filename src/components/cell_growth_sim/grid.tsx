@@ -7,15 +7,14 @@ class Grid {
     prev_frame_time: number | undefined
     prev_frame_id: number | undefined
     constructor() {
-        let tmp: (Cell | null)[][] = []
+        this.cells = []
         for (let i = 0; i < 200; i++) {
             let row = []
             for (let i = 0; i < 200; i++) {
                 row.push(null)
             }
-            tmp.push(row)
+            this.cells.push(row)
         }
-        this.cells = tmp
         this.elapsed_time = 0
     }
     set_ctx(ctx: CanvasRenderingContext2D) {
@@ -47,6 +46,7 @@ class Grid {
         div_fail_rate: number
     ) {
         e.preventDefault()
+        console.log(location)
         let x = Math.floor(location[0] / 2)
         let y = Math.floor(location[1] / 2)
         if (!this.cells[y][x]) {
