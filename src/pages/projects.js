@@ -1,6 +1,6 @@
 import Default from "../templates/default"
-import ecommerce_img from "../assets/ecommerce.jpg"
-import aope_img from "../assets/AoPE.jpg"
+import ecommerce from "../assets/ecommerce.jpg"
+import aope from "../assets/AoPE.jpg"
 import styles from "../styles/projects.module.css"
 import { Link } from "react-router-dom"
 
@@ -16,14 +16,14 @@ const Projects = () => {
             <h3>
                 <a href="https://github.com/Clement-Zhang/ecommerce-system">Ecommerce Website</a>
             </h3>
-            <img src={ecommerce_img} alt="Screenshot of an online shopping website" className={styles.img}/>
+            <img src={ecommerce} alt="Screenshot of an online shopping website" className={styles.img}/>
             <p>
                 This is a generic e-commerce website that can be extended and customized for specific businesses. Since it is generic, I didn't give it a name. The two product images are identical, that is intentional.
             </p>
             <h3>
                 <a href="https://github.com/Clement-Zhang/Attack-on-Planet-Earth">Attack on Planet Earth</a>
             </h3>
-            <img src={aope_img} alt="Screenshot of gameplay of a Space Invaders style game" className={styles.img}/>
+            <img src={aope} alt="Screenshot of gameplay of a Space Invaders style game" className={styles.img}/>
             <p>
                 Attack on Planet Earth is a remake of Space Invaders, the well known arcade game.
             </p>

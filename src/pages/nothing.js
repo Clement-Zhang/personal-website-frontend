@@ -1,5 +1,5 @@
 import Default from "../templates/default"
-import img from "../assets/under_construction.jpg"
+import img from "../assets/underConstruction.jpg"
 import styles from "../styles/nothing.module.css"
 
 const Nothing = () => {

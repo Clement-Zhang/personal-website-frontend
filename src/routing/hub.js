@@ -7,7 +7,7 @@ import {
 import Home from "../pages/home";
 import Nothing from "../pages/nothing";
 import Projects from "../pages/projects";
-import Sim from "../pages/cell_growth_sim.tsx";
+import Sim from "../pages/cellGrowthSim.tsx";
 
 const Router = () => (
     <RouterProvider router={

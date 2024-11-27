@@ -1,0 +1,42 @@
+export const Settings = {
+    WIDTH: 200,
+    HEIGHT: 200,
+    X_START: 0,
+    Y_START: 0,
+    CANVAS_SIZE_MULTIPLIER: 2,
+    CELL_DIVIDE_SIGNAL: "divide",
+    CELL_DEATH_SIGNAL: "die",
+    CELL_NO_SIGNAL: "",
+    CELL_COLOUR: "green",
+    CELL_START_TIME: 0,
+    CELL_START_CYCLE: 0,
+    CELL_GROWTH_DISTANCE: 1,
+    CONVERSION: 1000
+}
+
+export const Directions = {
+    RIGHT: 1,
+    UP: 10,
+    LEFT: 100,
+    DOWN: 1000,
+    START: 0,
+    NOT_ALLOWED: 0,
+    EXTRACT: 10,
+    HORI_FUNC_POINT_X: 2,
+    HORI_FUNC_POINT_Y: -1,
+    VERT_FUNC_POINT_X: 1,
+    VERT_FUNC_POINT_Y: -1,
+}
+
+export const Test= {
+    CELL_LIFETIME_BASE: 2000,
+    CELL_LIFETIME_MIN: 100,
+    CELL_DIV_TIME_BASE: 1000,
+    CELL_DIV_TIME_MIN: 100,
+    CELL_DIV_FAIL_RATE_SUCCEED: 0,
+    CELL_DIV_FAIL_RATE_FAIL: 1,
+    CELL_DIV_FAIL_RATE_MIDDLE: .5,
+    NO_TIME_PASSED: 0,
+    TIME_PASSED_MIN: 1,
+    TIME_PASSED_BASE: 1000,
+}
