@@ -15,15 +15,6 @@ class Grid {
         }
         this.new_cells = {}
     }
-    display() {
-        for (let y = Settings.Y_START; y < Settings.HEIGHT; y++) {
-            for (let x = Settings.X_START; x < Settings.WIDTH; x++) {
-                if (this.cells[y][x]) {
-                    console.log(x, y, this.cells[y][x]!.time)
-                }
-            }
-        }
-    }
     coordsToString(x: number, y: number) {
         return (y * Settings.WIDTH + x).toString()
     }
@@ -68,7 +59,7 @@ class Grid {
                         if (spot > Directions.START) {
                             spot = Math.floor(Math.random() * spot)
                             let direction = Directions.START
-                            while (spot !== Directions.START || allowed % Directions.EXTRACT === Directions.NOT_ALLOWED) {
+                            while (spot > Directions.START || allowed % Directions.EXTRACT === Directions.NOT_ALLOWED) {
                                 spot -= allowed % Directions.EXTRACT
                                 allowed = Math.floor(allowed / Directions.EXTRACT)
                                 direction++
