@@ -15,7 +15,7 @@ const Sim = () => {
     const [controls, changeControls] = useState({
         divTime: 1,
         divFailRate: 0,
-        cellLife: 1
+        lifespan: 1
     });
     let canvasRef = useRef<HTMLCanvasElement | null>(null);
     useEffect(() => {
@@ -43,7 +43,7 @@ const Sim = () => {
         let x = Math.floor(mouse[0] / Settings.CANVAS_SIZE_MULTIPLIER)
         let y = Math.floor(mouse[1] / Settings.CANVAS_SIZE_MULTIPLIER)
         if (e.button === 0) {
-            grid.current.createCell(x, y, controls.cellLife! * Settings.CONVERSION, controls.divTime! * Settings.CONVERSION, controls.divFailRate)
+            grid.current.createCell(x, y, controls.lifespan! * Settings.CONVERSION, controls.divTime! * Settings.CONVERSION, controls.divFailRate)
         } else {
             grid.current.deleteCell(x, y)
         }
@@ -90,7 +90,7 @@ const Sim = () => {
                     <label>
                         Cell Lifespan (seconds)
                     </label>
-                    <input type="number" name="cellLife" min={.1} step={.1} value={controls.cellLife || 1} onChange={adjust} />
+                    <input type="number" name="lifespan" min={.1} step={.1} value={controls.lifespan || 1} onChange={adjust} />
                 </form>
             </div>
             <div style={{ flex: "50%" }}>

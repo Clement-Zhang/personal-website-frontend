@@ -25,8 +25,8 @@ class Grid {
     clear() {
         this.cells = this.cells.map(row => row.map(cell => null))
     }
-    createCell(x: number, y: number, lifetime: number, divTime: number, divFailRate: number) {
-        this.cells[y][x] = new Cell(lifetime, divTime, divFailRate)
+    createCell(x: number, y: number, lifespan: number, divTime: number, divFailRate: number) {
+        this.cells[y][x] = new Cell(lifespan, divTime, divFailRate)
     }
     deleteCell(x: number, y: number) {
         this.cells[y][x] = null
@@ -66,7 +66,7 @@ class Grid {
                             }
                             let directionX = Math.abs(direction - Directions.HORI_FUNC_POINT_X) + Directions.HORI_FUNC_POINT_Y
                             let directionY = Math.abs(direction - Directions.VERT_FUNC_POINT_X) + Directions.VERT_FUNC_POINT_Y
-                            this.new_cells[this.coordsToString(x + directionX, y + directionY)] = new Cell(this.cells[y][x]!.lifetime, this.cells[y][x]!.divTime, this.cells[y][x]!.divFailRate)
+                            this.new_cells[this.coordsToString(x + directionX, y + directionY)] = new Cell(this.cells[y][x]!.lifespan, this.cells[y][x]!.divTime, this.cells[y][x]!.divFailRate)
                         }
                     }
                 }
