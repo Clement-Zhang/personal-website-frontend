@@ -59,7 +59,7 @@ test("update_no_divide", () => {
     expect(count).toBe(1)
 })
 
-test("update_divide_right", () => {
+test("update_divide_all_right", () => {
     Math.random = () => 0
     let x = Settings.X_START + 1
     let y = Settings.Y_START + 1
@@ -69,7 +69,7 @@ test("update_divide_right", () => {
     if (grid.cells[y][x + 1].time === Settings.CELL_START_TIME) {
         count++
     }
-    if (grid.cells[y][x].lifetime === Test.CELL_LIFESPAN_BASE) {
+    if (grid.cells[y][x].lifespan === Test.CELL_LIFESPAN_BASE) {
         count++
     }
     for (let y = Settings.Y_START; y < Settings.HEIGHT; y++) {
@@ -82,7 +82,7 @@ test("update_divide_right", () => {
     expect(count).toBe(Settings.HEIGHT * Settings.WIDTH)
 })
 
-test("update_divide_up", () => {
+test("update_divide_all_up", () => {
     Math.random = () => 0.26
     let x = Settings.X_START + 1
     let y = Settings.Y_START + 1
@@ -92,7 +92,7 @@ test("update_divide_up", () => {
     if (grid.cells[y - 1][x].time === Settings.CELL_START_TIME) {
         count++
     }
-    if (grid.cells[y][x].lifetime === Test.CELL_LIFESPAN_BASE) {
+    if (grid.cells[y][x].lifespan === Test.CELL_LIFESPAN_BASE) {
         count++
     }
     for (let y = Settings.Y_START; y < Settings.HEIGHT; y++) {
@@ -105,7 +105,7 @@ test("update_divide_up", () => {
     expect(count).toBe(Settings.HEIGHT * Settings.WIDTH)
 })
 
-test("update_divide_left", () => {
+test("update_divide_all_left", () => {
     Math.random = () => 0.51
     let x = Settings.X_START + 1
     let y = Settings.Y_START + 1
@@ -115,7 +115,7 @@ test("update_divide_left", () => {
     if (grid.cells[y][x - 1].time === Settings.CELL_START_TIME) {
         count++
     }
-    if (grid.cells[y][x].lifetime === Test.CELL_LIFESPAN_BASE) {
+    if (grid.cells[y][x].lifespan === Test.CELL_LIFESPAN_BASE) {
         count++
     }
     for (let y = Settings.Y_START; y < Settings.HEIGHT; y++) {
@@ -128,7 +128,7 @@ test("update_divide_left", () => {
     expect(count).toBe(Settings.HEIGHT * Settings.WIDTH)
 })
 
-test("update_divide_down", () => {
+test("update_divide_all_down", () => {
     Math.random = () => 0.76
     let x = Settings.X_START + 1
     let y = Settings.Y_START + 1
@@ -138,7 +138,7 @@ test("update_divide_down", () => {
     if (grid.cells[y + 1][x].time === Settings.CELL_START_TIME) {
         count++
     }
-    if (grid.cells[y][x].lifetime === Test.CELL_LIFESPAN_BASE) {
+    if (grid.cells[y][x].lifespan === Test.CELL_LIFESPAN_BASE) {
         count++
     }
     for (let y = Settings.Y_START; y < Settings.HEIGHT; y++) {
@@ -151,21 +151,309 @@ test("update_divide_down", () => {
     expect(count).toBe(Settings.HEIGHT * Settings.WIDTH)
 })
 
-test("update_divide_some_disallowed", () => {
+test("update_divide_right_disallowed", () => {
     Math.random = () => 0
-    let x = Settings.X_START + 1
+    let x = Settings.WIDTH - 1
     let y = Settings.Y_START + 1
     grid.createCell(x, y, Test.CELL_LIFESPAN_BASE, Test.CELL_DIV_TIME_BASE, Test.CELL_DIV_FAIL_RATE_SUCCEED)
-    grid.createCell(x + 1, y, Test.CELL_LIFESPAN_IMMORTAL, Test.CELL_DIV_TIME_CELIBATE, Test.CELL_DIV_FAIL_RATE_SUCCEED)
     grid.update(Test.CELL_DIV_TIME_BASE)
     let count = 0
     if (grid.cells[y - 1][x].time === Settings.CELL_START_TIME) {
         count++
     }
-    if (grid.cells[y][x].lifetime === Test.CELL_LIFESPAN_BASE) {
+    if (grid.cells[y][x].lifespan === Test.CELL_LIFESPAN_BASE) {
         count++
     }
-    if (grid.cells[y][x + 1].lifetime === Test.CELL_LIFESPAN_IMMORTAL) {
+    for (let y = Settings.Y_START; y < Settings.HEIGHT; y++) {
+        for (let x = Settings.X_START; x < Settings.WIDTH; x++) {
+            if (grid.cells[y][x] == null) {
+                count++
+            }
+        }
+    }
+    expect(count).toBe(Settings.HEIGHT * Settings.WIDTH)
+})
+
+test("update_divide_up_disallowed", () => {
+    Math.random = () => 0
+    let x = Settings.X_START + 1
+    let y = Settings.Y_START
+    grid.createCell(x, y, Test.CELL_LIFESPAN_BASE, Test.CELL_DIV_TIME_BASE, Test.CELL_DIV_FAIL_RATE_SUCCEED)
+    grid.update(Test.CELL_DIV_TIME_BASE)
+    let count = 0
+    if (grid.cells[y][x + 1].time === Settings.CELL_START_TIME) {
+        count++
+    }
+    if (grid.cells[y][x].lifespan === Test.CELL_LIFESPAN_BASE) {
+        count++
+    }
+    for (let y = Settings.Y_START; y < Settings.HEIGHT; y++) {
+        for (let x = Settings.X_START; x < Settings.WIDTH; x++) {
+            if (grid.cells[y][x] == null) {
+                count++
+            }
+        }
+    }
+    expect(count).toBe(Settings.HEIGHT * Settings.WIDTH)
+})
+
+test("update_divide_left_disallowed", () => {
+    Math.random = () => 0
+    let x = Settings.X_START
+    let y = Settings.Y_START + 1
+    grid.createCell(x, y, Test.CELL_LIFESPAN_BASE, Test.CELL_DIV_TIME_BASE, Test.CELL_DIV_FAIL_RATE_SUCCEED)
+    grid.update(Test.CELL_DIV_TIME_BASE)
+    let count = 0
+    if (grid.cells[y][x + 1].time === Settings.CELL_START_TIME) {
+        count++
+    }
+    if (grid.cells[y][x].lifespan === Test.CELL_LIFESPAN_BASE) {
+        count++
+    }
+    for (let y = Settings.Y_START; y < Settings.HEIGHT; y++) {
+        for (let x = Settings.X_START; x < Settings.WIDTH; x++) {
+            if (grid.cells[y][x] == null) {
+                count++
+            }
+        }
+    }
+    expect(count).toBe(Settings.HEIGHT * Settings.WIDTH)
+})
+
+test("update_divide_left_disallowed", () => {
+    Math.random = () => 0
+    let x = Settings.X_START
+    let y = Settings.Y_START + 1
+    grid.createCell(x, y, Test.CELL_LIFESPAN_BASE, Test.CELL_DIV_TIME_BASE, Test.CELL_DIV_FAIL_RATE_SUCCEED)
+    grid.update(Test.CELL_DIV_TIME_BASE)
+    let count = 0
+    if (grid.cells[y][x + 1].time === Settings.CELL_START_TIME) {
+        count++
+    }
+    if (grid.cells[y][x].lifespan === Test.CELL_LIFESPAN_BASE) {
+        count++
+    }
+    for (let y = Settings.Y_START; y < Settings.HEIGHT; y++) {
+        for (let x = Settings.X_START; x < Settings.WIDTH; x++) {
+            if (grid.cells[y][x] == null) {
+                count++
+            }
+        }
+    }
+    expect(count).toBe(Settings.HEIGHT * Settings.WIDTH)
+})
+
+test("update_divide_down_disallowed", () => {
+    Math.random = () => 0
+    let x = Settings.X_START + 1
+    let y = Settings.HEIGHT - 1
+    grid.createCell(x, y, Test.CELL_LIFESPAN_BASE, Test.CELL_DIV_TIME_BASE, Test.CELL_DIV_FAIL_RATE_SUCCEED)
+    grid.update(Test.CELL_DIV_TIME_BASE)
+    let count = 0
+    if (grid.cells[y][x + 1].time === Settings.CELL_START_TIME) {
+        count++
+    }
+    if (grid.cells[y][x].lifespan === Test.CELL_LIFESPAN_BASE) {
+        count++
+    }
+    for (let y = Settings.Y_START; y < Settings.HEIGHT; y++) {
+        for (let x = Settings.X_START; x < Settings.WIDTH; x++) {
+            if (grid.cells[y][x] == null) {
+                count++
+            }
+        }
+    }
+    expect(count).toBe(Settings.HEIGHT * Settings.WIDTH)
+})
+
+test("update_divide_top_right_disallowed", () => {
+    Math.random = () => 0
+    let x = Settings.WIDTH - 1
+    let y = Settings.Y_START
+    grid.createCell(x, y, Test.CELL_LIFESPAN_BASE, Test.CELL_DIV_TIME_BASE, Test.CELL_DIV_FAIL_RATE_SUCCEED)
+    grid.update(Test.CELL_DIV_TIME_BASE)
+    let count = 0
+    if (grid.cells[y][x - 1].time === Settings.CELL_START_TIME) {
+        count++
+    }
+    if (grid.cells[y][x].lifespan === Test.CELL_LIFESPAN_BASE) {
+        count++
+    }
+    for (let y = Settings.Y_START; y < Settings.HEIGHT; y++) {
+        for (let x = Settings.X_START; x < Settings.WIDTH; x++) {
+            if (grid.cells[y][x] == null) {
+                count++
+            }
+        }
+    }
+    expect(count).toBe(Settings.HEIGHT * Settings.WIDTH)
+})
+
+test("update_divide_top_left_disallowed", () => {
+    Math.random = () => 0
+    let x = Settings.X_START
+    let y = Settings.Y_START
+    grid.createCell(x, y, Test.CELL_LIFESPAN_BASE, Test.CELL_DIV_TIME_BASE, Test.CELL_DIV_FAIL_RATE_SUCCEED)
+    grid.update(Test.CELL_DIV_TIME_BASE)
+    let count = 0
+    if (grid.cells[y][x + 1].time === Settings.CELL_START_TIME) {
+        count++
+    }
+    if (grid.cells[y][x].lifespan === Test.CELL_LIFESPAN_BASE) {
+        count++
+    }
+    for (let y = Settings.Y_START; y < Settings.HEIGHT; y++) {
+        for (let x = Settings.X_START; x < Settings.WIDTH; x++) {
+            if (grid.cells[y][x] == null) {
+                count++
+            }
+        }
+    }
+    expect(count).toBe(Settings.HEIGHT * Settings.WIDTH)
+})
+
+test("update_divide_bottom_left_disallowed", () => {
+    Math.random = () => 0
+    let x = Settings.X_START
+    let y = Settings.HEIGHT - 1
+    grid.createCell(x, y, Test.CELL_LIFESPAN_BASE, Test.CELL_DIV_TIME_BASE, Test.CELL_DIV_FAIL_RATE_SUCCEED)
+    grid.update(Test.CELL_DIV_TIME_BASE)
+    let count = 0
+    if (grid.cells[y][x + 1].time === Settings.CELL_START_TIME) {
+        count++
+    }
+    if (grid.cells[y][x].lifespan === Test.CELL_LIFESPAN_BASE) {
+        count++
+    }
+    for (let y = Settings.Y_START; y < Settings.HEIGHT; y++) {
+        for (let x = Settings.X_START; x < Settings.WIDTH; x++) {
+            if (grid.cells[y][x] == null) {
+                count++
+            }
+        }
+    }
+    expect(count).toBe(Settings.HEIGHT * Settings.WIDTH)
+})
+
+test("update_divide_bottom_right_disallowed", () => {
+    Math.random = () => 0
+    let x = Settings.WIDTH - 1
+    let y = Settings.HEIGHT - 1
+    grid.createCell(x, y, Test.CELL_LIFESPAN_BASE, Test.CELL_DIV_TIME_BASE, Test.CELL_DIV_FAIL_RATE_SUCCEED)
+    grid.update(Test.CELL_DIV_TIME_BASE)
+    let count = 0
+    if (grid.cells[y - 1][x].time === Settings.CELL_START_TIME) {
+        count++
+    }
+    if (grid.cells[y][x].lifespan === Test.CELL_LIFESPAN_BASE) {
+        count++
+    }
+    for (let y = Settings.Y_START; y < Settings.HEIGHT; y++) {
+        for (let x = Settings.X_START; x < Settings.WIDTH; x++) {
+            if (grid.cells[y][x] == null) {
+                count++
+            }
+        }
+    }
+    expect(count).toBe(Settings.HEIGHT * Settings.WIDTH)
+})
+
+test("update_divide_left_allowed", () => {
+    Math.random = () => 0
+    let x = Settings.WIDTH - 1
+    let y = Settings.Y_START
+    grid.createCell(x, y, Test.CELL_LIFESPAN_BASE, Test.CELL_DIV_TIME_BASE, Test.CELL_DIV_FAIL_RATE_SUCCEED)
+    grid.createCell(x, y + 1, Test.CELL_LIFESPAN_IMMORTAL, Test.CELL_DIV_TIME_CELIBATE, Test.CELL_DIV_FAIL_RATE_SUCCEED)
+    grid.update(Test.CELL_DIV_TIME_BASE)
+    let count = 0
+    if (grid.cells[y][x - 1].time === Settings.CELL_START_TIME) {
+        count++
+    }
+    if (grid.cells[y][x].lifespan === Test.CELL_LIFESPAN_BASE) {
+        count++
+    }
+    if (grid.cells[y + 1][x].lifespan === Test.CELL_LIFESPAN_IMMORTAL) {
+        count++
+    }
+    for (let y = Settings.Y_START; y < Settings.HEIGHT; y++) {
+        for (let x = Settings.X_START; x < Settings.WIDTH; x++) {
+            if (grid.cells[y][x] == null) {
+                count++
+            }
+        }
+    }
+    expect(count).toBe(Settings.HEIGHT * Settings.WIDTH)
+})
+
+test("update_divide_down_allowed", () => {
+    Math.random = () => 0
+    let x = Settings.X_START
+    let y = Settings.Y_START
+    grid.createCell(x, y, Test.CELL_LIFESPAN_BASE, Test.CELL_DIV_TIME_BASE, Test.CELL_DIV_FAIL_RATE_SUCCEED)
+    grid.createCell(x + 1, y, Test.CELL_LIFESPAN_IMMORTAL, Test.CELL_DIV_TIME_CELIBATE, Test.CELL_DIV_FAIL_RATE_SUCCEED)
+    grid.update(Test.CELL_DIV_TIME_BASE)
+    let count = 0
+    if (grid.cells[y + 1][x].time === Settings.CELL_START_TIME) {
+        count++
+    }
+    if (grid.cells[y][x].lifespan === Test.CELL_LIFESPAN_BASE) {
+        count++
+    }
+    if (grid.cells[y][x + 1].lifespan === Test.CELL_LIFESPAN_IMMORTAL) {
+        count++
+    }
+    for (let y = Settings.Y_START; y < Settings.HEIGHT; y++) {
+        for (let x = Settings.X_START; x < Settings.WIDTH; x++) {
+            if (grid.cells[y][x] == null) {
+                count++
+            }
+        }
+    }
+    expect(count).toBe(Settings.HEIGHT * Settings.WIDTH)
+})
+
+test("update_divide_right_allowed", () => {
+    Math.random = () => 0
+    let x = Settings.X_START
+    let y = Settings.HEIGHT - 1
+    grid.createCell(x, y, Test.CELL_LIFESPAN_BASE, Test.CELL_DIV_TIME_BASE, Test.CELL_DIV_FAIL_RATE_SUCCEED)
+    grid.createCell(x, y - 1, Test.CELL_LIFESPAN_IMMORTAL, Test.CELL_DIV_TIME_CELIBATE, Test.CELL_DIV_FAIL_RATE_SUCCEED)
+    grid.update(Test.CELL_DIV_TIME_BASE)
+    let count = 0
+    if (grid.cells[y][x + 1].time === Settings.CELL_START_TIME) {
+        count++
+    }
+    if (grid.cells[y][x].lifespan === Test.CELL_LIFESPAN_BASE) {
+        count++
+    }
+    if (grid.cells[y - 1][x].lifespan === Test.CELL_LIFESPAN_IMMORTAL) {
+        count++
+    }
+    for (let y = Settings.Y_START; y < Settings.HEIGHT; y++) {
+        for (let x = Settings.X_START; x < Settings.WIDTH; x++) {
+            if (grid.cells[y][x] == null) {
+                count++
+            }
+        }
+    }
+    expect(count).toBe(Settings.HEIGHT * Settings.WIDTH)
+})
+
+test("update_divide_up_allowed", () => {
+    Math.random = () => 0
+    let x = Settings.WIDTH - 1
+    let y = Settings.HEIGHT - 1
+    grid.createCell(x, y, Test.CELL_LIFESPAN_BASE, Test.CELL_DIV_TIME_BASE, Test.CELL_DIV_FAIL_RATE_SUCCEED)
+    grid.createCell(x - 1, y, Test.CELL_LIFESPAN_IMMORTAL, Test.CELL_DIV_TIME_CELIBATE, Test.CELL_DIV_FAIL_RATE_SUCCEED)
+    grid.update(Test.CELL_DIV_TIME_BASE)
+    let count = 0
+    if (grid.cells[y - 1][x].time === Settings.CELL_START_TIME) {
+        count++
+    }
+    if (grid.cells[y][x].lifespan === Test.CELL_LIFESPAN_BASE) {
+        count++
+    }
+    if (grid.cells[y][x - 1].lifespan === Test.CELL_LIFESPAN_IMMORTAL) {
         count++
     }
     for (let y = Settings.Y_START; y < Settings.HEIGHT; y++) {
