@@ -1,0 +1,16 @@
+img {
+    width: 25px;
+    height: 25px;
+}
+
+li {
+    display: inline;
+}
+
+label {
+    display: block;
+}
+
+canvas {
+    border: 1px solid white;
+}
