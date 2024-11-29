@@ -94,7 +94,7 @@ const Sim = () => {
                 </form>
                 <p>When Cell Lifespan is an integer multiple of Division Time, cells will <em>not</em> divide for that last stretch of time before it dies.</p>
             </div>
-            <div style={{ flex: "50%" }}>
+            <div style={{ flex: "75%" }}>
                 <canvas
                     ref={canvasRef}
                     width={Settings.WIDTH * Settings.CANVAS_SIZE_MULTIPLIER}
