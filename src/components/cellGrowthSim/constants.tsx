@@ -3,7 +3,7 @@ export const Settings = {
     HEIGHT: 200,
     X_START: 0,
     Y_START: 0,
-    CANVAS_SIZE_MULTIPLIER: 2,
+    CANVAS_SIZE_MULTIPLIER: 3,
     CELL_DIVIDE_SIGNAL: "divide",
     CELL_DEATH_SIGNAL: "die",
     CELL_NO_SIGNAL: "",

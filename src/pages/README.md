@@ -43,4 +43,4 @@ The `Grid` does one loop through the entire nested array, so if:
 
 then A will die, and *during the same loop*, B will divide and put its daughter `Cell` in the same location that A died in. If, however, B were to be towards the top or left of A, then B *would not divide* because it was processed before A.
 
-The fact that a `Cell` checks first for death, then for division, means that if a `Cell` wants to both die and divide at the same time, it will die. This happens when `lifespan` is an integer multiple of `divTime`. In such a case, the `Cell` will only divide `lifespan / divTime - 1` times. For example, if `lifespan` is 2 seconds and `divTime` is 1 second, then the `Cell` will only divide once before dying instead of twice.
+The fact that a `Cell` checks first for death, then for division, means that if a `Cell` wants to both die and divide at the same time, it will die. This happens when `lifespan` is an integer multiple of `divTime`. In such a case, the `Cell` will *not* divide for that last stretch of time immediately before it dies.

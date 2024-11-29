@@ -13,9 +13,9 @@ const Sim = () => {
     let renderer = useRef<Renderer | null>(null);
     let grid = useRef(new Grid())
     const [controls, changeControls] = useState({
-        divTime: 1,
+        divTime: .9,
         divFailRate: 0,
-        lifespan: 1
+        lifespan: 2
     });
     let canvasRef = useRef<HTMLCanvasElement | null>(null);
     useEffect(() => {
@@ -69,7 +69,7 @@ const Sim = () => {
     }
     return (
         <div style={{ display: "flex" }}>
-            <div style={{ flex: "50%" }}>
+            <div style={{ flex: "25%" }}>
                 <ul>
                     <li>
                         <img id="playPause" src={play} alt="play button" data-active-button="play" onClick={changeButton} />
@@ -82,7 +82,7 @@ const Sim = () => {
                     <label>
                         Division Time (seconds)
                     </label>
-                    <input type="number" name="divTime" min={.1} step={.1} value={controls.divTime || 1} onChange={adjust} />
+                    <input type="number" name="divTime" min={.1} step={.1} value={controls.divTime || .9} onChange={adjust} />
                     <label>
                         Division Failure Rate (0-1)
                     </label>
@@ -90,8 +90,9 @@ const Sim = () => {
                     <label>
                         Cell Lifespan (seconds)
                     </label>
-                    <input type="number" name="lifespan" min={.1} step={.1} value={controls.lifespan || 1} onChange={adjust} />
+                    <input type="number" name="lifespan" min={.1} step={.1} value={controls.lifespan || 2} onChange={adjust} />
                 </form>
+                <p>When Cell Lifespan is an integer multiple of Division Time, cells will <em>not</em> divide for that last stretch of time before it dies.</p>
             </div>
             <div style={{ flex: "50%" }}>
                 <canvas
