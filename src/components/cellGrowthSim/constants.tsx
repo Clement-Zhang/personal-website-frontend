@@ -1,4 +1,4 @@
-export const Settings = {
+const Settings = {
     WIDTH: 200,
     HEIGHT: 200,
     X_START: 0,
@@ -14,7 +14,7 @@ export const Settings = {
     CONVERSION: 1000
 }
 
-export const Directions = {
+const Directions = {
     RIGHT: 1,
     UP: 10,
     LEFT: 100,
@@ -28,7 +28,41 @@ export const Directions = {
     VERT_FUNC_POINT_Y: -1,
 }
 
-export const Test= {
+const Graph = {
+    WIDTH: 300,
+    HEIGHT: 300,
+    X_START: 0,
+    Y_START: 0,
+    INITIAL_X_SIZE: 10000,
+    MS_TO_S_CONVERSION: 1000,
+    MS_TO_S_THRESHOLD: 60000,
+    MS_TO_M_CONVERSION: 60000,
+    INITIAL_Y_SIZE: 10,
+    GROWTH_FACTOR: 2,
+    TITLE_SIZE: 10,
+    TITLE_FONT: "Comic Sans MS",
+    TITLE_COLOUR: "white",
+    X_TITLE_LOCATION: 60,
+    X_BIGGEST_SPACE: 40,
+    Y_TITLE_LOCATION: 70,
+    Y_BIGGEST_SPACE: 60,
+    Y_ADJUST_3: 10,
+    Y_ADJUST_3_THRESHOLD: 100,
+    Y_ADJUST_4: 15,
+    Y_ADJUST_4_THRESHOLD: 1000,
+    Y_ADJUST_5: 20,
+    Y_ADJUST_5_THRESHOLD: 10000,
+    ARROW_WIDTH: 5,
+    LINE_WIDTH: 1,
+    ARROW_START: 0,
+    ARROW_COLOUR: "white",
+    DATA_COLOUR: "green",
+    SINGLETON: 1,
+    BORDER: "solid 1px black",
+    MARGIN: 10,
+}
+
+const Test = {
     CELL_LIFESPAN_BASE: 2000,
     CELL_LIFESPAN_MIN: 100,
     CELL_LIFESPAN_IMMORTAL: Number.POSITIVE_INFINITY,
@@ -40,3 +74,5 @@ export const Test= {
     CELL_DIV_FAIL_RATE_MIDDLE: .5,
     TIME_PASSED_MIN: 1,
 }
+
+export { Settings, Directions, Graph, Test }

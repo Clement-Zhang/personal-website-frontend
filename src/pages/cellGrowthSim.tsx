@@ -1,7 +1,8 @@
 import { SyntheticEvent, useState, useRef, useEffect } from "react"
 import Grid from "../components/cellGrowthSim/grid"
 import Renderer from "../components/cellGrowthSim/renderer"
-import {Settings} from "../components/cellGrowthSim/constants"
+import Tracker from "../components/cellGrowthSim/tracker"
+import {Settings, Graph} from "../components/cellGrowthSim/constants"
 require("../styles/cellGrowthSim.module.css")
 
 const play = require("../assets/playButton.jpg")
@@ -10,19 +11,23 @@ const reset = require("../assets/resetButton.jpg")
 
 const Sim = () => {
     let [mouse, updateMouse] = useState([0, 0]);
+    let tracker = useRef(new Tracker())
     let renderer = useRef<Renderer | null>(null);
-    let grid = useRef(new Grid())
+    let grid = useRef(new Grid(tracker.current))
     const [controls, changeControls] = useState({
         divTime: .9,
         divFailRate: 0,
         lifespan: 2
     });
-    let canvasRef = useRef<HTMLCanvasElement | null>(null);
+    let gridRef = useRef<HTMLCanvasElement | null>(null);
+    let graphRef = useRef<HTMLCanvasElement | null>(null);
     useEffect(() => {
-        let context = canvasRef.current!.getContext("2d")
-        context!.fillStyle = Settings.CELL_COLOUR
-        renderer.current = new Renderer(context!, grid.current)
-    }, [canvasRef])
+        let gridContext = gridRef.current!.getContext("2d")
+        let graphContext = graphRef.current!.getContext("2d")
+        gridContext!.fillStyle = Settings.CELL_COLOUR
+        renderer.current = new Renderer(gridContext!, grid.current, graphContext, tracker.current)
+        renderer.current.setGraph(tracker.current.timeCapacity, tracker.current.topCells)
+    }, [gridRef])
     const adjust = (e: SyntheticEvent) => {
         const target = e.target as typeof e.target & {
             name: string,
@@ -34,8 +39,8 @@ const Sim = () => {
     }
     function moveMouse(e: React.MouseEvent<HTMLCanvasElement>) {
         updateMouse([
-            e.clientX-canvasRef.current!.getBoundingClientRect().left,
-            e.clientY-canvasRef.current!.getBoundingClientRect().top
+            e.clientX-gridRef.current!.getBoundingClientRect().left,
+            e.clientY-gridRef.current!.getBoundingClientRect().top
         ])
     }
     function interact(e: React.MouseEvent<HTMLCanvasElement>, grid: React.MutableRefObject<Grid>) {
@@ -94,14 +99,22 @@ const Sim = () => {
                 </form>
                 <p>When Cell Lifespan is an integer multiple of Division Time, cells will <em>not</em> divide for that last stretch of time before it dies.</p>
             </div>
-            <div style={{ flex: "75%" }}>
+            <div style={{ flex: "50%" }}>
                 <canvas
-                    ref={canvasRef}
+                    ref={gridRef}
                     width={Settings.WIDTH * Settings.CANVAS_SIZE_MULTIPLIER}
                     height={Settings.HEIGHT * Settings.CANVAS_SIZE_MULTIPLIER}
                     onMouseMove={moveMouse}
                     onClick={(e) => interact(e, grid)}
                     onContextMenu={(e) => interact(e, grid)}
+                />
+            </div>
+            <div style={{ flex: "25%" }}>
+                <canvas
+                    ref={graphRef}
+                    width={Graph.WIDTH}
+                    height={Graph.HEIGHT}
+                    style={{border: Graph.BORDER}}
                 />
             </div>
         </div>
