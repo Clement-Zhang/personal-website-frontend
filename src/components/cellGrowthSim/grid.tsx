@@ -1,10 +1,12 @@
 import Cell from './cell'
+import Tracker from './tracker'
 import { Settings, Directions } from './constants'
 
 class Grid {
     cells: (Cell | null)[][]
     new_cells: { [key: string]: Cell }
-    constructor() {
+    tracker: Tracker
+    constructor(tracker: Tracker) {
         this.cells = []
         for (let y = Settings.Y_START; y < Settings.HEIGHT; y++) {
             let row = []
@@ -14,6 +16,7 @@ class Grid {
             this.cells.push(row)
         }
         this.new_cells = {}
+        this.tracker = tracker
     }
     display() {
         for (let y = Settings.Y_START; y < Settings.HEIGHT; y++) {
@@ -41,12 +44,14 @@ class Grid {
         this.cells[y][x] = null
     }
     update(deltaTime: number) {
+        let cellCount = 0
         for (let y = Settings.Y_START; y < Settings.HEIGHT; y++) {
             for (let x = Settings.X_START; x < Settings.WIDTH; x++) {
                 if (this.cells[y][x]) {
                     let status = this.cells[y][x]!.update(deltaTime)
                     if (status === Settings.CELL_DEATH_SIGNAL) {
                         this.deleteCell(x, y)
+                        cellCount--
                     } else if (status === Settings.CELL_DIVIDE_SIGNAL) {
                         let allowed = Directions.START
                         if (x > Settings.X_START && !this.cells[y][x - Settings.CELL_GROWTH_DISTANCE] && !(this.coordsToString(x - Settings.CELL_GROWTH_DISTANCE, y) in this.new_cells)) {
@@ -76,8 +81,10 @@ class Grid {
                             let directionX = Math.abs(direction - Directions.HORI_FUNC_POINT_X) + Directions.HORI_FUNC_POINT_Y
                             let directionY = Math.abs(direction - Directions.VERT_FUNC_POINT_X) + Directions.VERT_FUNC_POINT_Y
                             this.new_cells[this.coordsToString(x + directionX, y + directionY)] = new Cell(this.cells[y][x]!.lifespan, this.cells[y][x]!.divTime, this.cells[y][x]!.divFailRate)
+                            cellCount++
                         }
                     }
+                    cellCount++
                 }
             }
         }
@@ -86,6 +93,7 @@ class Grid {
             this.cells[y][x] = this.new_cells[key]
             delete this.new_cells[key]
         }
+        this.tracker.updateCellCount(deltaTime, cellCount)
     }
 }
 
