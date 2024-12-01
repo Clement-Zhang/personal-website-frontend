@@ -52,4 +52,5 @@ then A will die, and *during the same loop*, B will divide and put its daughter 
 
 The fact that a `Cell` checks first for death, then for division, means that if a `Cell` wants to both die and divide at the same time, it will die. This happens when `lifespan` is an integer multiple of `divTime`. In such a case, the `Cell` will *not* divide for that last stretch of time immediately before it dies.
 
-
+# Performance
+When tested with a dish full of bacteria customized to 0.9 seconds of division time, 0% division failure rate, and 2 seconds of cell lifespan, on a computer with an Intel Core i5-4570 @3.20Ghz, grid updates take an average of less than 2 milliseconds per update, and frame draws take an average of less than 3 milliseconds per update. This is well below the acceptable limit of 33 milliseconds per frame to run at 30 fps. The maximum memory that it takes up with these settings is less than 18MB, which is nothing compared to the memory that Chrome uses by existing.
