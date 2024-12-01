@@ -17,7 +17,7 @@ class Renderer {
         this.grid = grid
         this.tracker = tracker
     }
-    animate(timestamp: number) {
+    animate() {
         let deltaTime = Date.now() - this.prevFrameTime!
         this.grid.update(deltaTime)
         this.frame()
@@ -146,11 +146,11 @@ class Renderer {
         this.trackerContext!.rotate(-rightAngle)
         this.trackerContext!.font = Graph.TITLE_SIZE + Graph.TITLE_FONT
         this.trackerContext!.fillStyle = Graph.TITLE_COLOUR
-        this.trackerContext!.fillText("Time (" + xUnit + ")", xTitleLocation, Graph.HEIGHT)
+        this.trackerContext!.fillText(Graph.X_TITLE + " (" + xUnit + ")", xTitleLocation, Graph.HEIGHT)
         this.trackerContext!.fillText(time.toString(), xTitleLocation + Graph.X_BIGGEST_SPACE, Graph.HEIGHT)
         this.trackerContext!.fillText("0", Graph.X_START + Graph.ARROW_WIDTH, Graph.HEIGHT)
         this.trackerContext!.rotate(rightAngle)
-        this.trackerContext!.fillText("Cells (Count)", yTitleLocation, Graph.Y_START + Graph.MARGIN)
+        this.trackerContext!.fillText(Graph.Y_TITLE + " (" + Graph.Y_UNIT + ")", yTitleLocation, Graph.Y_START + Graph.MARGIN)
         this.trackerContext!.fillText(topCells.toString(), yTitleLocation + Graph.Y_BIGGEST_SPACE, Graph.Y_START + Graph.MARGIN)
         this.trackerContext!.rotate(-rightAngle)
         this.trackerContext!.fillStyle = Graph.DATA_COLOUR
