@@ -36,18 +36,18 @@ class Tracker {
                 }
             }
             else if (this.timeElapsed < Graph.MINUTES_THRESHOLD) {
-                let seconds = this.timeElapsed/Graph.MS_TO_S_CONVERSION
+                let seconds = this.timeElapsed / Graph.MS_TO_S_CONVERSION
                 if (seconds < Graph.SMALL_X_MULTIPLIER) {
-                    this.timeCapacity = Graph.SMALL_X_MULTIPLIER*Graph.MS_TO_S_CONVERSION
+                    this.timeCapacity = Graph.SMALL_X_MULTIPLIER * Graph.MS_TO_S_CONVERSION
                 } else {
-                    this.timeCapacity = Graph.BIG_X_MULTIPLIER*Graph.MS_TO_S_CONVERSION
+                    this.timeCapacity = Graph.BIG_X_MULTIPLIER * Graph.MS_TO_S_CONVERSION
                 }
             } else {
-                let minutes = this.timeElapsed/Graph.MS_TO_M_CONVERSION
+                let minutes = this.timeElapsed / Graph.MS_TO_M_CONVERSION
                 if (minutes < Graph.SMALL_X_MULTIPLIER) {
-                    this.timeCapacity = Graph.SMALL_X_MULTIPLIER*Graph.MS_TO_M_CONVERSION
+                    this.timeCapacity = Graph.SMALL_X_MULTIPLIER * Graph.MS_TO_M_CONVERSION
                 } else {
-                    this.timeCapacity = Graph.BIG_X_MULTIPLIER*Graph.MS_TO_M_CONVERSION
+                    this.timeCapacity = Graph.BIG_X_MULTIPLIER * Graph.MS_TO_M_CONVERSION
                 }
             }
         }

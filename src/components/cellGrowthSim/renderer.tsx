@@ -96,21 +96,20 @@ class Renderer {
         this.trackerContext!.stroke()
     }
     setGraph(time: number, topCells: number) {
-        console.log(time)
         let xUnit: string
         let yAdjust = Graph.ADJUST_0
         let xAdjust = Graph.ADJUST_2
         if (time < Graph.SECONDS_THRESHOLD) {
-            xUnit = "ms"
+            xUnit = Graph.X_SMALLEST_UNIT
             if (time < Graph.MS_FIRST_HALF) {
                 time = Graph.MS_FIRST_HALF
-                xAdjust = 10
+                xAdjust = Graph.ADJUST_3
             } else {
                 time = Graph.MS_SECOND_HALF
-                xAdjust = 15
+                xAdjust = Graph.ADJUST_4
             }
         } else if (time < Graph.MINUTES_THRESHOLD) {
-            xUnit = "s"
+            xUnit = Graph.X_MEDIUM_UNIT
             let seconds = time / Graph.MS_TO_S_CONVERSION
             if (seconds < Graph.SMALL_X_MULTIPLIER) {
                 time = Graph.SMALL_X_MULTIPLIER
@@ -118,7 +117,7 @@ class Renderer {
                 time = Graph.BIG_X_MULTIPLIER
             }
         } else {
-            xUnit = "m"
+            xUnit = Graph.X_BIGGEST_UNIT
             let minutes = time / Graph.MS_TO_M_CONVERSION
             if (minutes < Graph.SMALL_X_MULTIPLIER) {
                 time = Graph.SMALL_X_MULTIPLIER
@@ -135,25 +134,25 @@ class Renderer {
         }
         let xTitleLocation = Graph.WIDTH - Graph.X_TITLE_LOCATION - xAdjust
         let yTitleLocation = -(Graph.Y_TITLE_LOCATION + yAdjust)
-        let radian90 = -Math.PI / 2
+        let rightAngle = -Math.PI / 2
         this.trackerContext!.clearRect(Graph.X_START, Graph.Y_START, Graph.WIDTH, Graph.HEIGHT)
         this.trackerContext!.translate(Graph.X_START, Graph.HEIGHT - Graph.MARGIN - Graph.ARROW_WIDTH)
         this.arrow(Graph.WIDTH)
         this.trackerContext!.translate(-Graph.X_START, -(Graph.HEIGHT - Graph.MARGIN - Graph.ARROW_WIDTH))
-        this.trackerContext!.rotate(radian90)
+        this.trackerContext!.rotate(rightAngle)
         this.trackerContext!.translate(-Graph.HEIGHT, Graph.X_START + Graph.MARGIN)
         this.arrow(Graph.WIDTH)
         this.trackerContext!.translate(Graph.HEIGHT, -(Graph.X_START + Graph.MARGIN))
-        this.trackerContext!.rotate(-radian90)
+        this.trackerContext!.rotate(-rightAngle)
         this.trackerContext!.font = Graph.TITLE_SIZE + Graph.TITLE_FONT
         this.trackerContext!.fillStyle = Graph.TITLE_COLOUR
         this.trackerContext!.fillText("Time (" + xUnit + ")", xTitleLocation, Graph.HEIGHT)
         this.trackerContext!.fillText(time.toString(), xTitleLocation + Graph.X_BIGGEST_SPACE, Graph.HEIGHT)
         this.trackerContext!.fillText("0", Graph.X_START + Graph.ARROW_WIDTH, Graph.HEIGHT)
-        this.trackerContext!.rotate(radian90)
+        this.trackerContext!.rotate(rightAngle)
         this.trackerContext!.fillText("Cells (Count)", yTitleLocation, Graph.Y_START + Graph.MARGIN)
         this.trackerContext!.fillText(topCells.toString(), yTitleLocation + Graph.Y_BIGGEST_SPACE, Graph.Y_START + Graph.MARGIN)
-        this.trackerContext!.rotate(-radian90)
+        this.trackerContext!.rotate(-rightAngle)
         this.trackerContext!.fillStyle = Graph.DATA_COLOUR
         this.trackerContext!.strokeStyle = Graph.DATA_COLOUR
     }
