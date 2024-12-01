@@ -50,7 +50,6 @@ class Tracker {
                     this.timeCapacity = Graph.BIG_X_MULTIPLIER * Graph.MS_TO_M_CONVERSION
                 }
             }
-            console.log(this.timeCapacity)
         }
     }
     clear() {
