@@ -101,17 +101,15 @@ class Renderer {
         let xAdjust = Graph.ADJUST_2
         if (time < Graph.SECONDS_THRESHOLD) {
             xUnit = Graph.X_SMALLEST_UNIT
-            if (time < Graph.MS_FIRST_HALF) {
-                time = Graph.MS_FIRST_HALF
+            if (time === Graph.MS_FIRST_HALF) {
                 xAdjust = Graph.ADJUST_3
             } else {
-                time = Graph.MS_SECOND_HALF
                 xAdjust = Graph.ADJUST_4
             }
         } else if (time < Graph.MINUTES_THRESHOLD) {
             xUnit = Graph.X_MEDIUM_UNIT
             let seconds = time / Graph.MS_TO_S_CONVERSION
-            if (seconds < Graph.SMALL_X_MULTIPLIER) {
+            if (seconds === Graph.SMALL_X_MULTIPLIER) {
                 time = Graph.SMALL_X_MULTIPLIER
             } else {
                 time = Graph.BIG_X_MULTIPLIER
@@ -119,7 +117,7 @@ class Renderer {
         } else {
             xUnit = Graph.X_BIGGEST_UNIT
             let minutes = time / Graph.MS_TO_M_CONVERSION
-            if (minutes < Graph.SMALL_X_MULTIPLIER) {
+            if (minutes === Graph.SMALL_X_MULTIPLIER) {
                 time = Graph.SMALL_X_MULTIPLIER
             } else {
                 time = Graph.BIG_X_MULTIPLIER

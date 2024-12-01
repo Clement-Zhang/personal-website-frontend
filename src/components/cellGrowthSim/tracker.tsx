@@ -18,7 +18,7 @@ class Tracker {
         this.cellData.push([this.timeElapsed, cellCount])
         if (cellCount > this.topCells) {
             this.extend = true
-            let sigFig = parseInt(cellCount.toPrecision(1))
+            let sigFig = parseInt(this.topCells.toPrecision(1))
             if (sigFig === Graph.LOW_Y_GROWTH_THRESHOLD) {
                 this.topCells *= Graph.LOW_Y_GROWTH_FACTOR
             } else if (sigFig === Graph.HIGH_Y_GROWTH_THRESHOLD) {
@@ -50,6 +50,7 @@ class Tracker {
                     this.timeCapacity = Graph.BIG_X_MULTIPLIER * Graph.MS_TO_M_CONVERSION
                 }
             }
+            console.log(this.timeCapacity)
         }
     }
     clear() {

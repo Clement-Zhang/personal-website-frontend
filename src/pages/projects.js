@@ -1,6 +1,7 @@
 import Default from "../templates/default"
 import ecommerce from "../assets/ecommerce.jpg"
 import aope from "../assets/AoPE.jpg"
+import cellGrowthSim from "../assets/cellGrowthSim.jpg"
 import styles from "../styles/projects.module.css"
 import { Link } from "react-router-dom"
 
@@ -30,6 +31,7 @@ const Projects = () => {
             <h3>
                 <Link to="/sim">Cell Growth Simulator</Link>
             </h3>
+            <img src={cellGrowthSim} alt="Screenshot of a cell growth simulation" className={styles.img}/>
             <p>
                 This is a simulation of cell growth in a petri dish. The cells divide and cover the dish, and the user can control a number of parameters.
             </p>
