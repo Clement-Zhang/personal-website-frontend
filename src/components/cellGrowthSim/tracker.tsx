@@ -13,16 +13,43 @@ class Tracker {
         this.topCells = Graph.INITIAL_Y_SIZE
         this.extend = false
     }
-    updateCellCount(deltaTime: number, CellCount: number) {
+    updateCellCount(deltaTime: number, cellCount: number) {
         this.timeElapsed += deltaTime
-        this.cellData.push([this.timeElapsed, CellCount])
-        if (CellCount > this.topCells) {
+        this.cellData.push([this.timeElapsed, cellCount])
+        if (cellCount > this.topCells) {
             this.extend = true
-            this.topCells = Math.min(this.topCells * Graph.GROWTH_FACTOR, Settings.WIDTH * Settings.HEIGHT)
+            let sigFig = parseInt(cellCount.toPrecision(1))
+            if (sigFig === Graph.LOW_Y_GROWTH_THRESHOLD) {
+                this.topCells *= Graph.LOW_Y_GROWTH_FACTOR
+            } else if (sigFig === Graph.HIGH_Y_GROWTH_THRESHOLD) {
+                this.topCells *= Graph.HIGH_Y_GROWTH_FACTOR
+            }
+            this.topCells = Math.min(this.topCells, Settings.HEIGHT * Settings.WIDTH)
         }
         if (this.timeElapsed > this.timeCapacity) {
             this.extend = true
-            this.timeCapacity *= Graph.GROWTH_FACTOR
+            if (this.timeElapsed < Graph.SECONDS_THRESHOLD) {
+                if (this.timeElapsed < Graph.SMALL_X_MULTIPLIER) {
+                    this.timeCapacity = Graph.MS_FIRST_HALF
+                } else {
+                    this.timeCapacity = Graph.MS_SECOND_HALF
+                }
+            }
+            else if (this.timeElapsed < Graph.MINUTES_THRESHOLD) {
+                let seconds = this.timeElapsed/Graph.MS_TO_S_CONVERSION
+                if (seconds < Graph.SMALL_X_MULTIPLIER) {
+                    this.timeCapacity = Graph.SMALL_X_MULTIPLIER*Graph.MS_TO_S_CONVERSION
+                } else {
+                    this.timeCapacity = Graph.BIG_X_MULTIPLIER*Graph.MS_TO_S_CONVERSION
+                }
+            } else {
+                let minutes = this.timeElapsed/Graph.MS_TO_M_CONVERSION
+                if (minutes < Graph.SMALL_X_MULTIPLIER) {
+                    this.timeCapacity = Graph.SMALL_X_MULTIPLIER*Graph.MS_TO_M_CONVERSION
+                } else {
+                    this.timeCapacity = Graph.BIG_X_MULTIPLIER*Graph.MS_TO_M_CONVERSION
+                }
+            }
         }
     }
     clear() {

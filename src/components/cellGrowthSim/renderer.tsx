@@ -25,6 +25,10 @@ class Renderer {
         this.prevFrameId = requestAnimationFrame(this.animate.bind(this))
     }
     frame() {
+        this.drawGrid()
+        this.drawGraph()
+    }
+    drawGrid() {
         this.gridContext!.clearRect(Settings.X_START, Settings.Y_START, Settings.WIDTH * Settings.CANVAS_SIZE_MULTIPLIER, Settings.HEIGHT * Settings.CANVAS_SIZE_MULTIPLIER)
         for (let y = Settings.Y_START; y < Settings.HEIGHT; y++) {
             for (let x = Settings.Y_START; x < Settings.WIDTH; x++) {
@@ -37,6 +41,8 @@ class Renderer {
                 }
             }
         }
+    }
+    drawGraph() {
         let [graph, extend, time, topCells] = this.tracker.gridData
         let leftBound = Graph.X_START + Graph.MARGIN + Graph.LINE_WIDTH
         let rightBound = Graph.WIDTH - Graph.ARROW_WIDTH
@@ -45,16 +51,7 @@ class Renderer {
         if (extend) {
             this.setGraph(time, topCells)
             for (let i = Graph.SINGLETON; i < graph.length; i++) {
-                let datum = graph[i]
-                let prevDatum = graph[i - 1]
-                let x = datum[0] / time * (rightBound - leftBound) + leftBound
-                let y = bottomBound - datum[1] / topCells * (bottomBound - topBound)
-                let prevX = prevDatum[0] / time * (rightBound - leftBound) + leftBound
-                let prevY = bottomBound - prevDatum[1] / topCells * (bottomBound - topBound)
-                this.trackerContext!.beginPath()
-                this.trackerContext!.moveTo(prevX, prevY)
-                this.trackerContext!.lineTo(x, y)
-                this.trackerContext!.stroke()
+                this.line(leftBound, rightBound, bottomBound, topBound, time, topCells, graph[i], graph[i - 1])
             }
         } else if (graph.length === Graph.SINGLETON) {
             let datum = graph[0]
@@ -62,9 +59,7 @@ class Renderer {
             let y = bottomBound - datum[1] / topCells * (bottomBound - topBound)
             this.trackerContext!.fillRect(x, y, Graph.LINE_WIDTH, Graph.LINE_WIDTH)
         } else if (graph.length > Graph.SINGLETON) {
-            let datum = graph[graph.length - 1]
-            let prevDatum = graph[graph.length - 2]
-            this.line(leftBound, rightBound, bottomBound, topBound, time, topCells, datum, prevDatum)
+            this.line(leftBound, rightBound, bottomBound, topBound, time, topCells, graph[graph.length - 1], graph[graph.length - 2])
         }
     }
     line(
@@ -101,23 +96,44 @@ class Renderer {
         this.trackerContext!.stroke()
     }
     setGraph(time: number, topCells: number) {
-        let xTitleLocation = Graph.WIDTH - Graph.X_TITLE_LOCATION
+        console.log(time)
         let xUnit: string
-        let yAdjust = 0
-        if (time < Graph.MS_TO_S_THRESHOLD) {
+        let yAdjust = Graph.ADJUST_0
+        let xAdjust = Graph.ADJUST_2
+        if (time < Graph.SECONDS_THRESHOLD) {
+            xUnit = "ms"
+            if (time < Graph.MS_FIRST_HALF) {
+                time = Graph.MS_FIRST_HALF
+                xAdjust = 10
+            } else {
+                time = Graph.MS_SECOND_HALF
+                xAdjust = 15
+            }
+        } else if (time < Graph.MINUTES_THRESHOLD) {
             xUnit = "s"
-            time /= Graph.MS_TO_S_CONVERSION
+            let seconds = time / Graph.MS_TO_S_CONVERSION
+            if (seconds < Graph.SMALL_X_MULTIPLIER) {
+                time = Graph.SMALL_X_MULTIPLIER
+            } else {
+                time = Graph.BIG_X_MULTIPLIER
+            }
         } else {
             xUnit = "m"
-            time /= Graph.MS_TO_M_CONVERSION
+            let minutes = time / Graph.MS_TO_M_CONVERSION
+            if (minutes < Graph.SMALL_X_MULTIPLIER) {
+                time = Graph.SMALL_X_MULTIPLIER
+            } else {
+                time = Graph.BIG_X_MULTIPLIER
+            }
         }
-        if (topCells >= Graph.Y_ADJUST_5_THRESHOLD) {
-            yAdjust = Graph.Y_ADJUST_5
-        } else if (topCells >= Graph.Y_ADJUST_4_THRESHOLD) {
-            yAdjust = Graph.Y_ADJUST_4
-        } else if (topCells >= Graph.Y_ADJUST_3_THRESHOLD) {
-            yAdjust = Graph.Y_ADJUST_3
+        if (topCells >= Graph.ADJUST_5_THRESHOLD) {
+            yAdjust = Graph.ADJUST_5
+        } else if (topCells >= Graph.ADJUST_4_THRESHOLD) {
+            yAdjust = Graph.ADJUST_4
+        } else if (topCells >= Graph.ADJUST_3_THRESHOLD) {
+            yAdjust = Graph.ADJUST_3
         }
+        let xTitleLocation = Graph.WIDTH - Graph.X_TITLE_LOCATION - xAdjust
         let yTitleLocation = -(Graph.Y_TITLE_LOCATION + yAdjust)
         let radian90 = -Math.PI / 2
         this.trackerContext!.clearRect(Graph.X_START, Graph.Y_START, Graph.WIDTH, Graph.HEIGHT)
