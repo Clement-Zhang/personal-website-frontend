@@ -2,7 +2,7 @@ import { SyntheticEvent, useState, useRef, useEffect } from "react"
 import Grid from "../components/cellGrowthSim/grid"
 import Renderer from "../components/cellGrowthSim/renderer"
 import Tracker from "../components/cellGrowthSim/tracker"
-import {Settings, Graph} from "../components/cellGrowthSim/constants"
+import { Settings, Graph } from "../components/cellGrowthSim/constants"
 require("../styles/cellGrowthSim.module.css")
 
 const play = require("../assets/playButton.jpg")
@@ -39,8 +39,8 @@ const Sim = () => {
     }
     function moveMouse(e: React.MouseEvent<HTMLCanvasElement>) {
         updateMouse([
-            e.clientX-gridRef.current!.getBoundingClientRect().left,
-            e.clientY-gridRef.current!.getBoundingClientRect().top
+            e.clientX - gridRef.current!.getBoundingClientRect().left,
+            e.clientY - gridRef.current!.getBoundingClientRect().top
         ])
     }
     function interact(e: React.MouseEvent<HTMLCanvasElement>, grid: React.MutableRefObject<Grid>) {
@@ -73,49 +73,49 @@ const Sim = () => {
         renderer.current!.reset()
     }
     return (
-        <div style={{ display: "flex" }}>
-            <div style={{ flex: "25%" }}>
-                <ul>
-                    <li>
-                        <img id="playPause" src={play} alt="play button" data-active-button="play" onClick={changeButton} />
-                    </li>
-                    <li>
-                        <img src={reset} alt="reset button" onClick={resetButton} />
-                    </li>
-                </ul>
-                <form>
-                    <label>
-                        Division Time (seconds)
-                    </label>
-                    <input type="number" name="divTime" min={.1} step={.1} value={controls.divTime || .9} onChange={adjust} />
-                    <label>
-                        Division Failure Rate (0-1)
-                    </label>
-                    <input type="number" name="divFailRate" min={0} max={1} step={.0001} value={controls.divFailRate || 0} onChange={adjust} />
-                    <label>
-                        Cell Lifespan (seconds)
-                    </label>
-                    <input type="number" name="lifespan" min={.1} step={.1} value={controls.lifespan || 2} onChange={adjust} />
-                </form>
-                <p>When Cell Lifespan is an integer multiple of Division Time, cells will <em>not</em> divide for that last stretch of time before it dies.</p>
-            </div>
-            <div style={{ flex: "50%" }}>
-                <canvas
-                    ref={gridRef}
-                    width={Settings.WIDTH * Settings.CANVAS_SIZE_MULTIPLIER}
-                    height={Settings.HEIGHT * Settings.CANVAS_SIZE_MULTIPLIER}
-                    onMouseMove={moveMouse}
-                    onClick={(e) => interact(e, grid)}
-                    onContextMenu={(e) => interact(e, grid)}
-                />
-            </div>
-            <div style={{ flex: "25%" }}>
-                <canvas
-                    ref={graphRef}
-                    width={Graph.WIDTH}
-                    height={Graph.HEIGHT}
-                    style={{border: Graph.BORDER}}
-                />
+        <div className="container">
+            <div className="row">
+                <div className="col-4">
+                    <form>
+                        <label>
+                            Division Time (seconds)
+                        </label>
+                        <input type="number" name="divTime" min={.1} step={.1} value={controls.divTime || .9} onChange={adjust} />
+                        <label>
+                            Division Failure Rate (0-1)
+                        </label>
+                        <input type="number" name="divFailRate" min={0} max={1} step={.0001} value={controls.divFailRate || 0} onChange={adjust} />
+                        <label>
+                            Cell Lifespan (seconds)
+                        </label>
+                        <input type="number" name="lifespan" min={.1} step={.1} value={controls.lifespan || 2} onChange={adjust} />
+                    </form>
+                    <ul>
+                        <li>
+                            <img id="playPause" src={play} alt="play button" data-active-button="play" onClick={changeButton} />
+                        </li>
+                        <li>
+                            <img src={reset} alt="reset button" onClick={resetButton} />
+                        </li>
+                    </ul>
+                    <p>When Cell Lifespan is an integer multiple of Division Time, cells will <em>not</em> divide for that last stretch of time before it dies.</p>
+                    <canvas
+                        ref={graphRef}
+                        width={Graph.WIDTH}
+                        height={Graph.HEIGHT}
+                        style={{ border: Graph.BORDER }}
+                    />
+                </div>
+                <div className="col-7">
+                    <canvas
+                        ref={gridRef}
+                        width={Settings.WIDTH * Settings.CANVAS_SIZE_MULTIPLIER}
+                        height={Settings.HEIGHT * Settings.CANVAS_SIZE_MULTIPLIER}
+                        onMouseMove={moveMouse}
+                        onClick={(e) => interact(e, grid)}
+                        onContextMenu={(e) => interact(e, grid)}
+                    />
+                </div>
             </div>
         </div>
     );
