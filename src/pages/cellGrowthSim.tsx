@@ -75,11 +75,11 @@ const Sim = () => {
     return (
         <div className="container">
             <div className="row">
-                <div className="col-4">
+                <div className="col-lg-4 col">
                     <form>
                         <label>
                             Division Time (seconds)
-                        </label>
+                        </label>    
                         <input type="number" name="divTime" min={.1} step={.1} value={controls.divTime || .9} onChange={adjust} />
                         <label>
                             Division Failure Rate (0-1)
@@ -106,7 +106,7 @@ const Sim = () => {
                         style={{ border: Graph.BORDER }}
                     />
                 </div>
-                <div className="col-7">
+                <div className="col-lg-8 col">
                     <canvas
                         ref={gridRef}
                         width={Settings.WIDTH * Settings.CANVAS_SIZE_MULTIPLIER}
