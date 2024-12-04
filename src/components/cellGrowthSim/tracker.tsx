@@ -29,7 +29,7 @@ class Tracker {
         if (this.timeElapsed > this.timeCapacity) {
             this.extend = true
             if (this.timeElapsed < Graph.SECONDS_THRESHOLD) {
-                if (this.timeElapsed < Graph.SMALL_X_MULTIPLIER) {
+                if (this.timeElapsed < Graph.MS_FIRST_HALF) {
                     this.timeCapacity = Graph.MS_FIRST_HALF
                 } else {
                     this.timeCapacity = Graph.MS_SECOND_HALF
