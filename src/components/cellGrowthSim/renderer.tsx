@@ -99,14 +99,14 @@ class Renderer {
         let xUnit: string
         let yAdjust = Graph.ADJUST_0
         let xAdjust = Graph.ADJUST_2
-        if (time < Graph.SECONDS_THRESHOLD) {
+        if (time <= Graph.SECONDS_THRESHOLD) {
             xUnit = Graph.X_SMALLEST_UNIT
             if (time === Graph.MS_FIRST_HALF) {
                 xAdjust = Graph.ADJUST_3
             } else {
                 xAdjust = Graph.ADJUST_4
             }
-        } else if (time < Graph.MINUTES_THRESHOLD) {
+        } else if (time <= Graph.MINUTES_THRESHOLD) {
             xUnit = Graph.X_MEDIUM_UNIT
             let seconds = time / Graph.MS_TO_S_CONVERSION
             if (seconds === Graph.SMALL_X_MULTIPLIER) {
