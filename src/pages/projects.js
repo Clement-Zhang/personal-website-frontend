@@ -29,7 +29,7 @@ const Projects = () => {
                 Attack on Planet Earth is a remake of Space Invaders, the well known arcade game.
             </p>
             <h3>
-                <Link to="/sim">Cell Growth Simulator</Link>
+                Cell Growth Simulator
             </h3>
             <img src={cellGrowthSim} alt="Screenshot of a cell growth simulation" className={styles.img}/>
             <p>
