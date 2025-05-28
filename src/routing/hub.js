@@ -7,6 +7,7 @@ import {
 import Home from "../pages/home";
 import Nothing from "../pages/nothing";
 import Projects from "../pages/projects";
+import Ama from "../pages/ama";
 
 const Router = () => (
     <RouterProvider router={
@@ -15,6 +16,7 @@ const Router = () => (
                 [
                     <Route path="/" element={<Home />}/>,
                     <Route path="/projects" element={<Projects />}/>,
+                    <Route path="/ama" element={<Ama />}/>,
                 ]
             )
         )

@@ -7,6 +7,7 @@ const MyNavbar = () => {
         <Navbar className={[styles.nav, "justify-content-center"]}>
             <Navbar.Brand><Link to="/">About Me</Link></Navbar.Brand>
             <Link to="/projects">My Projects</Link>
+            <Link to="/ama">Ask Me Anything</Link>
         </Navbar>
     );
 }
