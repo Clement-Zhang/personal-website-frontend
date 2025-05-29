@@ -3,7 +3,19 @@ import styles from "../styles/ama.module.css"
 import { useState } from "react";
 const Ama = () => {
     const [prompt, changePrompt] = useState("");
-    async function submitPrompt(){
+    const [chatlog, updateChatlog] = useState([]);
+    async function submitPrompt() {
+        const res = await fetch("http://localhost:3001/deepseek", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ prompt })
+        });
+        const result = await res.json();
+        updateChatlog((chatlog) => [
+            ...chatlog,
+            result.response
+        ]);
+        console.log("chatlog update", chatlog);
     }
     return (
         <Default>
@@ -11,18 +23,21 @@ const Ama = () => {
                 personally answer everyone's questions. Or, if you will, this is a glorified
                 compressed automated FAQ.
             </p>
-            <form>
+            <form
+                onSubmit={(e) => {
+                    e.preventDefault();
+                    console.log(submitPrompt());
+                    changePrompt("");
+                }}>
                 <input
                     type="text"
                     value={prompt}
                     onChange={(e) => changePrompt(e.target.value)}
-                    onSubmit={(e) => {
-                        e.preventDefault();
-                        console.log(submitPrompt());
-                        changePrompt("");
-                    }}
                 />
             </form>
+            {chatlog.map((msg) => (
+                <p>{msg}</p>
+            ))}
         </Default>
     );
 }
