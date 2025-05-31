@@ -1,0 +1,23 @@
+.output {
+    padding: 10px;
+    height: 500px;
+    width: 1200px;
+    margin: auto;
+}
+
+.input {
+    padding: 10px;
+    width: 1200px;
+    margin: auto;
+}
+
+.input .box {
+    transform: scaleY(-1);
+    transform-origin: bottom;
+}
+
+.input .text {
+    transform: scaleY(-1);
+    transform-origin: bottom;
+    max-height: 200px;
+}
