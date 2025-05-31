@@ -1,13 +1,51 @@
 .output {
     padding: 10px;
     height: 500px;
-    width: 1200px;
     margin: auto;
+}
+
+@media (min-width: 1400px) {
+    .output {
+        width: 1400px;
+    }
+
+    .input {
+        width: 1400px;
+    }
+}
+
+@media (min-width: 992px) and (max-width: 1399px) {
+    .output {
+        width: 950px;
+    }
+
+    .input {
+        width: 950px;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+    .output {
+        width: 750px;
+    }
+
+    .input {
+        width: 750px;
+    }
+}
+
+@media (min-width: 576px) and (max-width: 767px) {
+    .output {
+        width: 550px;
+    }
+
+    .input {
+        width: 550px;
+    }
 }
 
 .input {
     padding: 10px;
-    width: 1200px;
     margin: auto;
 }
 
