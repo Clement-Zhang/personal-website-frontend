@@ -63,7 +63,7 @@ const Ama = () => {
                 <Form
                     onSubmit={(e) => (submit(e))}>
                     <Row>
-                        <Col>
+                        <Col className="col-10">
                             <div className={styles.box}>
                                 <Form.Control
                                     className={styles.text}
