@@ -24,6 +24,11 @@ const Ama = () => {
             [prompt, result.response]
         ]);
     }
+    function submit(e) {
+        e.preventDefault();
+        submitPrompt();
+        changePrompt("");
+    }
     return (
         <Default>
             <p>This is a chatbot for you to ask me for my opinions on things so that I don't have to
@@ -56,11 +61,7 @@ const Ama = () => {
             </div>
             <div className={styles.input}>
                 <Form
-                    onSubmit={(e) => {
-                        e.preventDefault();
-                        submitPrompt();
-                        changePrompt("");
-                    }}>
+                    onSubmit={(e) => (submit(e))}>
                     <Row>
                         <Col>
                             <div className={styles.box}>
@@ -73,6 +74,11 @@ const Ama = () => {
                                         let elem = e.target;
                                         elem.style.height = "auto";
                                         elem.style.height = elem.scrollHeight + "px";
+                                    }}
+                                    onKeyDown={(e) => {
+                                        if (e.key === "Enter" && !e.shiftKey) {
+                                            submit(e);
+                                        }
                                     }}
                                 />
                             </div>
