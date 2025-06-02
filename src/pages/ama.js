@@ -1,19 +1,23 @@
-import Default from "../templates/default"
+import Default from "../templates/default";
 import styles from "../styles/ama.module.css";
-import library_styles from '@chatscope/chat-ui-kit-styles/dist/default/styles.min.css';
-import Form from 'react-bootstrap/Form';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-import Button from 'react-bootstrap/Button';
-import { ChatContainer, MessageList, Message } from '@chatscope/chat-ui-kit-react';
+import library_styles from "@chatscope/chat-ui-kit-styles/dist/default/styles.min.css";
+import Form from "react-bootstrap/Form";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import Button from "react-bootstrap/Button";
+import { ChatContainer, MessageList, Message } from "@chatscope/chat-ui-kit-react";
 import { useState } from "react";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPaperPlane } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPaperPlane } from "@fortawesome/free-solid-svg-icons";
 const Ama = () => {
     const [prompt, changePrompt] = useState("");
     const [chatlog, updateChatlog] = useState([]);
     async function submitPrompt() {
-        const res = await fetch("http://localhost:3001/deepseek", {
+        updateChatlog((chatlog) => [
+            ...chatlog,
+            prompt
+        ]);
+        const res = await fetch("/deepseek", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ prompt })
@@ -21,8 +25,9 @@ const Ama = () => {
         const result = await res.json();
         updateChatlog((chatlog) => [
             ...chatlog,
-            [prompt, result.response]
+            result.response
         ]);
+        console.log(chatlog);
     }
     function submit(e) {
         e.preventDefault();
@@ -38,24 +43,15 @@ const Ama = () => {
             <div className={styles.output}>
                 <ChatContainer>
                     <MessageList>
-                        {chatlog.flatMap(([prompt, response], i) => [
+                        {chatlog.map((message, i) => (
                             <Message
-                                key={i * 2}
+                                key={i}
                                 model={{
-                                    message: prompt,
-                                    sender: "User",
-                                    direction: "outgoing",
-                                }}
-                            />,
-                            <Message
-                                key={i * 2 + 1}
-                                model={{
-                                    message: response,
-                                    sender: "Chatbot",
-                                    direction: "incoming",
-                                }}
-                            />
-                        ])}
+                                    message: message,
+                                    sender: i % 2 === 0 ? "User" : "Bot",
+                                    direction: i % 2 === 0 ? "outgoing" : "incoming",
+                                }} />
+                        ))}
                     </MessageList>
                 </ChatContainer>
             </div>
@@ -63,7 +59,7 @@ const Ama = () => {
                 <Form
                     onSubmit={(e) => (submit(e))}>
                     <Row>
-                        <Col className="col-10">
+                        <Col className="col-lg-11 col-sm-10 col-9">
                             <div className={styles.box}>
                                 <Form.Control
                                     className={styles.text}
