@@ -1,11 +1,17 @@
 import Default from "../templates/default";
 import styles from "../styles/ama.module.css";
-import library_styles from "@chatscope/chat-ui-kit-styles/dist/default/styles.min.css";
 import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
-import { ChatContainer, MessageList, Message } from "@chatscope/chat-ui-kit-react";
+import {
+    Chat,
+    Channel,
+    Window,
+    MessageList,
+    MessageInput,
+    useCreateChatClient,
+} from "stream-chat-react";
 import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPaperPlane } from "@fortawesome/free-solid-svg-icons";
@@ -34,6 +40,10 @@ const Ama = () => {
         submitPrompt();
         changePrompt("");
     }
+    const client = useCreateChatClient({
+        apikey: "3rndt562wfvt",
+        tokenOrProvider: token
+    });
     return (
         <Default>
             <p>This is a chatbot for you to ask me for my opinions on things so that I don't have to
@@ -41,19 +51,13 @@ const Ama = () => {
                 compressed automated FAQ.
             </p>
             <div className={styles.output}>
-                <ChatContainer>
-                    <MessageList>
-                        {chatlog.map((message, i) => (
-                            <Message
-                                key={i}
-                                model={{
-                                    message: message,
-                                    sender: i % 2 === 0 ? "User" : "Bot",
-                                    direction: i % 2 === 0 ? "outgoing" : "incoming",
-                                }} />
-                        ))}
-                    </MessageList>
-                </ChatContainer>
+                <Chat client={client}>
+                    <Channel>
+                        <Window>
+                            <MessageList />
+                        </Window>
+                    </Channel>
+                </Chat>
             </div>
             <div className={styles.input}>
                 <Form
