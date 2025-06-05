@@ -8,21 +8,28 @@ import Button from "react-bootstrap/Button";
 import ChatBot from "react-chatbotify";
 import { usePaths, ChatBotProvider } from 'react-chatbotify';
 import { useState, useEffect } from "react";
+import MarkdownRenderer from "@rcb-plugins/markdown-renderer";
 
 const Wrapper = () => {
     const { goToPath } = usePaths();
     const [index, setIndex] = useState(0);
     const [nextPath, setNextPath] = useState(null);
     const [flow, setFlow] = useState({
-        start: {
+        start: addMarkdown({
             message: "",
             path: "sync",
-        },
-        sync: {
+        }),
+        sync: addMarkdown({
             message: "",
             path: "sync",
-        }
+        }),
     });
+    function addMarkdown(block) {
+        return {
+            ...block,
+            renderMarkdown: ["BOT", "USER"],
+        }
+    }
     async function submit(e) {
         console.log("sending");
         const res = await fetch("/deepseek", {
@@ -34,10 +41,10 @@ const Wrapper = () => {
         const newPath = "interact" + index;
         setFlow((prev) => ({
             ...prev,
-            [newPath]: {
+            [newPath]: addMarkdown({
                 message: result.response,
                 path: "sync",
-            },
+            }),
         }));
         setNextPath(newPath);
         console.log("flow changed");
@@ -76,6 +83,7 @@ const Wrapper = () => {
                 compressed automated FAQ.
             </p>
             <ChatBot
+                plugins={[MarkdownRenderer()]}
                 flow={flow}
                 settings={{
                     event: {
