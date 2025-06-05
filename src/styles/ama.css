@@ -4,6 +4,10 @@
     margin: auto;
 }
 
+li {
+    line-height: 1;
+}
+
 @media (min-width: 1400px) {
     .rcb-chat-window {
         width: 1400px !important;

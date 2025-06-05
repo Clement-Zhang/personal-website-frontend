@@ -31,7 +31,6 @@ const Wrapper = () => {
         }
     }
     async function submit(e) {
-        console.log("sending");
         const res = await fetch("/deepseek", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
@@ -47,7 +46,7 @@ const Wrapper = () => {
             }),
         }));
         setNextPath(newPath);
-        console.log("flow changed");
+        console.log(result.response);
     }
     function grow(e) {
         const elem = document.querySelector(".rcb-chat-input-textarea");
