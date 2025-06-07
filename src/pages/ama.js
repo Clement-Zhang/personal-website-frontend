@@ -1,10 +1,6 @@
 import Default from "../templates/default";
 import styles from "../styles/ama.module.css";
 import override_styles from "../styles/ama.css";
-import Form from "react-bootstrap/Form";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
-import Button from "react-bootstrap/Button";
 import ChatBot from "react-chatbotify";
 import { usePaths, ChatBotProvider } from 'react-chatbotify';
 import { useState, useEffect } from "react";
@@ -12,8 +8,7 @@ import MarkdownRenderer from "@rcb-plugins/markdown-renderer";
 
 const Wrapper = () => {
     const { goToPath } = usePaths();
-    const [index, setIndex] = useState(0);
-    const [nextPath, setNextPath] = useState(null);
+    const [change, setChange] = useState(null);
     const [flow, setFlow] = useState({
         start: addMarkdown({
             message: "",
@@ -22,7 +17,7 @@ const Wrapper = () => {
         sync: addMarkdown({
             message: "",
             path: "sync",
-        }),
+        })
     });
     function addMarkdown(block) {
         return {
@@ -37,15 +32,28 @@ const Wrapper = () => {
             body: JSON.stringify({ prompt: e.data.inputText })
         });
         const result = await res.json();
-        const newPath = "interact" + index;
-        setFlow((prev) => ({
-            ...prev,
-            [newPath]: addMarkdown({
-                message: result.response,
-                path: "sync",
-            }),
-        }));
-        setNextPath(newPath);
+        setFlow((prev) => {
+            const block = {
+                "interact": addMarkdown({
+                    message: result.response,
+                    path: "sync",
+                })
+            };
+            if (prev.filler) {
+                const { filler, ...next } = prev;
+                return ({
+                    ...next,
+                    ...block,
+                });
+            } else {
+                return ({
+                    ...prev,
+                    "filler": {},
+                    ...block,
+                });
+            }
+        });
+        setChange((prev) => prev === null ? true : !prev);
         console.log(result.response);
     }
     function grow(e) {
@@ -59,12 +67,12 @@ const Wrapper = () => {
         }
     }
     useEffect(() => {
-        if (nextPath && flow[nextPath]) {
-            goToPath(nextPath);
-            setIndex((prev) => prev + 1);
-            setNextPath(null); // reset so this effect doesn't run again unnecessarily
+        if (change !== null) {
+            if (change && flow.filler || !change && !flow.filler) {
+                goToPath("interact");
+            }
         }
-    }, [flow, nextPath]);
+    }, [flow, change]);
     useEffect(() => {
         localStorage.removeItem('rcb-history');
         sessionStorage.removeItem('rcb-history');
