@@ -3,6 +3,7 @@ import styles from "../styles/ama.module.css";
 import override_styles from "../styles/ama.css";
 import ChatBot from "react-chatbotify";
 import { usePaths, ChatBotProvider } from 'react-chatbotify';
+import { context } from "../components/ama.js";
 import { useState, useEffect } from "react";
 import MarkdownRenderer from "@rcb-plugins/markdown-renderer";
 
@@ -29,7 +30,7 @@ const Wrapper = () => {
         const res = await fetch("/deepseek", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ prompt: e.data.inputText })
+            body: JSON.stringify({ prompt: e.data.inputText, context: `\`\`\`json\n${JSON.stringify(context)}\n\`\`\`` }),
         });
         const result = await res.json();
         setFlow((prev) => {
