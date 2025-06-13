@@ -1,9 +1,9 @@
 import Default from "../templates/default";
 import styles from "../styles/ama.module.css";
 import override_styles from "../styles/ama.css";
+import Button from 'react-bootstrap/Button';
 import ChatBot from "react-chatbotify";
 import { usePaths, ChatBotProvider } from 'react-chatbotify';
-import { context } from "../components/ama.js";
 import { useState, useEffect } from "react";
 import MarkdownRenderer from "@rcb-plugins/markdown-renderer";
 
@@ -26,36 +26,57 @@ const Wrapper = () => {
             renderMarkdown: ["BOT", "USER"],
         }
     }
-    async function submit(e) {
-        const res = await fetch("/deepseek", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ prompt: e.data.inputText, context: `\`\`\`json\n${JSON.stringify(context)}\n\`\`\`` }),
-        });
-        const result = await res.json();
+    function replaceBlock(message) {
         setFlow((prev) => {
-            const block = {
-                "interact": addMarkdown({
-                    message: result.response,
-                    path: "sync",
-                })
-            };
+            const block = addMarkdown({
+                message: message,
+                path: "sync",
+            });
             if (prev.filler) {
                 const { filler, ...next } = prev;
                 return ({
                     ...next,
-                    ...block,
+                    interact: block,
                 });
             } else {
                 return ({
                     ...prev,
                     "filler": {},
-                    ...block,
+                    interact: block,
                 });
             }
         });
+    }
+    async function submit(e) {
+        const res = await fetch("/deepseek", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ prompt: e.data.inputText }),
+        });
+        const result = await res.json();
+        const response = result.response;
+        if (response === "fail") {
+            replaceBlock("You need to provide more information for me to generate matches. Start with your gender and sexuality. Providing likes and dislikes will allow me to generate better matches.");
+        } else {
+            const res = await fetch("/match", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ profile: response }),
+            });
+            const result = await res.json();
+            const profiles = result.matches;
+            console.log("Received profiles:", profiles);
+            replaceBlock(JSON.stringify(profiles, null, "\t"));
+        }
         setChange((prev) => prev === null ? true : !prev);
-        console.log(result.response);
+    }
+    async function reset() {
+        await fetch("/reset", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" }
+        });
+        replaceBlock("Chatbot has been reset.");
+        setChange((prev) => prev === null ? true : !prev);
     }
     function grow(e) {
         const elem = document.querySelector(".rcb-chat-input-textarea");
@@ -68,8 +89,10 @@ const Wrapper = () => {
         }
     }
     useEffect(() => {
+        console.log("Flow changed", flow, change);
         if (change !== null) {
             if (change && flow.filler || !change && !flow.filler) {
+                console.log("executed");
                 goToPath("interact");
             }
         }
@@ -86,9 +109,12 @@ const Wrapper = () => {
     }, []);
     return (
         <Default>
-            <p>This is a chatbot for you to ask me for my opinions on things so that I don't have to
-                personally answer everyone's questions. Or, if you will, this is a glorified
-                compressed automated FAQ.
+            <p>This is a proof of concept for a dating app. 
+                First, click the reset button to ensure the chatbot has demo data loaded correctly.
+                Then, give it a profile with at minimum your name, gender, and the gender you want to be matched with, in first person.
+                Providing likes and dislikes will allow the chatbot to generate better matches.
+                Matches are generated in JSON format to demonstrate the api's ability to integrate with a frontend.
+                Please do <i>not</i> input too many messages, as the chatbot uses free AI APIs that have a limit on the number of free requests.
             </p>
             <ChatBot
                 plugins={[MarkdownRenderer()]}
@@ -108,6 +134,7 @@ const Wrapper = () => {
                     }
                 }}
             />
+            <Button variant="danger" onClick={reset}>Reset</Button>
         </Default>
     );
 }
