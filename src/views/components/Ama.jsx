@@ -1,4 +1,5 @@
-import { submit, reset, grow, addMarkdown } from '../../helpers/ama';
+import { grow, addMarkdown } from '../../helpers/ama';
+import { submit, reset } from '../../services/ama';
 import Default from '../templates/Default';
 import styles from '../../assets/css/ama.module.css';
 import override_styles from '../../assets/css/ama.css';
