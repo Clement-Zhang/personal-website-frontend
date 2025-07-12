@@ -1,8 +1,10 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
-import Router from "./routing/hub";
+import ReactDOM from 'react-dom/client';
+import App from './App';
+import React from 'react';
 
-const root = ReactDOM.createRoot(document.getElementById("root"));
+const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-    <Router />
+    <React.StrictMode>
+        <App />
+    </React.StrictMode>
 );
