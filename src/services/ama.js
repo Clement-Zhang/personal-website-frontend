@@ -1,7 +1,7 @@
 import { replaceBlock } from '../helpers/ama';
 
 async function submit(e, setChange, setFlow) {
-    const res = await fetch('/deepseek', {
+    const res = await fetch(process.env.REACT_APP_BACKEND + '/deepseek', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ prompt: e.data.inputText }),
@@ -14,7 +14,7 @@ async function submit(e, setChange, setFlow) {
             setFlow
         );
     } else {
-        const res = await fetch('/match', {
+        const res = await fetch(process.env.REACT_APP_BACKEND + '/match', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ profile: response }),
@@ -27,7 +27,7 @@ async function submit(e, setChange, setFlow) {
     setChange((prev) => (prev === null ? true : !prev));
 }
 async function reset(setChange, setFlow) {
-    await fetch('/reset', {
+    await fetch(process.env.REACT_APP_BACKEND + '/reset', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
     });

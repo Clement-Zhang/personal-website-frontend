@@ -64,6 +64,14 @@ export default function Projects() {
                 divide and cover the dish, and the user can control a number of
                 parameters.
             </p>
+            <h3>
+                <a href="/showcase">Data Analytics Showcase</a>
+            </h3>
+            <p>
+                This is a showcase of my ability to summarize data in a way that
+                can drive business insights. Fair warning, the UI is really horrible
+                because.
+            </p>
         </Default>
     );
 }
