@@ -36,4 +36,4 @@ function grow(e) {
     }
 }
 
-export { addMarkdown, grow };
+export { addMarkdown, grow, replaceBlock };
