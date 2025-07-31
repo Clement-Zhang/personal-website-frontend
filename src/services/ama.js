@@ -1,6 +1,4 @@
-import { replaceBlock } from '../helpers/ama';
-
-async function submit(e, setChange, setFlow) {
+async function submit(e) {
     const res = await fetch(process.env.REACT_APP_BACKEND + '/deepseek', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -8,11 +6,8 @@ async function submit(e, setChange, setFlow) {
     });
     const result = await res.json();
     const response = result.response;
-    if (response === 'fail') {
-        replaceBlock(
-            'You need to provide more information for me to generate matches. Start with your gender and sexuality. Providing likes and dislikes will allow me to generate better matches.',
-            setFlow
-        );
+    if (response.includes('fail')) {
+        return 'You need to provide more information for me to generate matches. Start with your gender and sexuality. Providing likes and dislikes will allow me to generate better matches.';
     } else {
         const res = await fetch(process.env.REACT_APP_BACKEND + '/match', {
             method: 'POST',
@@ -21,18 +16,14 @@ async function submit(e, setChange, setFlow) {
         });
         const result = await res.json();
         const profiles = result.matches;
-        console.log('Received profiles:', profiles);
-        replaceBlock(JSON.stringify(profiles, null, '\t'), setFlow);
+        return JSON.stringify(profiles, null, '\t');
     }
-    setChange((prev) => (prev === null ? true : !prev));
 }
-async function reset(setChange, setFlow) {
+async function reset() {
     await fetch(process.env.REACT_APP_BACKEND + '/reset', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
     });
-    replaceBlock('Chatbot has been reset.', setFlow);
-    setChange((prev) => (prev === null ? true : !prev));
 }
 
 export { submit, reset };

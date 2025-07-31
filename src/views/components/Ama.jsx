@@ -1,4 +1,3 @@
-import { grow, addMarkdown } from '../../helpers/ama';
 import { submit, reset } from '../../services/ama';
 import Default from '../templates/Default';
 import styles from '../../assets/css/ama.module.css';
@@ -23,10 +22,8 @@ export default function Ama() {
         }),
     });
     useEffect(() => {
-        console.log('Flow changed', flow, change);
         if (change !== null) {
             if ((change && flow.filler) || (!change && !flow.filler)) {
-                console.log('executed');
                 goToPath('interact');
             }
         }
@@ -34,7 +31,10 @@ export default function Ama() {
     useEffect(() => {
         localStorage.removeItem('rcb-history');
         sessionStorage.removeItem('rcb-history');
-        const submitter = (e) => submit(e, setChange, setFlow);
+        async function submitter(e) {
+            replaceBlock(await submit(e));
+            setChange((prev) => (prev === null ? true : !prev));
+        }
         const grower = (e) => grow(e);
         window.addEventListener('rcb-user-submit-text', submitter);
         window.addEventListener('rcb-text-area-change-value', grower);
@@ -43,6 +43,43 @@ export default function Ama() {
             window.removeEventListener('rcb-text-area-change-value', grower);
         };
     }, []);
+    function addMarkdown(block) {
+        return {
+            ...block,
+            renderMarkdown: ['BOT', 'USER'],
+        };
+    }
+    function replaceBlock(message) {
+        setFlow((prev) => {
+            const block = addMarkdown({
+                message: message,
+                path: 'sync',
+            });
+            if (prev.filler) {
+                const { filler, ...next } = prev;
+                return {
+                    ...next,
+                    interact: block,
+                };
+            } else {
+                return {
+                    ...prev,
+                    filler: {},
+                    interact: block,
+                };
+            }
+        });
+    }
+    function grow(e) {
+        const elem = document.querySelector('.rcb-chat-input-textarea');
+        elem.style.height = 'auto';
+        const scrollHeight = elem.scrollHeight;
+        if (scrollHeight > 200) {
+            elem.style.height = '200px';
+        } else {
+            elem.style.height = scrollHeight + 'px';
+        }
+    }
     return (
         <Default>
             <p>
@@ -75,7 +112,14 @@ export default function Ama() {
                     },
                 }}
             />
-            <Button variant="danger" onClick={() => reset(setChange, setFlow)}>
+            <Button
+                variant="danger"
+                onClick={() => {
+                    reset();
+                    replaceBlock('Chatbot has been reset.');
+                    setChange((prev) => (prev === null ? true : !prev));
+                }}
+            >
                 Reset
             </Button>
         </Default>
