@@ -69,8 +69,7 @@ export default function Projects() {
             </h3>
             <p>
                 This is a showcase of my ability to summarize data in a way that
-                can drive business insights. Fair warning, the UI is really horrible
-                because.
+                can drive business insights.
             </p>
         </Default>
     );
