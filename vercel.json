@@ -2,11 +2,11 @@
     "rewrites": [
         {
             "source": "/showcase/:path*",
-            "destination": "https://data-analytics-showcase.vercel.app/showcase/:path*"
+            "destination": "https://data-analytics-showcase.vercel.app/:path*"
         },
         {
             "source": "/sim/:path*",
-            "destination": "https://cell-growth-sim.vercel.app/sim/path*"
+            "destination": "https://cell-growth-sim.vercel.app/:path*"
         }
     ]
 }
