@@ -1,0 +1,12 @@
+{
+    "rewrites": [
+        {
+            "source": "/showcase",
+            "destination": "https://data-analytics-showcase.vercel.app/"
+        },
+        {
+            "source": "/sim",
+            "destination": "https://cell-growth-sim.vercel.app/"
+        }
+    ]
+}
