@@ -1,11 +1,10 @@
-import Default from '../templates/Default';
+import Default from '../components/layouts/Default';
 import img from '../../assets/images/underConstruction.jpg';
-import styles from '../../assets/css/nothing.module.css';
 
 export default function Nothing() {
     return (
         <Default>
-            <img src={img} alt="Under Construction" className={styles.img} />
+            <img src={img} alt="Under Construction" className="m-auto block w-1/4" />
         </Default>
     );
 }

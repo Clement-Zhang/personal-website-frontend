@@ -1,5 +1,5 @@
 import { submit, reset } from '../../services/ama';
-import Default from '../templates/Default';
+import Default from './layouts/Default';
 import styles from '../../assets/css/ama.module.css';
 import override_styles from '../../assets/css/ama.css';
 import Button from 'react-bootstrap/Button';
