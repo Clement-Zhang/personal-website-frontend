@@ -2,6 +2,7 @@ import Default from '../components/layouts/Default';
 import Heading from '../components/customs/Heading';
 import { projects } from '../../data/projects';
 
+
 export default function Projects() {
     return (
         <Default>
@@ -36,6 +37,7 @@ export default function Projects() {
                     <p>{project.description}</p>
                 </div>
             ))}
+            <p>{'d '.repeat(100)}</p>
         </Default>
     );
 }
