@@ -1,8 +1,8 @@
 import { submit, reset } from '../../services/ama';
-import Default from './layouts/Default';
+import Default from '../templates/Default';
 import styles from '../../assets/css/ama.module.css';
 import override_styles from '../../assets/css/ama.css';
-import ChatBot from 'react-chatbotify';
+import Chatbot from './customs/Chatbot';
 import { usePaths } from 'react-chatbotify';
 import { useState, useEffect } from 'react';
 import MarkdownRenderer from '@rcb-plugins/markdown-renderer';
@@ -93,7 +93,7 @@ export default function Ama() {
                 uses free AI APIs that have a limit on the number of free
                 requests.
             </p>
-            <ChatBot
+            {/* <ChatBot
                 plugins={[MarkdownRenderer()]}
                 flow={flow}
                 settings={{
@@ -110,10 +110,15 @@ export default function Ama() {
                         disabled: true,
                     },
                 }}
+            /> */}
+            <Chatbot
+                messages={[
+                    { content: 'textsadfasdf'.repeat(100), position: 'right' },
+                    { content: 'textsadfasdf'.repeat(100), position: 'left' },
+                ]}
             />
-            <button
-                type="button"
-                className="bg-red-500 rounded w-14 h-6 m-2"
+            <Button
+                variant="danger"
                 onClick={() => {
                     reset();
                     replaceBlock('Chatbot has been reset.');
@@ -121,7 +126,7 @@ export default function Ama() {
                 }}
             >
                 Reset
-            </button>
+            </Button>
         </Default>
     );
 }
