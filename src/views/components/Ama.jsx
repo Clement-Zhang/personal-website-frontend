@@ -1,8 +1,7 @@
 import { submit, reset } from '../../services/ama';
-import Default from '../templates/Default';
+import Default from './layouts/Default';
 import styles from '../../assets/css/ama.module.css';
 import override_styles from '../../assets/css/ama.css';
-import Button from 'react-bootstrap/Button';
 import ChatBot from 'react-chatbotify';
 import { usePaths } from 'react-chatbotify';
 import { useState, useEffect } from 'react';
@@ -112,8 +111,9 @@ export default function Ama() {
                     },
                 }}
             />
-            <Button
-                variant="danger"
+            <button
+                type="button"
+                className="bg-red-500 rounded w-14 h-6 m-2"
                 onClick={() => {
                     reset();
                     replaceBlock('Chatbot has been reset.');
@@ -121,7 +121,7 @@ export default function Ama() {
                 }}
             >
                 Reset
-            </Button>
+            </button>
         </Default>
     );
 }
