@@ -1,5 +1,5 @@
 import { submit, reset } from '../../services/ama';
-import Default from '../templates/Default';
+import Default from './layouts/Default';
 import styles from '../../assets/css/ama.module.css';
 import override_styles from '../../assets/css/ama.css';
 import Chatbot from './customs/Chatbot';
@@ -112,13 +112,10 @@ export default function Ama() {
                 }}
             /> */}
             <Chatbot
-                messages={[
-                    { content: 'textsadfasdf'.repeat(100), position: 'right' },
-                    { content: 'textsadfasdf'.repeat(100), position: 'left' },
-                ]}
+                submit={() => {}}
             />
-            <Button
-                variant="danger"
+            <button
+                className="bg-red-500 w-16 h-8 rounded-full px-1"
                 onClick={() => {
                     reset();
                     replaceBlock('Chatbot has been reset.');
@@ -126,7 +123,7 @@ export default function Ama() {
                 }}
             >
                 Reset
-            </Button>
+            </button>
         </Default>
     );
 }
