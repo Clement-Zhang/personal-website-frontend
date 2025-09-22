@@ -7,14 +7,13 @@ export default function Chatbot({
 }) {
     const [inputData, setInputData] = useState(
         Object.entries(inputs).reduce((acc, input) => {
-            acc[input[0]] = '';
+            if (input[0] === 'text') {
+                acc[input[0]] = '';
+            }
             return acc;
         }, {})
     );
-    const [messages, setMessages] = useState([
-        { content: 'textsadfasdf'.repeat(100), position: 'right' },
-        { content: 'textsadfasdf'.repeat(100), position: 'left' },
-    ]);
+    const [messages, setMessages] = useState([]);
     const textInputRef = useRef(null);
     return (
         <>
@@ -60,8 +59,22 @@ export default function Chatbot({
                         <img
                             src={send}
                             alt="Send"
-                            onClick={() => {
-                                submit(inputData);
+                            onClick={async () => {
+                                setMessages((prev) => [
+                                    ...prev,
+                                    {
+                                        position: 'right',
+                                        content: inputData.text,
+                                    },
+                                ]);
+                                const response = await submit(inputData);
+                                setMessages((prev) => [
+                                    ...prev,
+                                    {
+                                        position: 'left',
+                                        content: response,
+                                    },
+                                ]);
                                 setInputData(
                                     Object.entries(inputs).reduce(
                                         (acc, input) => {
@@ -76,6 +89,23 @@ export default function Chatbot({
                     </button>
                 )}
             </div>
+            {inputs.reset && (
+                <button
+                    className="bg-red-500 w-16 h-8 rounded-full px-1 m-2"
+                    onClick={async () => {
+                        await inputs.reset();
+                        setMessages((prev) => [
+                            ...prev,
+                            {
+                                position: 'left',
+                                content: 'Chatbot has been reset.',
+                            },
+                        ]);
+                    }}
+                >
+                    Reset
+                </button>
+            )}
         </>
     );
 }
