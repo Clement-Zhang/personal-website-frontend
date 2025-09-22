@@ -1,8 +1,8 @@
-async function submit(e) {
+async function submit(text) {
     const res = await fetch(process.env.REACT_APP_BACKEND + '/deepseek', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ prompt: e.data.inputText }),
+        body: JSON.stringify({ prompt: text }),
     });
     const result = await res.json();
     const response = result.response;

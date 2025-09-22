@@ -31,7 +31,7 @@ export default function Ama() {
         localStorage.removeItem('rcb-history');
         sessionStorage.removeItem('rcb-history');
         async function submitter(e) {
-            replaceBlock(await submit(e));
+            replaceBlock(await submit(e.data.inputText));
             setChange((prev) => (prev === null ? true : !prev));
         }
         const grower = (e) => grow(e);
