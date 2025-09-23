@@ -1,10 +1,7 @@
 import send from '../../../assets/images/send.jpg';
 import { useState, useRef } from 'react';
 
-export default function Chatbot({
-    inputs = { text: 'Enter your prompt' },
-    submit = null,
-}) {
+export default function Chatbot({ inputs = { text: 'Enter your prompt' } }) {
     const [inputData, setInputData] = useState(
         Object.entries(inputs).reduce((acc, input) => {
             if (input[0] === 'text') {
@@ -31,81 +28,80 @@ export default function Chatbot({
                     </p>
                 ))}
             </div>
-            <div className="flex gap-2 items-end *:rounded-3xl">
-                {Object.keys(inputs).includes('text') && (
-                    <textarea
-                        ref={textInputRef}
-                        value={inputData.text}
-                        placeholder={inputs.text}
-                        className="w-full outline-none resize-none overflow-y-auto overflow-x-hidden px-3 py-2 min-h-4"
-                        rows={1}
-                        onChange={(e) => {
-                            setInputData((prev) => ({
-                                ...prev,
-                                text: e.target.value,
-                            }));
-                            const textInput = textInputRef.current;
-                            textInput.style.height = 'auto';
-                            const scrollHeight = textInput.scrollHeight;
-                            textInput.style.height =
-                                scrollHeight > 180
-                                    ? '180px'
-                                    : scrollHeight + 'px';
-                        }}
-                    />
-                )}
-                {submit && (
-                    <button className="w-10 h-10">
-                        <img
-                            src={send}
-                            alt="Send"
-                            onClick={async () => {
-                                setMessages((prev) => [
+            <form
+                onSubmit={async (e) => {
+                    e.preventDefault();
+                    setMessages((prev) => [
+                        ...prev,
+                        {
+                            position: 'right',
+                            content: inputData.text,
+                        },
+                    ]);
+                    const response = await inputs.submit(inputData);
+                    setMessages((prev) => [
+                        ...prev,
+                        {
+                            position: 'left',
+                            content: response,
+                        },
+                    ]);
+                    setInputData(
+                        Object.entries(inputs).reduce((acc, input) => {
+                            acc[input[0]] = '';
+                            return acc;
+                        }, {})
+                    );
+                }}
+                className="p-4"
+            >
+                <div className="flex gap-2 items-end *:rounded-3xl">
+                    {Object.keys(inputs).includes('text') && (
+                        <textarea
+                            ref={textInputRef}
+                            value={inputData.text}
+                            placeholder={inputs.text}
+                            className="w-full outline-none resize-none overflow-y-auto overflow-x-hidden px-3 py-2 min-h-4"
+                            rows={1}
+                            onChange={(e) => {
+                                setInputData((prev) => ({
                                     ...prev,
-                                    {
-                                        position: 'right',
-                                        content: inputData.text,
-                                    },
-                                ]);
-                                const response = await submit(inputData);
-                                setMessages((prev) => [
-                                    ...prev,
-                                    {
-                                        position: 'left',
-                                        content: response,
-                                    },
-                                ]);
-                                setInputData(
-                                    Object.entries(inputs).reduce(
-                                        (acc, input) => {
-                                            acc[input[0]] = '';
-                                            return acc;
-                                        },
-                                        {}
-                                    )
-                                );
+                                    text: e.target.value,
+                                }));
+                                const textInput = textInputRef.current;
+                                textInput.style.height = 'auto';
+                                const scrollHeight = textInput.scrollHeight;
+                                textInput.style.height =
+                                    scrollHeight > 180
+                                        ? '180px'
+                                        : scrollHeight + 'px';
                             }}
                         />
+                    )}
+                    {inputs.submit && (
+                        <button type="submit" className="w-10 h-10">
+                            <img src={send} alt="Send" />
+                        </button>
+                    )}
+                </div>
+                {inputs.reset && (
+                    <button
+                        className="bg-red-500 w-16 h-8 rounded-full px-1 m-2"
+                        onClick={async () => {
+                            await inputs.reset();
+                            setMessages((prev) => [
+                                ...prev,
+                                {
+                                    position: 'left',
+                                    content: 'Chatbot has been reset.',
+                                },
+                            ]);
+                        }}
+                    >
+                        Reset
                     </button>
                 )}
-            </div>
-            {inputs.reset && (
-                <button
-                    className="bg-red-500 w-16 h-8 rounded-full px-1 m-2"
-                    onClick={async () => {
-                        await inputs.reset();
-                        setMessages((prev) => [
-                            ...prev,
-                            {
-                                position: 'left',
-                                content: 'Chatbot has been reset.',
-                            },
-                        ]);
-                    }}
-                >
-                    Reset
-                </button>
-            )}
+            </form>
         </>
     );
 }

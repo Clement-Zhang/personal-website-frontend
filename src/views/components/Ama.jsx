@@ -115,8 +115,8 @@ export default function Ama() {
                 inputs={{
                     text: 'Enter your profile',
                     reset: async () => await reset(),
+                    submit: async (prompt) => await submit(prompt),
                 }}
-                submit={async (prompt) => await submit(prompt)}
             />
             {/* <button
                 className="bg-red-500 w-16 h-8 rounded-full px-1 m-2"
