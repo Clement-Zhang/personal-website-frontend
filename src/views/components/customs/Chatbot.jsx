@@ -86,6 +86,7 @@ export default function Chatbot({ inputs = { text: 'Enter your prompt' } }) {
                 </div>
                 {inputs.reset && (
                     <button
+                        type="button"
                         className="bg-red-500 w-16 h-8 rounded-full px-1 m-2"
                         onClick={async () => {
                             await inputs.reset();
