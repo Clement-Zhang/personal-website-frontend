@@ -7,7 +7,7 @@ export default function Navbar() {
                 About Me
             </Link>
             <Link to="/projects">My Projects</Link>
-            <Link to="/ama">Dating App POC</Link>
+            <Link to="/dating">Dating App POC</Link>
         </nav>
     );
 }
