@@ -15,7 +15,7 @@ export default function Chatbot({ inputs = { text: 'Enter your prompt' } }) {
     return (
         <>
             <div className="h-96 overflow-auto p-4">
-                {messages.map((message) => (
+                {messages.map((message, index) => (
                     <p
                         className={
                             'bg-chatbot-message rounded-3xl max-w-5xl break-words px-3 py-2 mb-4 min-h-8 ' +
@@ -23,6 +23,7 @@ export default function Chatbot({ inputs = { text: 'Enter your prompt' } }) {
                                 ? 'ml-auto'
                                 : 'mr-auto')
                         }
+                        key={index}
                     >
                         {message.content}
                     </p>
@@ -38,7 +39,15 @@ export default function Chatbot({ inputs = { text: 'Enter your prompt' } }) {
                             content: inputData.text,
                         },
                     ]);
-                    const response = await inputs.submit(inputData);
+                    setInputData(
+                        Object.entries(inputs).reduce((acc, input) => {
+                            if (input[0] === 'text') {
+                                acc[input[0]] = '';
+                            }
+                            return acc;
+                        }, {})
+                    );
+                    const response = await inputs.submit(inputData.text);
                     setMessages((prev) => [
                         ...prev,
                         {
@@ -46,12 +55,6 @@ export default function Chatbot({ inputs = { text: 'Enter your prompt' } }) {
                             content: response,
                         },
                     ]);
-                    setInputData(
-                        Object.entries(inputs).reduce((acc, input) => {
-                            acc[input[0]] = '';
-                            return acc;
-                        }, {})
-                    );
                 }}
                 className="p-4"
             >
@@ -75,6 +78,12 @@ export default function Chatbot({ inputs = { text: 'Enter your prompt' } }) {
                                     scrollHeight > 180
                                         ? '180px'
                                         : scrollHeight + 'px';
+                            }}
+                            onKeyDown={(e) => {
+                                if (e.key === 'Enter' && !e.shiftKey) {
+                                    e.preventDefault();
+                                    e.target.form.requestSubmit();
+                                }
                             }}
                         />
                     )}

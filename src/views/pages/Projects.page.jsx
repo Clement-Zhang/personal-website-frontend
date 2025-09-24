@@ -32,12 +32,11 @@ export default function Projects() {
                     <img
                         src={project.img}
                         alt={project.alt}
-                        className="m-auto block w-1/4 h-1/4"
+                        className="m-auto block w-1/2 h-1/2"
                     />
                     <p>{project.description}</p>
                 </div>
             ))}
-            <p>{'d '.repeat(100)}</p>
         </Default>
     );
 }

@@ -1,8 +1,8 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Home from './views/pages/Home';
-import Nothing from './views/pages/Nothing';
-import Projects from './views/pages/Projects';
-import Ama from './views/pages/Ama';
+import Home from './views/pages/Home.page';
+import Nothing from './views/pages/Nothing.page';
+import Projects from './views/pages/Projects.page';
+import Dating from './views/pages/Dating.page';
 import styles from './assets/css/App.css';
 
 export default function App() {
@@ -11,7 +11,7 @@ export default function App() {
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/projects" element={<Projects />} />
-                <Route path="/ama" element={<Ama />} />
+                <Route path="/dating" element={<Dating />} />
                 <Route path="*" element={<Nothing />} />
             </Routes>
         </BrowserRouter>
