@@ -1,5 +1,5 @@
 async function submit(text) {
-    const res = await fetch(process.env.REACT_APP_BACKEND + '/deepseek', {
+    const res = await fetch(process.env.REACT_APP_BACKEND + '/reformat', {
         method: 'POST',
         headers: { 'Content-Type': 'text/plain' },
         body: text,
@@ -13,8 +13,7 @@ async function submit(text) {
             headers: { 'Content-Type': 'text/plain' },
             body: response,
         });
-        const profiles = await res.json();
-        return JSON.stringify(profiles, null, '\t');
+        return JSON.stringify(await res.json(), null, '\t');
     }
 }
 async function reset() {

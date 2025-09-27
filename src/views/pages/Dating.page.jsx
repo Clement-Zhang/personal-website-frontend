@@ -8,8 +8,8 @@ export default function Wrapper() {
             <p>
                 This is a proof of concept for a dating app. First, click the
                 reset button to ensure the chatbot has demo data loaded
-                correctly. Then, give it a profile with at minimum your name,
-                gender, and the gender you want to be matched with, in first
+                correctly. Then, give it a profile with at minimum your gender 
+                and the gender you want to be matched with, in first
                 person. Providing likes and dislikes will allow the chatbot to
                 generate better matches. Matches are generated in JSON format to
                 demonstrate the api's ability to integrate with a frontend.
