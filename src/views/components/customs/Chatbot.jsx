@@ -13,9 +13,11 @@ export default function Chatbot({ inputs = { text: 'Enter your prompt' } }) {
     const [messages, setMessages] = useState([]);
     const textInputRef = useRef(null);
     const windowRef = useRef(null);
+
     useEffect(() => {
         windowRef.current?.scrollIntoView();
     }, [messages]);
+    
     return (
         <>
             <div className="h-96 overflow-auto p-4">
