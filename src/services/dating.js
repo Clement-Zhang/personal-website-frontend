@@ -1,6 +1,6 @@
 import socket from '../globals/socket';
 
-async function submit(text) {
+export async function submit(text) {
     const response = await socket.emitWithAck('reformat', text);
     if (response.includes('fail')) {
         return 'You need to provide more information for me to generate matches. Start with your gender and sexuality. Providing likes and dislikes will allow me to generate better matches.';
@@ -9,10 +9,15 @@ async function submit(text) {
         return JSON.stringify(match, null, '\t');
     }
 }
-async function reset() {
+
+export async function reset() {
     await fetch(process.env.REACT_APP_BACKEND_HTTP + '/reset', {
         method: 'POST',
     });
 }
 
-export { submit, reset };
+export async function wake() {
+    await fetch(process.env.REACT_APP_BACKEND_HTTP + '/wake', {
+        method: 'GET',
+    });
+}
