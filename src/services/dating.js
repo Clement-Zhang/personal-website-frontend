@@ -17,8 +17,8 @@ export async function reset() {
 }
 
 export async function wake() {
-    await fetch(process.env.REACT_APP_BACKEND_HTTP + '/wake', {
+    const response = await fetch(process.env.REACT_APP_BACKEND_HTTP + '/wake', {
         method: 'GET',
     });
-    await res.text();
+    await response.text();
 }
