@@ -20,5 +20,6 @@ export async function wake() {
     const response = await fetch(process.env.REACT_APP_BACKEND_HTTP + '/wake', {
         method: 'GET',
     });
+    console.log(response);
     await response.text();
 }
