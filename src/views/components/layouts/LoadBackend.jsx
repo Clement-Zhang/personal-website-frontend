@@ -14,7 +14,7 @@ export default function LoadBackend({ children }) {
         }
     }, [global.loading]);
     return global.loading ? (
-        <p className="h-screen justify-center text-2xl">
+        <p className="h-screen flex justify-center text-2xl">
             Loading{'.'.repeat(dots)}
         </p>
     ) : (
