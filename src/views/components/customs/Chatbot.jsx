@@ -1,4 +1,5 @@
 import send from '../../../assets/images/send.jpg';
+import LoadBackend from '../layouts/LoadBackend';
 import { useState, useRef, useEffect } from 'react';
 
 export default function Chatbot({ inputs = { text: 'Enter your prompt' } }) {
@@ -17,9 +18,9 @@ export default function Chatbot({ inputs = { text: 'Enter your prompt' } }) {
     useEffect(() => {
         windowRef.current?.scrollIntoView();
     }, [messages]);
-    
+
     return (
-        <>
+        <LoadBackend>
             <div className="h-96 overflow-auto p-4">
                 {messages.map((message, index) => (
                     <p
@@ -119,6 +120,6 @@ export default function Chatbot({ inputs = { text: 'Enter your prompt' } }) {
                     </button>
                 )}
             </form>
-        </>
+        </LoadBackend>
     );
 }
