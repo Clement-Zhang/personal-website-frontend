@@ -11,16 +11,7 @@ export async function submit(text) {
 }
 
 export async function reset() {
-    await fetch(process.env.REACT_APP_BACKEND_HTTP + '/reset', {
+    await fetch(process.env.REACT_APP_DATING_BACKEND_HTTP + '/reset', {
         method: 'POST',
     });
-}
-
-export async function wake() {
-    console.log('env:', process.env.REACT_APP_BACKEND_HTTP);
-    const response = await fetch(process.env.REACT_APP_BACKEND_HTTP + '/wake', {
-        method: 'GET',
-    });
-    console.log(response);
-    console.log(await response.text());
 }

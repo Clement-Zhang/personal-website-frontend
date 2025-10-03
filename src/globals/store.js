@@ -1,11 +1,11 @@
-import technicalsReducer from './technicals';
-import { start } from './technicals';
+import genericReducer from './generic';
+import { start } from './generic';
 import { configureStore } from '@reduxjs/toolkit';
 import { Provider } from 'react-redux';
 
 const store = configureStore({
     reducer: {
-        technicals: technicalsReducer,
+        generic: genericReducer,
     },
 });
 

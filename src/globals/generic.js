@@ -1,13 +1,12 @@
-import { wake } from '../services/dating';
+import { wake } from '../services/generic';
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
 export const start = createAsyncThunk('dating/wake', async () => {
     await wake();
-    console.log('awake');
 });
 
 const technicalsSlice = createSlice({
-    name: 'technicals',
+    name: 'generic',
     initialState: {
         loading: true,
     },
