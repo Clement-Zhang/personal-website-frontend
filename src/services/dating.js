@@ -21,5 +21,5 @@ export async function wake() {
         method: 'GET',
     });
     console.log(response);
-    await response.text();
+    console.log(await response.text());
 }
