@@ -1,4 +1,4 @@
-import { reset, submit } from '../../services/dating';
+import { reset, submit } from '../../services/dating.service';
 
 export const dating = {
     text: 'Enter your profile',
