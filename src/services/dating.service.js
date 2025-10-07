@@ -1,4 +1,4 @@
-import socket from '../globals/socket';
+import { socket } from './socket.service.js';
 
 export async function submit(text) {
     const response = await socket.emitWithAck('reformat', text);
