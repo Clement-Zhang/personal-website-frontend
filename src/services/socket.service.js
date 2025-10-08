@@ -3,11 +3,11 @@ import { useEffect } from 'react';
 
 const socket = io(process.env.REACT_APP_DATING_BACKEND_SOCKET);
 
-export const emitEvent = (event, data, onEvent = () => {}) =>
+export const useOnEvent = (event, handleData) =>
     useEffect(() => {
-        socket.on(event, (data) => onEvent(data));
+        socket.on(event, handleData);
         return () => {
-            socket.off(event, (data) => onEvent(data));
+            socket.off(event, handleData);
         };
     }, []);
 

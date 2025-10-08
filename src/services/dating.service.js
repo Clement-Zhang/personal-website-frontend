@@ -1,8 +1,10 @@
 import { request } from './socket.service.js';
 
-export async function submit(text) {
-    const response = await request('reformat', text);
-    if (response.includes('fail')) {
+export const reformat = (text) =>
+    request('reformat', { type: 'req', prompt: text });
+
+export async function match(text) {
+    if (text.includes('fail')) {
         return 'You need to provide more information for me to generate matches. Start with your gender and sexuality. Providing likes and dislikes will allow me to generate better matches.';
     } else {
         const match = await request('match', response);

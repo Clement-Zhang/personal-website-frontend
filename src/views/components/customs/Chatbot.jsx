@@ -1,4 +1,5 @@
 import send from '../../../assets/images/send.jpg';
+import { useOnEvent } from '../../../services/socket.service';
 import LoadBackend from '../layouts/LoadBackend';
 import { useState, useRef, useEffect } from 'react';
 
@@ -12,6 +13,7 @@ export default function Chatbot({ inputs = { text: 'Enter your prompt' } }) {
         }, {})
     );
     const [messages, setMessages] = useState([]);
+    const [response, setResponse] = useState('');
     const textInputRef = useRef(null);
     const windowRef = useRef(null);
 
@@ -55,7 +57,7 @@ export default function Chatbot({ inputs = { text: 'Enter your prompt' } }) {
                             return acc;
                         }, {})
                     );
-                    const response = await inputs.submit(inputData.text);
+                    inputs.submit(inputData.text);
                     setMessages((prev) => [
                         ...prev,
                         {

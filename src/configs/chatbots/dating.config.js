@@ -1,7 +1,11 @@
-import { reset, submit } from '../../services/dating.service';
+import { reset, reformat, match } from '../../services/dating.service';
 
 export const dating = {
     text: 'Enter your profile',
     reset: async () => await reset(),
-    submit: async (prompt) => await submit(prompt),
+    submit: [
+        { type: 'proc', func: (prompt) => reformat(prompt) },
+        { type: 'wait', event: 'reformat/res' },
+        { type: 'func', func: async (text) => await match(text) },
+    ],
 };
