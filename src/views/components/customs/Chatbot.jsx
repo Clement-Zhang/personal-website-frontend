@@ -37,6 +37,11 @@ export default function Chatbot({ inputs = { text: 'Enter your prompt' } }) {
                         {message.content}
                     </p>
                 ))}
+                {response && (
+                    <p className="bg-chatbot-message rounded-3xl w-fit max-w-5xl break-words px-3 py-2 mb-4 min-h-8 mr-auto">
+                        {response}
+                    </p>
+                )}
                 <div ref={windowRef} />
             </div>
             <form
