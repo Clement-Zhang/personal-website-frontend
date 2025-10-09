@@ -14,7 +14,7 @@ export default function Chatbot({
         }, {})
     );
     const [messages, setMessages] = useState([]);
-    const [buffer, setBuffer] = useState('');
+    const [response, setResponse] = useState('');
     const textInputRef = useRef(null);
     const windowRef = useRef(null);
 
@@ -38,9 +38,9 @@ export default function Chatbot({
                         {message.content}
                     </p>
                 ))}
-                {buffer && (
+                {response && (
                     <p className="bg-chatbot-message rounded-3xl w-fit max-w-5xl break-words px-3 py-2 mb-4 min-h-8 mr-auto">
-                        Processing: {buffer}
+                        Processing: {response}
                     </p>
                 )}
                 <div ref={windowRef} />
@@ -55,8 +55,7 @@ export default function Chatbot({
                             content: inputData.text,
                         },
                     ]);
-                    setBuffer(inputData.text);
-                    console.log(buffer);
+                    let buffer = inputData.text;
                     setInputData(
                         Object.entries(config.inputs).reduce((acc, input) => {
                             acc[input[0]] = defaults[input[0]];
@@ -65,15 +64,17 @@ export default function Chatbot({
                     );
                     config.submit.forEach(async (stage) => {
                         if (stage.type === 'proc') {
-                            await stage.func(buffer);
+                            await stage.func(inputData.text);
                         } else if (stage.type === 'stream') {
-                            setBuffer('');
+                            setResponse('');
+                            buffer = '';
                             const event = stage.event.split('.');
-                            await stream(event[0], event[1], (data) =>
-                                setBuffer((prev) => prev + data.chunk)
-                            );
+                            await stream(event[0], event[1], (data) => {
+                                setResponse((prev) => prev + data.chunk);
+                                buffer += data.chunk;
+                            });
                         } else if (stage.type === 'func') {
-                            setBuffer(await stage.func(buffer));
+                            buffer = await stage.func(buffer);
                         }
                     });
                     setMessages((prev) => [
@@ -83,7 +84,7 @@ export default function Chatbot({
                             content: buffer,
                         },
                     ]);
-                    setBuffer('');
+                    setResponse('');
                 }}
                 className="p-4"
             >
