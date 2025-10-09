@@ -56,6 +56,7 @@ export default function Chatbot({
                         },
                     ]);
                     setBuffer(inputData.text);
+                    console.log(buffer);
                     setInputData(
                         Object.entries(config.inputs).reduce((acc, input) => {
                             acc[input[0]] = defaults[input[0]];
