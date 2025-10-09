@@ -9,7 +9,7 @@ export const dating = {
     reset: async () => await reset(),
     submit: [
         { type: 'proc', func: (prompt) => reformat(prompt) },
-        { type: 'wait', event: 'reformat.res' },
+        { type: 'stream', event: 'reformat.res' },
         { type: 'func', func: async (text) => await match(text) },
     ],
 };

@@ -1,19 +1,20 @@
 import send from '../../../assets/images/send.jpg';
-import { useOnEvent } from '../../../services/socket.service';
+import { stream } from '../../../services/socket.service';
 import LoadBackend from '../layouts/LoadBackend';
+import { defaults } from '../../../configs/chatbots/dating.config';
 import { useState, useRef, useEffect } from 'react';
 
-export default function Chatbot({ inputs = { text: 'Enter your prompt' } }) {
+export default function Chatbot({
+    config = { inputs: { text: 'Enter your prompt' } },
+}) {
     const [inputData, setInputData] = useState(
-        Object.entries(inputs).reduce((acc, input) => {
-            if (input[0] === 'text') {
-                acc[input[0]] = '';
-            }
+        Object.entries(config.inputs).reduce((acc, input) => {
+            acc[input[0]] = defaults[input[0]];
             return acc;
         }, {})
     );
     const [messages, setMessages] = useState([]);
-    const [response, setResponse] = useState('');
+    const [buffer, setBuffer] = useState('');
     const textInputRef = useRef(null);
     const windowRef = useRef(null);
 
@@ -37,9 +38,9 @@ export default function Chatbot({ inputs = { text: 'Enter your prompt' } }) {
                         {message.content}
                     </p>
                 ))}
-                {response && (
+                {buffer && (
                     <p className="bg-chatbot-message rounded-3xl w-fit max-w-5xl break-words px-3 py-2 mb-4 min-h-8 mr-auto">
-                        {response}
+                        Processing: {buffer}
                     </p>
                 )}
                 <div ref={windowRef} />
@@ -54,27 +55,39 @@ export default function Chatbot({ inputs = { text: 'Enter your prompt' } }) {
                             content: inputData.text,
                         },
                     ]);
+                    setBuffer(inputData.text);
                     setInputData(
-                        Object.entries(inputs).reduce((acc, input) => {
-                            if (input[0] === 'text') {
-                                acc[input[0]] = '';
-                            }
+                        Object.entries(config.inputs).reduce((acc, input) => {
+                            acc[input[0]] = defaults[input[0]];
                             return acc;
                         }, {})
                     );
-                    inputs.submit(inputData.text);
+                    config.submit.forEach(async (stage) => {
+                        if (stage.type === 'proc') {
+                            await stage.func(buffer);
+                        } else if (stage.type === 'stream') {
+                            setBuffer('');
+                            const event = stage.event.split('.');
+                            await stream(event[0], event[1], (data) =>
+                                setBuffer((prev) => prev + data.chunk)
+                            );
+                        } else if (stage.type === 'func') {
+                            setBuffer(await stage.func(buffer));
+                        }
+                    });
                     setMessages((prev) => [
                         ...prev,
                         {
                             position: 'left',
-                            content: response,
+                            content: buffer,
                         },
                     ]);
+                    setBuffer('');
                 }}
                 className="p-4"
             >
                 <div className="flex gap-2 items-end *:rounded-3xl">
-                    {Object.keys(inputs).includes('text') && (
+                    {Object.keys(config.inputs).includes('text') && (
                         <textarea
                             ref={textInputRef}
                             value={inputData.text}
@@ -102,18 +115,18 @@ export default function Chatbot({ inputs = { text: 'Enter your prompt' } }) {
                             }}
                         />
                     )}
-                    {inputs.submit && (
+                    {config.submit && (
                         <button type="submit" className="w-10 h-10">
                             <img src={send} alt="Send" />
                         </button>
                     )}
                 </div>
-                {inputs.reset && (
+                {config.reset && (
                     <button
                         type="button"
                         className="bg-red-500 w-16 h-8 rounded-full px-1 m-2"
                         onClick={async () => {
-                            await inputs.reset();
+                            await config.reset();
                             setMessages((prev) => [
                                 ...prev,
                                 {
