@@ -17,7 +17,7 @@ export default function Wrapper() {
                 uses free AI APIs that have a limit on the number of free
                 requests.
             </p>
-            <Chatbot inputs={dating} />
+            <Chatbot config={dating} />
         </Default>
     );
 }
