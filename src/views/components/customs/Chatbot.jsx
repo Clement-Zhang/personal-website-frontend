@@ -84,7 +84,6 @@ export default function Chatbot({
                             console.log('return value', buffer);
                         }
                     }
-                    console.log('after pipeline', buffer);
                     setMessages((prev) => [
                         ...prev,
                         {
