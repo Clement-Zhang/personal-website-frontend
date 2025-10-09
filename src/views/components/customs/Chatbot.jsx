@@ -75,6 +75,7 @@ export default function Chatbot({
                             await stream(event[0], event[1], (data) => {
                                 setResponse((prev) => prev + data.chunk);
                                 buffer += data.chunk;
+                                console.log('current data', buffer);
                             });
                             console.log('after streaming', buffer);
                         } else if (stage.type === 'func') {
