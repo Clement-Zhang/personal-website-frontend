@@ -91,7 +91,7 @@ export default function Chatbot({
                         <textarea
                             ref={textInputRef}
                             value={inputData.text}
-                            placeholder={inputs.text}
+                            placeholder={config.inputs.text}
                             className="w-full outline-none resize-none overflow-y-auto overflow-x-hidden px-3 py-2 min-h-4"
                             rows={1}
                             onChange={(e) => {
