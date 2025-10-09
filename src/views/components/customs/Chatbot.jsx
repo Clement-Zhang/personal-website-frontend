@@ -62,15 +62,12 @@ export default function Chatbot({
                             return acc;
                         }, {})
                     );
-                    console.log('before pipeline', buffer);
                     for (const stage of config.submit) {
-                        console.log('stage', stage);
                         if (stage.type === 'proc') {
                             await stage.func(inputData.text);
                         } else if (stage.type === 'stream') {
                             setResponse('');
                             buffer = '';
-                            console.log('before streaming', buffer);
                             const event = stage.event.split('.');
                             const log = [];
                             await stream(event[0], event[1], (data) => {
@@ -81,7 +78,6 @@ export default function Chatbot({
                             console.log('streamed chunks', log);
                         } else if (stage.type === 'func') {
                             buffer = await stage.func(buffer);
-                            console.log('return value', buffer);
                         }
                     }
                     setMessages((prev) => [
