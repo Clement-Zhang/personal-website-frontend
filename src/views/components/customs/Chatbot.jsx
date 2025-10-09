@@ -72,12 +72,13 @@ export default function Chatbot({
                             buffer = '';
                             console.log('before streaming', buffer);
                             const event = stage.event.split('.');
+                            const log = [];
                             await stream(event[0], event[1], (data) => {
                                 setResponse((prev) => prev + data.chunk);
                                 buffer += data.chunk;
-                                console.log('current data', buffer);
+                                log.push(data.chunk);
                             });
-                            console.log('after streaming', buffer);
+                            console.log('streamed chunks', log);
                         } else if (stage.type === 'func') {
                             buffer = await stage.func(buffer);
                             console.log('return value', buffer);
