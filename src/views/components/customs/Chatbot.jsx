@@ -64,6 +64,7 @@ export default function Chatbot({
                     );
                     console.log('before pipeline', buffer);
                     for (const stage of config.submit) {
+                        console.log('stage', stage);
                         if (stage.type === 'proc') {
                             await stage.func(inputData.text);
                         } else if (stage.type === 'stream') {
