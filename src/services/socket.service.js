@@ -15,6 +15,6 @@ export const stream = async (event, ongoing, handler) =>
         socket.on(event, eventHandler);
     });
 
-export const send = (event, data) => socket.on(event, data);
+export const send = (event, data) => socket.emit(event, data);
 
 export const request = async (event, data) => socket.emitWithAck(event, data);
