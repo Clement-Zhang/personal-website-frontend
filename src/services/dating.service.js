@@ -1,7 +1,7 @@
-import { request } from './socket.service.js';
+import { request, send } from './socket.service.js';
 
 export const reformat = (text) =>
-    request('reformat', { type: 'req', prompt: text });
+    send('reformat', { type: 'req', prompt: text });
 
 export async function match(text) {
     if (text.includes('fail')) {
