@@ -63,7 +63,7 @@ export default function Chatbot({
                         }, {})
                     );
                     console.log('before pipeline', buffer);
-                    config.submit.forEach(async (stage) => {
+                    for (const stage of config.submit) {
                         if (stage.type === 'proc') {
                             await stage.func(inputData.text);
                         } else if (stage.type === 'stream') {
@@ -80,7 +80,7 @@ export default function Chatbot({
                             buffer = await stage.func(buffer);
                             console.log('return value', buffer);
                         }
-                    });
+                    }
                     console.log('after pipeline', buffer);
                     setMessages((prev) => [
                         ...prev,
