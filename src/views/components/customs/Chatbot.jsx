@@ -62,21 +62,26 @@ export default function Chatbot({
                             return acc;
                         }, {})
                     );
+                    console.log('before pipeline', buffer);
                     config.submit.forEach(async (stage) => {
                         if (stage.type === 'proc') {
                             await stage.func(inputData.text);
                         } else if (stage.type === 'stream') {
                             setResponse('');
                             buffer = '';
+                            console.log('before streaming', buffer);
                             const event = stage.event.split('.');
                             await stream(event[0], event[1], (data) => {
                                 setResponse((prev) => prev + data.chunk);
                                 buffer += data.chunk;
                             });
+                            console.log('after streaming', buffer);
                         } else if (stage.type === 'func') {
                             buffer = await stage.func(buffer);
+                            console.log('return value', buffer);
                         }
                     });
+                    console.log('after pipeline', buffer);
                     setMessages((prev) => [
                         ...prev,
                         {
