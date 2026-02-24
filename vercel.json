@@ -2,7 +2,7 @@
     "rewrites": [
         {
             "source": "/showcase/:path*",
-            "destination": "https://data-analytics-showcase-git-auto-update-contents-clementzhang.vercel.app/:path*"
+            "destination": "https://data-analytics-showcase.vercel.app/:path*"
         },
         {
             "source": "/sim/:path*",
