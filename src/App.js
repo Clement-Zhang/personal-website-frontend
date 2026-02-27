@@ -2,7 +2,7 @@ import Home from './views/pages/Home.page';
 import Nothing from './views/pages/Nothing.page';
 import Projects from './views/pages/Projects.page';
 import Dating from './views/pages/Dating.page';
-import styles from './assets/css/App.css';
+import './assets/css/App.css';
 import DataProvider from './globals/store';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
