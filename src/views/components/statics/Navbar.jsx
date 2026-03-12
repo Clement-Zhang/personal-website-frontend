@@ -4,7 +4,7 @@ export default function Navbar() {
     return (
         <nav className="flex sticky top-0 items-center justify-center gap-4 *:text-xl">
             <Link to="/" className="!text-3xl">
-                About Me
+                Clement Zhang
             </Link>
             <Link to="/projects">My Projects</Link>
             <Link to="/dating">Dating App POC</Link>
