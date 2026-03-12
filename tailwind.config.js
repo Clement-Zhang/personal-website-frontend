@@ -11,6 +11,7 @@ module.exports = {
                 chatbot: {
                     message: '#35363A',
                 },
+                dark: '#b5b4b1',
             },
         },
     },

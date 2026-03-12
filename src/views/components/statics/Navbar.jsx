@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 
 export default function Navbar() {
     return (
-        <nav className="flex sticky top-0 items-center justify-center gap-4 *:text-xl m-2">
+        <nav className="flex sticky top-0 items-center justify-center gap-4 *:text-xl m-2 bg-dark">
             <Link to="/" className="!text-3xl">
                 Clement Zhang
             </Link>
