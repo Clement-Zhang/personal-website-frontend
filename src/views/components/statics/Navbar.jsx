@@ -9,7 +9,11 @@ export default function Navbar() {
     return (
         <nav className="flex sticky top-0 items-center justify-center gap-4 *:text-xl m-2 bg-dark h-12">
             {tabs.map((tab) => (
-                <Link to={tab.path} key={tab.path} className={tab.style}>
+                <Link
+                    to={tab.path}
+                    key={tab.path}
+                    className={'hover:bg-black ' + tab.style}
+                >
                     {tab.label}
                 </Link>
             ))}
