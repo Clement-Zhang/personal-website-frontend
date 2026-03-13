@@ -1,13 +1,18 @@
 import { Link } from 'react-router-dom';
 
 export default function Navbar() {
+    const tabs = [
+        { label: 'Clement Zhang', path: '/', style: '!text-3xl' },
+        { label: 'My Projects', path: '/projects' },
+        { label: 'Dating App POC', path: '/dating' },
+    ];
     return (
         <nav className="flex sticky top-0 items-center justify-center gap-4 *:text-xl m-2 bg-dark h-12">
-            <Link to="/" className="!text-3xl">
-                Clement Zhang
-            </Link>
-            <Link to="/projects">My Projects</Link>
-            <Link to="/dating">Dating App POC</Link>
+            {tabs.map((tab) => (
+                <Link to={tab.path} key={tab.path} className={style}>
+                    {tab.label}
+                </Link>
+            ))}
         </nav>
     );
 }
