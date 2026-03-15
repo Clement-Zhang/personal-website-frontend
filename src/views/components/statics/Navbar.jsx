@@ -12,7 +12,7 @@ export default function Navbar() {
                 <Link
                     to={tab.path}
                     key={tab.path}
-                    className={'hover:bg-black ' + tab.style}
+                    className={'hover:bg-black h-full' + tab.style}
                 >
                     {tab.label}
                 </Link>
