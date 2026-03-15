@@ -1,4 +1,5 @@
 import Default from '../components/layouts/Default';
+import Text from '../components/common/Column';
 import Heading from '../components/customs/Heading';
 import { projects } from '../../data/projects';
 
@@ -6,7 +7,7 @@ import { projects } from '../../data/projects';
 export default function Projects() {
     return (
         <Default>
-            <p>
+            <Text>
                 Here you can take a look at some of the projects I do in my
                 spare time. For <b>all</b> of the projects that I have sole
                 ownership over,{' '}
@@ -14,11 +15,11 @@ export default function Projects() {
                     click here
                 </a>
                 .
-            </p>
-            <p>
+            </Text>
+            <Text>
                 I have contributed to many other projects, but I am not listing
                 them here due to lack of group permission.
-            </p>
+            </Text>
             {projects.map((project) => (
                 <div key={project.name}>
                     <Heading>
