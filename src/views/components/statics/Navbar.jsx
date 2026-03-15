@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 
 export default function Navbar() {
     const tabs = [
-        { label: 'Clement Zhang', path: '/', style: '!text-4xl' },
+        { label: 'Clement Zhang', path: '/', style: '!text-3xl' },
         { label: 'My Projects', path: '/projects' },
         { label: 'Dating App POC', path: '/dating' },
     ];
@@ -12,7 +12,7 @@ export default function Navbar() {
                 <Link
                     to={tab.path}
                     key={tab.path}
-                    className={'hover:bg-black h-full' + tab.style}
+                    className={'hover:bg-black h-full ' + tab.style}
                 >
                     {tab.label}
                 </Link>
