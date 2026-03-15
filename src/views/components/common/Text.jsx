@@ -1,3 +1,3 @@
-export default function Text({ children, position }) {
-    return <p className={'max-w-4xl ' + position}>{children}</p>;
+export default function Text({ children }) {
+    return <p className={'max-w-4xl mx-auto'}>{children}</p>;
 }
