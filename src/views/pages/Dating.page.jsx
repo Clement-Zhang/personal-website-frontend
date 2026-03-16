@@ -1,10 +1,9 @@
 import Chatbot from '../components/customs/Chatbot';
-import Default from '../components/layouts/Default';
 import { dating } from '../../configs/chatbots/dating.config';
 
 export default function Wrapper() {
     return (
-        <Default>
+        <>
             <p>
                 This is a proof of concept for a dating app. First, click the
                 reset button to ensure the chatbot has demo data loaded
@@ -18,6 +17,6 @@ export default function Wrapper() {
                 requests.
             </p>
             <Chatbot config={dating} />
-        </Default>
+        </>
     );
 }

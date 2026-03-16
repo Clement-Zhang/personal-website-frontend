@@ -1,11 +1,9 @@
-import Default from '../components/layouts/Default';
 import Heading from '../components/customs/Heading';
 import { projects } from '../../data/projects';
 
-
 export default function Projects() {
     return (
-        <Default>
+        <>
             <p>
                 Here you can take a look at some of the projects I do in my
                 spare time. For <b>all</b> of the projects that I have sole
@@ -37,6 +35,6 @@ export default function Projects() {
                     <p>{project.description}</p>
                 </div>
             ))}
-        </Default>
+        </>
     );
 }

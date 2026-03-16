@@ -1,3 +1,4 @@
+import Default from './views/components/layouts/Default';
 import Home from './views/pages/Home.page';
 import Nothing from './views/pages/Nothing.page';
 import Projects from './views/pages/Projects.page';
@@ -11,10 +12,12 @@ export default function App() {
         <DataProvider>
             <BrowserRouter>
                 <Routes>
-                    <Route path="/" element={<Home />} />
-                    <Route path="/projects" element={<Projects />} />
-                    <Route path="/dating" element={<Dating />} />
-                    <Route path="*" element={<Nothing />} />
+                    <Route path="/" element={<Default />}>
+                        <Route index element={<Home />} />
+                        <Route path="projects" element={<Projects />} />
+                        <Route path="dating" element={<Dating />} />
+                        <Route path="*" element={<Nothing />} />
+                    </Route>
                 </Routes>
             </BrowserRouter>
         </DataProvider>
