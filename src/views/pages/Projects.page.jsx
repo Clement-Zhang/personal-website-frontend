@@ -20,7 +20,7 @@ export default function Projects() {
             {projects.map((project) => (
                 <div
                     key={project.name}
-                    className="rounded-xl shadow-xl bg-gray-800 p-1"
+                    className="rounded-xl shadow-xl bg-gray-800 p-1 m-1"
                 >
                     <Heading>
                         <a
