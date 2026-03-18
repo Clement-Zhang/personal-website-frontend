@@ -18,7 +18,10 @@ export default function Projects() {
                 them here due to lack of group permission.
             </p>
             {projects.map((project) => (
-                <div key={project.name} className="rounded-xl shadow-xl">
+                <div
+                    key={project.name}
+                    className="rounded-xl shadow-xl bg-gray-900"
+                >
                     <Heading>
                         <a
                             href={project.link}
