@@ -8,7 +8,10 @@ export default function Projects() {
                 Here you can take a look at some of the projects I do in my
                 spare time. For <b>all</b> of the projects that I have sole
                 ownership over,{' '}
-                <a href="https://github.com/Clement-Zhang?tab=repositories">
+                <a
+                    href="https://github.com/Clement-Zhang?tab=repositories"
+                    className="text-blue-600 visited:text-purple-600 hover:underline hover:text-blue-800"
+                >
                     click here
                 </a>
                 .
