@@ -33,12 +33,14 @@ export default function Projects() {
                             {project.name}
                         </a>
                     </Heading>
-                    <img
-                        src={project.img}
-                        alt={project.alt}
-                        className="m-auto block w-1/2 h-1/2"
-                    />
-                    <p>{project.description}</p>
+                    <div className="flex">
+                        <img
+                            src={project.img}
+                            alt={project.alt}
+                            className="m-auto block w-1/2 h-1/2"
+                        />
+                        <p>{project.description}</p>
+                    </div>
                 </div>
             ))}
         </>
