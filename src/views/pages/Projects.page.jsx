@@ -23,7 +23,7 @@ export default function Projects() {
             {projects.map((project) => (
                 <div
                     key={project.name}
-                    className="rounded-xl shadow-md shadow-gray-800 bg-gray-800 p-4 m-3 space-y-2"
+                    className="rounded-xl shadow-md shadow-gray-800 bg-gray-800 p-4 m-3 space-y-3"
                 >
                     <Heading>
                         <a
@@ -33,7 +33,7 @@ export default function Projects() {
                             {project.name}
                         </a>
                     </Heading>
-                    <div className="flex gap-2">
+                    <div className="flex gap-3">
                         <img
                             src={project.img}
                             alt={project.alt}
