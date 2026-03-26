@@ -37,9 +37,9 @@ export default function Projects() {
                         <img
                             src={project.img}
                             alt={project.alt}
-                            className="block grow-1"
+                            className="block grow"
                         />
-                        <p className="grow-1">{project.description}</p>
+                        <p className="grow">{project.description}</p>
                     </div>
                 </div>
             ))}
