@@ -13,7 +13,7 @@ export default function Navbar() {
                     to={tab.path}
                     key={tab.path}
                     className={
-                        'flex items-center hover:bg-zinc-700 h-full px-2 sm:px-4 ' +
+                        'flex items-center text-center hover:bg-zinc-700 h-full px-2 sm:px-4 ' +
                         tab.style
                     }
                 >
