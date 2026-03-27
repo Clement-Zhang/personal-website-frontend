@@ -7,13 +7,14 @@ export default function Navbar() {
         { label: 'Dating App POC', path: '/dating' },
     ];
     return (
-        <nav className="flex sticky top-0 justify-center gap-4 *:text-xl bg-zinc-900 h-12">
+        <nav className="flex sticky top-0 justify-center *:text-xl bg-zinc-900 h-12">
             {tabs.map((tab) => (
                 <Link
                     to={tab.path}
                     key={tab.path}
                     className={
-                        'flex items-center hover:bg-black h-full ' + tab.style
+                        'flex items-center hover:bg-black h-full px-4' +
+                        tab.style
                     }
                 >
                     {tab.label}
