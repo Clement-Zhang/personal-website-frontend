@@ -33,11 +33,11 @@ export default function Projects() {
                             {project.name}
                         </a>
                     </Heading>
-                    <div className="flex gap-3">
+                    <div className="flex flex-col sm:flex-row gap-3">
                         <img
                             src={project.img}
                             alt={project.alt}
-                            className="block w-1/2 h-1/2"
+                            className="block sm:w-1/2 h-auto"
                         />
                         <p>{project.description}</p>
                     </div>
