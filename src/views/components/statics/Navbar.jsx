@@ -7,7 +7,7 @@ export default function Navbar() {
         { label: 'Dating App POC', path: '/dating' },
     ];
     return (
-        <nav className="flex sticky top-0 justify-center *:text-xl bg-zinc-900 h-12">
+        <nav className="flex sticky top-0 justify-center *:text-xl bg-zinc-800 h-12">
             {tabs.map((tab) => (
                 <Link
                     to={tab.path}
