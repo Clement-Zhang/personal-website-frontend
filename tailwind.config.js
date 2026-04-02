@@ -6,7 +6,6 @@ module.exports = {
     ],
     theme: {
         extend: {
-            fontFamily: { comic: ['"Comic Sans MS"', ...fontFamily.sans] },
             colors: {
                 chatbot: {
                     message: '#35363A',
