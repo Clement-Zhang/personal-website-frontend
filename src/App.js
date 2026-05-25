@@ -17,9 +17,9 @@ export default function App() {
                         <Route index element={<Home />} />
                         <Route path="projects" element={<Projects />} />
                         <Route path="dating" element={<Dating />} />
-                        <Route path="calculators" element={<Calculators />} />
                         <Route path="*" element={<Nothing />} />
                     </Route>
+                    <Route path="/calculators" element={<Calculators />} />
                 </Routes>
             </BrowserRouter>
         </DataProvider>
