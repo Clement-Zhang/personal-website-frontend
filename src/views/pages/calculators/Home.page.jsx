@@ -1,3 +1,3 @@
 export default function Home() {
-    return <h1 className="text-2xl m-auto">Choose a calculator</h1>;
+    return <div className="text-2xl m-auto">Choose a calculator</div>;
 }
