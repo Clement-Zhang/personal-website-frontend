@@ -19,7 +19,7 @@ export default function App() {
                         <Route path="dating" element={<Dating />} />
                         <Route path="*" element={<Nothing />} />
                     </Route>
-                    <Route path="/calculators" element={<Calculators />} />
+                    <Route path="/calculators/" element={<Calculators />} />
                 </Routes>
             </BrowserRouter>
         </DataProvider>

@@ -1,11 +1,11 @@
+import tabs from '../../../data/calculatorTabs';
 import { Link } from 'react-router-dom';
 
 export default function Sidebar() {
-    const tabs = [];
     return (
-        <nav className="flex flex-col fixed justify-center bg-gray-700 h-screen w-24">
+        <nav className="flex flex-col fixed justify-center bg-gray-700 h-screen w-auto">
             {tabs.map((tab) => (
-                <Link to={tab.path} key={tab.path}>
+                <Link to={tab.link} key={tab.path}>
                     {tab.icon}
                 </Link>
             ))}
