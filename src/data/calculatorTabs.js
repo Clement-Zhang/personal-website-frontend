@@ -4,7 +4,7 @@ function url(endpoint) {
     return '/calculators/' + endpoint;
 }
 
-export const tabs = [
+export default [
     {
         path: url('hackers'),
         icon: hackers,
