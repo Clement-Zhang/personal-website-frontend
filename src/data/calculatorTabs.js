@@ -1,4 +1,4 @@
-import hackers from '../assets/images/calculators/hackers/icon.png';
+import hackers from '../assets/images/calculators/hackers/icon.jpg';
 
 function url(endpoint) {
     return '/calculators/' + endpoint;
