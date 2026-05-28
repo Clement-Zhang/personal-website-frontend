@@ -6,7 +6,7 @@ export default function Sidebar() {
         <nav className="flex flex-col fixed justify-center bg-gray-700 h-screen w-auto">
             {tabs.map((tab) => (
                 <Link to={tab.link} key={tab.path}>
-                    {tab.icon}
+                    <img src={tab.icon}></img>
                 </Link>
             ))}
         </nav>
