@@ -3,7 +3,7 @@ import { Outlet } from 'react-router';
 
 export default function Calculators() {
     return (
-        <div className="font-comic">
+        <div className="flex">
             <Sidebar />
             <Outlet />
         </div>
