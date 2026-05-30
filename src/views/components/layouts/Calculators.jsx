@@ -5,7 +5,9 @@ export default function Calculators() {
     return (
         <div className="flex">
             <Sidebar />
-            <Outlet />
+            <div className={'flex-1'}>
+                <Outlet />
+            </div>
         </div>
     );
 }
