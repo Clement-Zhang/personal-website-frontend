@@ -5,6 +5,7 @@ import Projects from './views/pages/Projects.page';
 import Dating from './views/pages/Dating.page';
 import Calculators from './views/components/layouts/Calculators.jsx';
 import CalculatorHome from './views/pages/calculators/Home.page.jsx';
+import Hackers from './views/pages/calculators/Hackers.page.jsx';
 import './assets/css/App.css';
 import DataProvider from './globals/store';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
@@ -22,6 +23,7 @@ export default function App() {
                     </Route>
                     <Route path="/calculators/" element={<Calculators />}>
                         <Route index element={<CalculatorHome />} />
+                        <Route path="hackers" element={<Hackers />} />
                     </Route>
                 </Routes>
             </BrowserRouter>
