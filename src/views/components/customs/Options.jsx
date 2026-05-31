@@ -19,7 +19,7 @@ export const OptionsProvider = ({ children }) => {
                 {children}
                 <div
                     className={
-                        'absolute top-0 w-full h-full bg-black rounded-lg z-49 ' +
+                        'absolute inset-0 w-full h-full bg-black rounded-lg z-49 ' +
                         (!open && 'hidden')
                     }
                 >
