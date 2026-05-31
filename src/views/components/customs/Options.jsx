@@ -25,7 +25,12 @@ export const OptionsProvider = ({ children }) => {
                 >
                     {Options}
                 </div>
-                <img src={icon} alt="options" onClick={toggleOptions}></img>
+                <img
+                    src={icon}
+                    alt="options"
+                    className="top-0 right-0"
+                    onClick={toggleOptions}
+                ></img>
             </div>
         </OptionsContext.Provider>
     );
