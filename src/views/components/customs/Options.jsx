@@ -19,7 +19,7 @@ export const OptionsProvider = ({ children }) => {
             <div className="relative *:absolute">
                 <div
                     className={
-                        'top-0 w-full h-full bg-black rounded-lg z-50' +
+                        'top-0 w-full h-full bg-black rounded-lg z-50 ' +
                         (!open && 'hidden')
                     }
                 >
