@@ -17,22 +17,20 @@ export const OptionsProvider = ({ children }) => {
         <OptionsContext.Provider value={{ setOptions, toggleOptions }}>
             <div className="relative *:m-4">
                 {children}
-                <div className="relative *:absolute">
-                    <div
-                        className={
-                            'w-full h-full bg-black rounded-lg m-0 z-40 ' +
-                            (!open && 'hidden')
-                        }
-                    >
-                        {Options}
-                    </div>
-                    <img
-                        src={icon}
-                        alt="options"
-                        className="top-0 right-0 m-4 z-50"
-                        onClick={toggleOptions}
-                    ></img>
+                <div
+                    className={
+                        'absolute w-full h-full bg-black rounded-lg m-0 z-40 ' +
+                        (!open && 'hidden')
+                    }
+                >
+                    {Options}
                 </div>
+                <img
+                    src={icon}
+                    alt="options"
+                    className="absolute top-0 right-0 m-4 z-50"
+                    onClick={toggleOptions}
+                ></img>
             </div>
         </OptionsContext.Provider>
     );
