@@ -6,9 +6,11 @@ export default function Calculators() {
     return (
         <div className="flex">
             <Sidebar />
-            <div className="flex-1">
+            <div className="flex-1 relative">
                 <OptionsProvider>
-                    <Outlet />
+                    <div className="m-4">
+                        <Outlet />
+                    </div>
                 </OptionsProvider>
             </div>
         </div>
