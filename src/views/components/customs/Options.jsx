@@ -19,7 +19,7 @@ export const OptionsProvider = ({ children }) => {
             <div className="*:absolute">
                 <div
                     className={
-                        'w-full h-screen bg-black rounded-lg ' +
+                        'top-0 w-full h-full p-0 bg-black rounded-lg z-50' +
                         (!open && 'hidden')
                     }
                 >
@@ -28,7 +28,7 @@ export const OptionsProvider = ({ children }) => {
                 <img
                     src={icon}
                     alt="options"
-                    className="top-0 right-0"
+                    className="top-0 right-0 z-51"
                     onClick={toggleOptions}
                 ></img>
             </div>
