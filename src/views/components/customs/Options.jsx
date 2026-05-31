@@ -27,7 +27,7 @@ export const OptionsProvider = ({ children }) => {
             <img
                 src={icon}
                 alt="options"
-                className="absolute top-0 right-0 m-4 z-50"
+                className="absolute top-0 right-0 m-4 cursor-pointer z-50"
                 onClick={toggleOptions}
             ></img>
         </OptionsContext.Provider>
