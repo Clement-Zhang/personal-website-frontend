@@ -19,7 +19,7 @@ export const OptionsProvider = ({ children }) => {
                 {children}
                 <div
                     className={
-                        'w-full h-full bg-black rounded-lg m-0 z-50 ' +
+                        'w-full h-full bg-black rounded-lg m-0 z-40 ' +
                         (!open && 'hidden')
                     }
                 >
@@ -28,7 +28,7 @@ export const OptionsProvider = ({ children }) => {
                 <img
                     src={icon}
                     alt="options"
-                    className="top-0 right-0 m-4 z-60"
+                    className="top-0 right-0 m-4 z-50"
                     onClick={toggleOptions}
                 ></img>
             </div>
