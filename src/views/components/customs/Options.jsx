@@ -20,7 +20,7 @@ export const OptionsProvider = ({ children }) => {
                 <div
                     className={
                         'w-full h-screen bg-black rounded-lg ' +
-                        (open && 'hidden')
+                        (!open && 'hidden')
                     }
                 >
                     {Options}
