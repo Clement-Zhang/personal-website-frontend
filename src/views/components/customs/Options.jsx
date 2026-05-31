@@ -15,7 +15,7 @@ export const OptionsProvider = ({ children }) => {
     }
     return (
         <OptionsContext.Provider value={{ setOptions, toggleOptions }}>
-            <div className="*:absolute *:m-4">
+            <div className="relative *:m-4">
                 {children}
                 <div
                     className={
@@ -28,7 +28,7 @@ export const OptionsProvider = ({ children }) => {
                 <img
                     src={icon}
                     alt="options"
-                    className="top-0 right-0 m-4 z-50"
+                    className="absolute top-0 right-0 m-4 z-50"
                     onClick={toggleOptions}
                 ></img>
             </div>
