@@ -28,7 +28,7 @@ export const OptionsProvider = ({ children }) => {
                 <img
                     src={icon}
                     alt="options"
-                    className="top-0 right-0 m-4 z-51"
+                    className="top-0 right-0 m-4 z-60"
                     onClick={toggleOptions}
                 ></img>
             </div>
