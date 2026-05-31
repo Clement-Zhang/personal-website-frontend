@@ -10,9 +10,6 @@ export const useOptions = () => {
 export const OptionsProvider = ({ children }) => {
     const [Options, setOptions] = useState(null);
     const [open, setOpen] = useState(false);
-    function setOptions(content) {
-        setOptions(content);
-    }
     function toggleOptions() {
         setOpen((prev) => !prev);
     }
