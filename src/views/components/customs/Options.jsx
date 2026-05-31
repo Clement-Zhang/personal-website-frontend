@@ -18,7 +18,7 @@ export const OptionsProvider = ({ children }) => {
             <div className="m-4">{children}</div>
             <div
                 className={
-                    'absolute top-0 w-full h-full bg-black rounded-lg m-0 z-49 ' +
+                    'absolute top-0 w-full h-full bg-black rounded-2xl m-0 z-49 ' +
                     (!open && 'hidden')
                 }
             >
