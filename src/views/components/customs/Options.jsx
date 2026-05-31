@@ -23,7 +23,7 @@ export const OptionsProvider = ({ children }) => {
                         (open && 'hidden')
                     }
                 >
-                    {OptionsData}
+                    {Options}
                 </div>
                 <img src={icon} alt="options" onClick={toggleOptions}></img>
             </div>
