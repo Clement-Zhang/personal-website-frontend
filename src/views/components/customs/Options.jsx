@@ -15,11 +15,11 @@ export const OptionsProvider = ({ children }) => {
     }
     return (
         <OptionsContext.Provider value={{ setOptions, toggleOptions }}>
-            {children}
-            <div className="relative *:absolute">
+            <div className="*:absolute *:m-4">
+                {children}
                 <div
                     className={
-                        'top-0 w-full h-full bg-black rounded-lg z-50 ' +
+                        'w-full h-full bg-black rounded-lg m-0 z-50 ' +
                         (!open && 'hidden')
                     }
                 >

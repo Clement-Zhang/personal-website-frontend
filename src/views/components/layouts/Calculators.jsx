@@ -8,9 +8,7 @@ export default function Calculators() {
             <Sidebar />
             <div className="flex-1">
                 <OptionsProvider>
-                    <div className="m-4">
-                        <Outlet />
-                    </div>
+                    <Outlet />
                 </OptionsProvider>
             </div>
         </div>
