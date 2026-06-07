@@ -7,17 +7,17 @@ export default function Hackers() {
     useEffect(() => {
         setOptions(
             <div className="flex">
-                <div>
+                <div className="flex-1">
                     <h1 className="flex mb-2 justify-center">
                         Select Program Levels
                     </h1>
                     <img
                         src={program_tree}
-                        className="block w-1/2"
+                        className="w-1/2"
                         alt="program tree"
                     ></img>
                 </div>
-                <h1 className="flex mb-2 justify-center">
+                <h1 className="flex flex-1 mb-2 justify-center">
                     Select User Capabilities
                 </h1>
             </div>,
