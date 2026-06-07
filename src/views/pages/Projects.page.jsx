@@ -37,7 +37,7 @@ export default function Projects() {
                         <img
                             src={project.img}
                             alt={project.alt}
-                            className="block w-1/2 h-1/2"
+                            className="block scale-50"
                         />
                         <p>{project.description}</p>
                     </div>
