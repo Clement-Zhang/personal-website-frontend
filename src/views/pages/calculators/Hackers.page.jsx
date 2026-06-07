@@ -13,12 +13,12 @@ export default function Hackers() {
                     </h1>
                     <img
                         src={program_tree}
-                        className="w-1/2"
+                        className="block w-1/2"
                         alt="program tree"
                     ></img>
                 </div>
                 <h1 className="flex mb-2 justify-center">
-                    Select Program Levels
+                    Select User Capabilities
                 </h1>
             </div>,
         );
