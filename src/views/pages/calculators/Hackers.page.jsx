@@ -8,7 +8,7 @@ export default function Hackers() {
         setOptions(
             <div className="flex">
                 <div>
-                    <h1 className="text-2xl mb-4 justify-center">
+                    <h1 className="flex justify-center">
                         Select Program Levels
                     </h1>
                     <img
