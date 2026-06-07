@@ -7,7 +7,7 @@ export default function Hackers() {
     useEffect(() => {
         setOptions(
             <div className="flex">
-                <div className="flex-1 justify-center">
+                <div className="flex-1 *:justify-center">
                     <h1 className="mb-2">
                         Select Program Levels
                     </h1>
