@@ -17,6 +17,9 @@ export default function Hackers() {
                         alt="program tree"
                     ></img>
                 </div>
+                <h1 className="flex mb-2 justify-center">
+                    Select Program Levels
+                </h1>
             </div>,
         );
     });
