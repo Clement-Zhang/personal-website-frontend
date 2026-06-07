@@ -13,7 +13,7 @@ export default function Hackers() {
                     </h1>
                     <img
                         src={program_tree}
-                        className="w-9/10"
+                        className="w-10/12"
                         alt="program tree"
                     ></img>
                 </div>
