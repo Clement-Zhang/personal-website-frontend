@@ -1,5 +1,5 @@
 export const settings = [
-    { name: 'Time Step', value: 100, min: 1 },
+    { name: 'Time Step', value: 100, min: 100 },
     { name: 'Reaction Time', value: 500 },
 ];
 
