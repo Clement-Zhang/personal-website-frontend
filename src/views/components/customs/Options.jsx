@@ -13,6 +13,7 @@ export const OptionsProvider = ({ children }) => {
     const [submit, setSubmit] = useState(null);
     const [open, setOpen] = useState(false);
     function setOptions(form, submit) {
+        console.log(submit);
         setForm(form);
         setSubmit(submit);
     }
