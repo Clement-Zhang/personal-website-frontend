@@ -6,7 +6,7 @@ import { useOptions } from '../../components/customs/Options';
 import Section from '../../components/customs/Section';
 import Settings from '../../components/calculators/Settings';
 import program_tree from '../../../assets/images/calculators/hackers/program tree.jpg';
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 
 export default function Hackers() {
     const [programsData, setProgramsData] = useState(
