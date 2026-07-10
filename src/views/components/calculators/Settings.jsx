@@ -1,3 +1,4 @@
+import icon from '../../../assets/images/calculators/hackers/explain.jpg';
 import { useState } from 'react';
 
 export default function Settings({ data, onChange }) {
@@ -6,7 +7,10 @@ export default function Settings({ data, onChange }) {
             {data.map((input) => {
                 return (
                     <>
-                        <label htmlFor={input.name}>{input.name}</label>
+                        <label htmlFor={input.name}>
+                            <p>{input.name}</p>
+                            <img src={icon} alt="explain"></img>
+                        </label>
                         <input
                             key={input.name}
                             value={input.value}
