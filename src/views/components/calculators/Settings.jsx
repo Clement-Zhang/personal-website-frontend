@@ -7,7 +7,7 @@ export default function Settings({ data, onChange }) {
             {data.map((input) => {
                 return (
                     <>
-                        <label htmlFor={input.name}>
+                        <label htmlFor={input.name} className="flex">
                             <p>{input.name}</p>
                             <img src={icon} alt="explain"></img>
                         </label>
