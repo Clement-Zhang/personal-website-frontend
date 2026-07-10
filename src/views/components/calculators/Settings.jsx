@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 export default function Settings({ data, onChange }) {
     return (
-        <form className="flex">
+        <form className="flex gap-1">
             {data.map((input) => {
                 return (
                     <>
@@ -20,6 +20,7 @@ export default function Settings({ data, onChange }) {
                                 })
                             }
                             id={input.name}
+                            className="w-4 rounded-md border-none px-1"
                         ></input>
                     </>
                 );
