@@ -9,13 +9,18 @@ export const useOptions = () => {
 };
 
 export const OptionsProvider = ({ children }) => {
-    const [Options, setOptions] = useState(null);
+    const [form, setForm] = useState(null);
+    const [submit, setSubmit] = useState(null);
     const [open, setOpen] = useState(false);
+    function setOptions(form, submit) {
+        setForm(form);
+        setSubmit(submit);
+    }
     function toggleOptions() {
         setOpen((prev) => !prev);
     }
     return (
-        <OptionsContext.Provider value={{ setOptions, toggleOptions }}>
+        <OptionsContext.Provider value={{ setOptions }}>
             <div className="m-4">{children}</div>
             <AnimatePresence>
                 {open && (
@@ -28,7 +33,16 @@ export const OptionsProvider = ({ children }) => {
                             'absolute top-0 w-full h-full bg-black rounded-3xl p-4 z-49'
                         }
                     >
-                        {Options}
+                        {form}
+                        <button
+                            className="absolute bottom-0"
+                            onClick={() => {
+                                submit();
+                                toggleOptions();
+                            }}
+                        >
+                            Submit
+                        </button>
                     </motion.div>
                 )}
             </AnimatePresence>
