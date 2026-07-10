@@ -20,7 +20,7 @@ export default function Settings({ data, onChange }) {
                                 })
                             }
                             id={input.name}
-                            className="w-10 rounded-md border-none px-1"
+                            className="w-20 rounded-md outline-none px-1"
                         ></input>
                     </>
                 );
