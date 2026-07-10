@@ -11,7 +11,7 @@ export default function Settings({ data, onChange }) {
                             key={input.name}
                             value={input.value}
                             type="number"
-                            step="1"
+                            step="100"
                             min={input.min || 0}
                             onChange={(e) =>
                                 onChange({
