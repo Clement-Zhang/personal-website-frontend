@@ -2,6 +2,7 @@ import icon from '../../../assets/images/calculators/hackers/explain.jpg';
 import { useState } from 'react';
 
 export default function Settings({ data, onChange }) {
+    const [hover, setHover] = useState(null);
     return (
         <form className="flex gap-1">
             {data.map((input) => {
@@ -9,7 +10,15 @@ export default function Settings({ data, onChange }) {
                     <>
                         <label htmlFor={input.name} className="flex gap-1">
                             <p>{input.name}</p>
-                            <img src={icon} alt="explain"></img>
+                            <img
+                                src={icon}
+                                alt="explain"
+                                onMouseEnter={setHover(input.name)}
+                                onMouseLeave={setHover(null)}
+                                className="relative"
+                            >
+                                {hover == input.name && <p className='absolute -top-full'></p>}
+                            </img>
                         </label>
                         <input
                             key={input.name}

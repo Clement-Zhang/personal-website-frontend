@@ -10,11 +10,11 @@ export const useOptions = () => {
 
 export const OptionsProvider = ({ children }) => {
     const [form, setForm] = useState(null);
-    const [submit, setSubmit] = useState(null);
+    const [apply, setApply] = useState(null);
     const [open, setOpen] = useState(false);
-    function setOptions(form, submit) {
+    function setOptions(form, apply) {
         setForm(form);
-        setSubmit(() => submit);
+        setApply(() => apply);
     }
     function toggleOptions() {
         setOpen((prev) => !prev);
@@ -37,11 +37,11 @@ export const OptionsProvider = ({ children }) => {
                         <button
                             className="absolute bottom-0 left-1/2 m-4 w-16 bg-white text-black rounded-md"
                             onClick={() => {
-                                submit();
+                                apply();
                                 toggleOptions();
                             }}
                         >
-                            Submit
+                            Apply
                         </button>
                     </motion.div>
                 )}
