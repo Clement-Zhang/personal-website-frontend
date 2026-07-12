@@ -17,7 +17,7 @@ export default function Settings({ data, onChange }) {
                                 onMouseLeave={setHover(null)}
                                 className="relative"
                             >
-                                {hover == input.name && <p className='absolute -top-full'></p>}
+                                {/* {hover == input.name && <p className='absolute -top-full'></p>} */}
                             </img>
                         </label>
                         <input
