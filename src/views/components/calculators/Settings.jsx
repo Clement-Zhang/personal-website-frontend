@@ -8,17 +8,21 @@ export default function Settings({ data, onChange }) {
             {data.map((input) => {
                 return (
                     <>
-                        <label htmlFor={input.name} className="flex gap-1">
+                        <label
+                            htmlFor={input.name}
+                            className="relative flex gap-1"
+                        >
                             <p>{input.name}</p>
                             <img
                                 src={icon}
                                 alt="explain"
                                 onMouseEnter={() => setHover(input.name)}
                                 onMouseLeave={() => setHover(null)}
-                                className="relative"
-                            >
-                                {hover == input.name && <p className='absolute -top-full'></p>}
-                            </img>
+                                className=""
+                            ></img>
+                            {hover == input.name && (
+                                <p className="absolute -top-full"></p>
+                            )}
                         </label>
                         <input
                             key={input.name}
