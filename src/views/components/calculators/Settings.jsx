@@ -8,7 +8,8 @@ export default function Settings({ data, onChange }) {
     useEffect(() => {
         if (tooltip) {
             const rect = tooltipRef.current.getBoundingClientRect();
-            console.log(rect);
+            console.log('tooltip', rect);
+            console.log('activeIcon', tooltip.activeIcon);
             let edge = '';
             let align = '';
             let center = [
