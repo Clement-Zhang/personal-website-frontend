@@ -21,7 +21,7 @@ export default function Settings({ data, onChange }) {
                                 className=""
                             ></img>
                             {hover == input.name && (
-                                <p className="absolute -top-full"></p>
+                                <p className="absolute -top-full">test</p>
                             )}
                         </label>
                         <input
