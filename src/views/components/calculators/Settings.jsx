@@ -20,7 +20,7 @@ export default function Settings({ data, onChange }) {
                                 ></img>
                                 {hover == input.name && (
                                     <p className="absolute bottom-full left-1/2 -translate-x-1/2 bg-text-background text-zinc-900 rounded-md">
-                                        test
+                                        {input.explain}
                                     </p>
                                 )}
                             </div>
