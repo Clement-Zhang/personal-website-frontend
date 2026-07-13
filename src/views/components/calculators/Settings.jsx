@@ -7,8 +7,8 @@ export default function Settings({ data, onChange }) {
         <form className="flex gap-1">
             {data.map((input) => {
                 return (
-                    <div key={input.name}>
-                        <label htmlFor={input.name} className="flex gap-1">
+                    <div key={input.name} className="flex gap-1">
+                        <label htmlFor={input.name}>
                             <p>{input.name}</p>
                             <div className="relative">
                                 <img
