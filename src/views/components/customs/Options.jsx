@@ -35,7 +35,7 @@ export const OptionsProvider = ({ children }) => {
                     >
                         {form}
                         <button
-                            className="absolute bottom-0 left-1/2 m-4 w-14 bg-white text-black rounded-md"
+                            className="absolute bottom-0 left-1/2 m-4 w-14 bg-white text-zinc-900 rounded-md"
                             onClick={() => {
                                 apply();
                                 toggleOptions();

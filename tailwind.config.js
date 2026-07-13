@@ -8,9 +8,7 @@ module.exports = {
         extend: {
             fontFamily: { comic: ['"Comic Sans MS"', ...fontFamily.sans] },
             colors: {
-                chatbot: {
-                    message: '#35363A',
-                },
+                message: '#35363A',
             },
         },
     },
