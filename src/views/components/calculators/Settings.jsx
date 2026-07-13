@@ -8,7 +8,7 @@ export default function Settings({ data, onChange }) {
             {data.map((input) => {
                 return (
                     <div key={input.name} className="flex gap-1">
-                        <label htmlFor={input.name}>
+                        <label htmlFor={input.name} className="flex gap-1">
                             <p>{input.name}</p>
                             <div className="relative">
                                 <img
