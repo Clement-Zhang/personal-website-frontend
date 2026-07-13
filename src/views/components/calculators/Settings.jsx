@@ -13,8 +13,8 @@ export default function Settings({ data, onChange }) {
                             <img
                                 src={icon}
                                 alt="explain"
-                                onMouseEnter={setHover(input.name)}
-                                onMouseLeave={setHover(null)}
+                                onMouseEnter={() => setHover(input.name)}
+                                onMouseLeave={() => setHover(null)}
                                 className="relative"
                             >
                                 {/* {hover == input.name && <p className='absolute -top-full'></p>} */}
