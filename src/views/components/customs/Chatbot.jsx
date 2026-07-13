@@ -28,7 +28,7 @@ export default function Chatbot({
                 {messages.map((message, index) => (
                     <p
                         className={
-                            'bg-message rounded-3xl w-fit max-w-5xl break-words px-3 py-2 mb-4 min-h-8 ' +
+                            'bg-text-background rounded-3xl w-fit max-w-5xl break-words px-3 py-2 mb-4 min-h-8 ' +
                             (message.position === 'right'
                                 ? 'ml-auto'
                                 : 'mr-auto')
@@ -39,7 +39,7 @@ export default function Chatbot({
                     </p>
                 ))}
                 {response && (
-                    <p className="bg-message rounded-3xl w-fit max-w-5xl break-words px-3 py-2 mb-4 min-h-8 mr-auto">
+                    <p className="bg-text-background rounded-3xl w-fit max-w-5xl break-words px-3 py-2 mb-4 min-h-8 mr-auto">
                         Processing: {response}
                     </p>
                 )}

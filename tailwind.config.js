@@ -8,7 +8,7 @@ module.exports = {
         extend: {
             fontFamily: { comic: ['"Comic Sans MS"', ...fontFamily.sans] },
             colors: {
-                message: '#35363A',
+                text: { background: '#35363A' },
             },
         },
     },
