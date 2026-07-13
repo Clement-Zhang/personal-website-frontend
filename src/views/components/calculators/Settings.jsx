@@ -7,25 +7,25 @@ export default function Settings({ data, onChange }) {
         <form className="flex gap-1">
             {data.map((input) => {
                 return (
-                    <>
-                        <label
-                            htmlFor={input.name}
-                            className="relative flex gap-1"
-                        >
+                    <div key={input.name}>
+                        <label htmlFor={input.name} className="flex gap-1">
                             <p>{input.name}</p>
-                            <img
-                                src={icon}
-                                alt="explain"
-                                onMouseEnter={() => setHover(input.name)}
-                                onMouseLeave={() => setHover(null)}
-                                className=""
-                            ></img>
-                            {hover == input.name && (
-                                <p className="absolute -top-full">test</p>
-                            )}
+                            <div className="relative">
+                                <img
+                                    src={icon}
+                                    alt="explain"
+                                    onMouseEnter={() => setHover(input.name)}
+                                    onMouseLeave={() => setHover(null)}
+                                    className=""
+                                ></img>
+                                {hover == input.name && (
+                                    <p className="absolute -top-full -left-1/2 bg-white">
+                                        test
+                                    </p>
+                                )}
+                            </div>
                         </label>
                         <input
-                            key={input.name}
                             value={input.value}
                             type="number"
                             step="100"
@@ -36,10 +36,9 @@ export default function Settings({ data, onChange }) {
                                     value: e.target.value,
                                 })
                             }
-                            id={input.name}
                             className="w-20 rounded-md outline-none px-1"
                         ></input>
-                    </>
+                    </div>
                 );
             })}
         </form>
