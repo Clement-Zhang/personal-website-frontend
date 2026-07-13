@@ -85,6 +85,7 @@ export default function Settings({ data, onChange }) {
                         : (position.top = center[1] - rect.height / 2);
                     break;
             }
+            console.log(edge, align);
             setTooltipPosition(position);
         }
     }, [tooltip]);
