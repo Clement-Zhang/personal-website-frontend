@@ -16,14 +16,14 @@ export default function Settings({ data, onChange }) {
                 tooltip.activeIcon.left + tooltip.activeIcon.width / 2,
                 tooltip.activeIcon.top + tooltip.activeIcon.height / 2,
             ];
-            if (tooltip.activeIcon.top - rect.height < 0) {
+            if (tooltip.activeIcon.top - rect.height > 0) {
                 edge = 'top';
             } else if (
-                tooltip.activeIcon.bottom + rect.height >
+                tooltip.activeIcon.bottom + rect.height <
                 window.innerHeight
             ) {
                 edge = 'bottom';
-            } else if (tooltip.activeIcon.left - rect.width < 0) {
+            } else if (tooltip.activeIcon.left - rect.width > 0) {
                 edge = 'left';
             } else {
                 edge = 'right';
