@@ -9,6 +9,7 @@ import program_tree from '../../../assets/images/calculators/hackers/program tre
 import { useState, useEffect } from 'react';
 
 export default function Hackers() {
+    const [settingsData, setSettingsData] = useState(settings);
     const [programsData, setProgramsData] = useState(
         programs.reduce((acc, program) => {
             acc[program] = 1;
@@ -28,12 +29,14 @@ export default function Hackers() {
                 </Section>
                 <Section title="Settings">
                     <Settings
-                        data={settings}
-                        onChange={(input) =>
-                            (settings.find(
+                        data={settingsData}
+                        onChange={(input) => {
+                            let setting = settingsData.find(
                                 (setting) => setting.name == input.name,
-                            ).value = input.value)
-                        }
+                            );
+                            setting.value = input.value;
+                            setSettingsData([...settingsData]);
+                        }}
                     />
                 </Section>
             </div>,
