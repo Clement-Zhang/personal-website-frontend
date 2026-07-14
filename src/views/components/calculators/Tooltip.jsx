@@ -83,7 +83,7 @@ export default function Tooltip({ spec }) {
             {spec && (
                 <p
                     ref={tooltipRef}
-                    className="fixed bg-text-background text-zinc-900 rounded-md max-w-lg"
+                    className="fixed bg-text-background text-zinc-900 rounded-md max-w-3xs"
                     style={tooltipPosition}
                 >
                     {spec.text}
