@@ -8,34 +8,33 @@ export default function Settings({ data, onChange }) {
     useEffect(() => {
         if (tooltip) {
             const rect = tooltipRef.current.getBoundingClientRect();
-            console.log('tooltip', rect);
-            console.log('activeIcon', tooltip.activeIcon);
             let edge = '';
             let align = '';
             let center = [
                 tooltip.activeIcon.left + tooltip.activeIcon.width / 2,
                 tooltip.activeIcon.top + tooltip.activeIcon.height / 2,
             ];
-            if (tooltip.activeIcon.top - rect.height > 0) {
+            let spacing = 3;
+            if (tooltip.activeIcon.top - rect.height - spacing > 0) {
                 edge = 'top';
             } else if (
-                tooltip.activeIcon.bottom + rect.height <
+                tooltip.activeIcon.bottom + rect.height + spacing <
                 window.innerHeight
             ) {
                 edge = 'bottom';
-            } else if (tooltip.activeIcon.left - rect.width > 0) {
+            } else if (tooltip.activeIcon.left - rect.width - spacing > 0) {
                 edge = 'left';
             } else {
                 edge = 'right';
             }
             if (edge == 'top' || edge == 'bottom') {
                 if (
-                    center[0] - rect.width / 2 > 0 &&
-                    center[0] + rect.width / 2 < window.innerWidth
+                    center[0] - rect.width / 2 - spacing > 0 &&
+                    center[0] + rect.width / 2 + spacing < window.innerWidth
                 ) {
                     align = 'middle';
                 } else if (
-                    tooltip.activeIcon.left + rect.width <
+                    tooltip.activeIcon.left + rect.width + spacing <
                     window.innerWidth
                 ) {
                     align = 'left';
@@ -44,12 +43,12 @@ export default function Settings({ data, onChange }) {
                 }
             } else {
                 if (
-                    center[1] - rect.height / 2 > 0 &&
-                    center[1] + rect.height / 2 < window.innerHeight
+                    center[1] - rect.height / 2 - spacing > 0 &&
+                    center[1] + rect.height / 2 + spacing < window.innerHeight
                 ) {
                     align = 'middle';
                 } else if (
-                    tooltip.activeIcon.top + rect.height <
+                    tooltip.activeIcon.top + rect.height + spacing <
                     window.innerHeight
                 ) {
                     align = 'top';
@@ -61,17 +60,17 @@ export default function Settings({ data, onChange }) {
             switch (edge) {
                 case 'top':
                     position.bottom =
-                        window.innerHeight - tooltip.activeIcon.top;
+                        window.innerHeight - tooltip.activeIcon.top - spacing;
                     break;
                 case 'bottom':
-                    position.top = tooltip.activeIcon.bottom;
+                    position.top = tooltip.activeIcon.bottom + spacing;
                     break;
                 case 'left':
                     position.right =
-                        window.innerWidth - tooltip.activeIcon.left;
+                        window.innerWidth - tooltip.activeIcon.left - spacing;
                     break;
                 case 'right':
-                    position.left = tooltip.activeIcon.right;
+                    position.left = tooltip.activeIcon.right + spacing;
                     break;
             }
             switch (align) {
@@ -88,7 +87,6 @@ export default function Settings({ data, onChange }) {
                         : (position.top = center[1] - rect.height / 2);
                     break;
             }
-            console.log(edge, align);
             setTooltipPosition(position);
         }
     }, [tooltip]);
