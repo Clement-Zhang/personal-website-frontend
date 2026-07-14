@@ -42,6 +42,6 @@ export default function Hackers() {
             </div>,
             () => 0,
         );
-    }, []);
+    }, [settingsData]);
     return <h1 className="text-8xl">Hackers</h1>;
 }
