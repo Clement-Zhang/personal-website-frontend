@@ -10,7 +10,7 @@ export default function Settings({ data, onChange }) {
             <form className="flex gap-1 **:flex **:gap-1">
                 {data.map((input) => {
                     return (
-                        <div key={input.name} className=" ">
+                        <div key={input.name} >
                             <label htmlFor={input.name}>
                                 <p>{input.name}</p>
                                 <img
