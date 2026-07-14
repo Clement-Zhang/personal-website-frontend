@@ -55,33 +55,25 @@ export default function Tooltip({ spec }) {
                     align = 'bottom';
                 }
             }
-            let position = {};
-            switch (edge) {
-                case 'top':
-                    position.bottom = window.innerHeight - icon.top - spacing;
-                    break;
-                case 'bottom':
-                    position.top = icon.bottom + spacing;
-                    break;
-                case 'left':
-                    position.right = window.innerWidth - icon.left - spacing;
-                    break;
-                case 'right':
-                    position.left = icon.right + spacing;
-                    break;
-            }
-            switch (align) {
-                case 'left':
-                    position.left = icon.left;
-                    break;
-                case 'right':
-                    position.right = window.innerWidth - icon.right;
-                    break;
-                case 'middle':
-                    edge == 'top' || edge == 'bottom'
-                        ? (position.left = center[0] - rect.width / 2)
-                        : (position.top = center[1] - rect.height / 2);
-                    break;
+            const position = {
+                top: { bottom: window.innerHeight - icon.top - spacing },
+                bottom: { top: icon.bottom + spacing },
+                left: { right: window.innerWidth - icon.left - spacing },
+                right: { left: icon.right + spacing },
+            }[edge];
+            Object.assign(
+                position,
+                {
+                    left: { left: icon.left },
+                    right: { right: window.innerWidth - icon.right },
+                    top: { top: icon.top },
+                    bottom: { bottom: window.innerHeight - icon.bottom },
+                }[align],
+            );
+            if (align == 'middle') {
+                edge == 'top' || edge == 'bottom'
+                    ? (position.left = center[0] - rect.width / 2)
+                    : (position.top = center[1] - rect.height / 2);
             }
             setTooltipPosition(position);
         }
