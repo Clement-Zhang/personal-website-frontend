@@ -11,11 +11,10 @@ import { useState, useEffect } from 'react';
 export default function Hackers() {
     const [settingsData, setSettingsData] = useState(
         settings.reduce((acc, setting) => {
-            console.log(setting);
-            setting.value = setting.default;
-            console.log(setting);
-            delete setting.default;
-            console.log(setting);
+            if (setting.default) {
+                setting.value = setting.default;
+                delete setting.default;
+            }
             acc.push(setting);
             return acc;
         }, []),
