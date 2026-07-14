@@ -28,7 +28,7 @@ export default function Chatbot({
                 {messages.map((message, index) => (
                     <p
                         className={
-                            'bg-chatbot-message rounded-3xl w-fit max-w-5xl break-words px-3 py-2 mb-4 min-h-8 ' +
+                            'bg-text-background rounded-3xl w-fit max-w-5xl wrap-break-word px-3 py-2 mb-4 min-h-8 ' +
                             (message.position === 'right'
                                 ? 'ml-auto'
                                 : 'mr-auto')
@@ -39,7 +39,7 @@ export default function Chatbot({
                     </p>
                 ))}
                 {response && (
-                    <p className="bg-chatbot-message rounded-3xl w-fit max-w-5xl break-words px-3 py-2 mb-4 min-h-8 mr-auto">
+                    <p className="bg-text-background rounded-3xl w-fit max-w-5xl wrap-break-word px-3 py-2 mb-4 min-h-8 mr-auto">
                         Processing: {response}
                     </p>
                 )}
@@ -97,7 +97,7 @@ export default function Chatbot({
                             ref={textInputRef}
                             value={inputData.text}
                             placeholder={config.inputs.text}
-                            className="w-full outline-none resize-none overflow-y-auto overflow-x-hidden px-3 py-2 min-h-4"
+                            className="w-full outline-hidden resize-none overflow-y-auto overflow-x-hidden px-3 py-2 min-h-4"
                             rows={1}
                             onChange={(e) => {
                                 setInputData((prev) => ({
