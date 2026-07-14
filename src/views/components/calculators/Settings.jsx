@@ -9,7 +9,7 @@ export default function Settings({ data, onChange }) {
             <Tooltip spec={tooltip} />
             {data.map((input) => {
                 return (
-                    <div key={input.name} className="flex gap-1 *:flex **:gap-1">
+                    <div key={input.name} className="flex gap-1 *:flex *:gap-1">
                         <label htmlFor={input.name}>
                             <p>{input.name}</p>
                             <img
