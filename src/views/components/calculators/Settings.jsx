@@ -60,13 +60,15 @@ export default function Settings({ data, onChange }) {
             let position = {};
             switch (edge) {
                 case 'top':
-                    position.bottom = tooltip.activeIcon.top;
+                    position.bottom =
+                        window.innerHeight - tooltip.activeIcon.top;
                     break;
                 case 'bottom':
                     position.top = tooltip.activeIcon.bottom;
                     break;
                 case 'left':
-                    position.right = tooltip.activeIcon.left;
+                    position.right =
+                        window.innerWidth - tooltip.activeIcon.left;
                     break;
                 case 'right':
                     position.left = tooltip.activeIcon.right;
@@ -77,7 +79,8 @@ export default function Settings({ data, onChange }) {
                     position.left = tooltip.activeIcon.left;
                     break;
                 case 'right':
-                    position.right = tooltip.activeIcon.right;
+                    position.right =
+                        window.innerWidth - tooltip.activeIcon.right;
                     break;
                 case 'middle':
                     edge == 'top' || edge == 'bottom'
