@@ -13,7 +13,7 @@ export default function Hackers() {
         settings.reduce((acc, setting) => {
             setting.value = setting.default;
             delete setting.default;
-            acc.push({ setting });
+            acc.push(setting);
             return acc;
         }, []),
     );
