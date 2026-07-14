@@ -37,7 +37,7 @@ export default function Settings({ data, onChange }) {
                                     value: e.target.value,
                                 })
                             }
-                            className="w-20 rounded-md outline-none px-1"
+                            className="w-20 rounded-md outline-hidden px-1"
                         ></input>
                     </div>
                 );
