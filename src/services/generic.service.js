@@ -1,4 +1,4 @@
 export const wake = async () =>
-    await fetch(process.env.REACT_APP_GENERIC_BACKEND + '/wake', {
+    await fetch(import.meta.env.VITE_GENERIC_BACKEND + '/wake', {
         method: 'GET',
     });

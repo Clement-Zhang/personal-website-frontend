@@ -13,6 +13,6 @@ export async function match(text) {
 }
 
 export const reset = async () =>
-    await fetch(process.env.REACT_APP_DATING_BACKEND_HTTP + '/reset', {
+    await fetch(import.meta.env.VITE_DATING_BACKEND_HTTP + '/reset', {
         method: 'POST',
     });
