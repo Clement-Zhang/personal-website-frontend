@@ -9,7 +9,14 @@ import program_tree from '../../../assets/images/calculators/hackers/program tre
 import { useState, useEffect } from 'react';
 
 export default function Hackers() {
-    const [settingsData, setSettingsData] = useState(settings);
+    const [settingsData, setSettingsData] = useState(
+        settings.reduce((acc, setting) => {
+            setting.value = setting.default;
+            delete setting.default;
+            acc.push({ setting });
+            return acc;
+        }, []),
+    );
     const [programsData, setProgramsData] = useState(
         programs.reduce((acc, program) => {
             acc[program] = 1;
