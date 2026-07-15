@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 
 export default function Navbar() {
     const tabs = [
-        { label: 'Clement Zhang', path: '/', style: '!text-3xl' },
+        { label: 'Clement Zhang', path: '/', style: 'text-3xl!' },
         { label: 'My Projects', path: '/projects' },
         { label: 'Dating App POC', path: '/dating' },
     ];
@@ -13,7 +13,7 @@ export default function Navbar() {
                     to={tab.path}
                     key={tab.path}
                     className={
-                        'flex items-center hover:bg-zinc-700 h-full px-4 !text-text-color !no-underline ' +
+                        'flex items-center hover:bg-zinc-700 h-full px-4 text-text-color! no-underline! ' +
                         tab.style
                     }
                 >
