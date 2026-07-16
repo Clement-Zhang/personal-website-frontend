@@ -6,12 +6,12 @@ export default function Settings({ data, onChange }) {
     const [tooltip, setTooltip] = useState(null);
     console.log(data)
     return (
-        <form className="flex gap-1">
+        <form className="flex gap-1 **:flex **:gap-1">
             <Tooltip spec={tooltip} />
             {data.map((input) => {
                 return (
-                    <div key={input.name} className="flex gap-1">
-                        <label htmlFor={input.name} className="flex gap-1">
+                    <div key={input.name}>
+                        <label htmlFor={input.name}>
                             <p>{input.name}</p>
                             <img
                                 src={icon}
