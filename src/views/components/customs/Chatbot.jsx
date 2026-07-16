@@ -129,7 +129,7 @@ export default function Chatbot({
                 {config.reset && (
                     <button
                         type="button"
-                        className="bg-red-500 w-16 h-8 rounded-full px-1 m-2"
+                        className="bg-red-500 w-16 h-8 rounded-full! px-1 m-2"
                         onClick={async () => {
                             await config.reset();
                             setMessages((prev) => [
