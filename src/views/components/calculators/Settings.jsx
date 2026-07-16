@@ -12,7 +12,7 @@ export default function Settings({ data, onChange }) {
                 return (
                     <div key={input.name}>
                         <label htmlFor={input.name}>
-                            <p>{input.name}</p>
+                            <p className="shrink-0">{input.name}</p>
                             <img
                                 src={icon}
                                 alt="explain"
