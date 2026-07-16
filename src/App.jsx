@@ -5,6 +5,7 @@ import Projects from './views/pages/Projects.page';
 import Dating from './views/pages/Dating.page';
 import Calculators from './views/components/layouts/Calculators';
 import CalculatorHome from './views/pages/calculators/Home.page';
+import ActiveCalculator from './views/components/layouts/ActiveCalculator';
 import Hackers from './views/pages/calculators/Hackers.page';
 import './assets/css/App.css';
 import DataProvider from './globals/store';
@@ -23,7 +24,9 @@ export default function App() {
                     </Route>
                     <Route path="/calculators/" element={<Calculators />}>
                         <Route index element={<CalculatorHome />} />
-                        <Route path="hackers" element={<Hackers />} />
+                        <Route element={<ActiveCalculator />}>
+                            <Route path="hackers" element={<Hackers />} />
+                        </Route>
                     </Route>
                 </Routes>
             </BrowserRouter>
