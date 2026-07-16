@@ -6,7 +6,7 @@ export default function Settings({ data, onChange }) {
     const [tooltip, setTooltip] = useState(null);
     console.log(data);
     return (
-        <form className="flex gap-1 bg-red-500 **:flex **:gap-1">
+        <form className="flex gap-1 bg-red-500 **:flex! **:gap-1!">
             <Tooltip spec={tooltip} />
             {data.map((input) => {
                 return (
