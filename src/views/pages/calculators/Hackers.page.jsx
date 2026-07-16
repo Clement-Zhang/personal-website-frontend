@@ -28,7 +28,7 @@ export default function Hackers() {
     const { setOptions } = useOptions();
     useEffect(() => {
         setOptions(
-            <div className="flex">
+            <div className="flex flex-col lg:flex-row">
                 <Section title="Select Program Levels">
                     <img
                         src={program_tree}
