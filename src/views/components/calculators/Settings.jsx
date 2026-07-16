@@ -1,21 +1,22 @@
 import icon from '../../../assets/images/calculators/hackers/explain.jpg';
 import Tooltip from './Tooltip';
-import { useState, useRef, useEffect } from 'react';
+import { useState } from 'react';
 
 export default function Settings({ data, onChange }) {
     const [tooltip, setTooltip] = useState(null);
-    console.log(data)
+    console.log(data);
     return (
-        <form className="flex gap-1">
+        <form className="flex gap-1 **:flex! **:gap-1!">
             <Tooltip spec={tooltip} />
             {data.map((input) => {
                 return (
-                    <div key={input.name} className="flex gap-1">
-                        <label htmlFor={input.name} className="flex gap-1">
-                            <p>{input.name}</p>
+                    <div key={input.name}>
+                        <label htmlFor={input.name}>
+                            <p className="shrink-0">{input.name}</p>
                             <img
                                 src={icon}
                                 alt="explain"
+                                className="h-6 w-6 shrink-0"
                                 onMouseEnter={(e) =>
                                     setTooltip({
                                         text: input.explain,
@@ -37,7 +38,7 @@ export default function Settings({ data, onChange }) {
                                     value: e.target.value,
                                 })
                             }
-                            className="w-20 rounded-md outline-hidden px-1"
+                            className="w-20 h-6 rounded-md outline-hidden bg-text-background px-1"
                         ></input>
                     </div>
                 );

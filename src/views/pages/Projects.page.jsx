@@ -28,7 +28,6 @@ export default function Projects() {
                     <Heading>
                         <a
                             href={project.link}
-                            className="text-blue-600 visited:text-purple-600 hover:underline hover:text-blue-800"
                         >
                             {project.name}
                         </a>

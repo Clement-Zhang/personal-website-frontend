@@ -52,5 +52,5 @@ export default function Hackers() {
             () => 0,
         );
     }, [settingsData]);
-    return <h1 className="text-8xl">Hackers</h1>;
+    return <h1 className="text-8xl!">Hackers</h1>;
 }
