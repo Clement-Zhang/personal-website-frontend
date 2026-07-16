@@ -97,7 +97,7 @@ export default function Chatbot({
                             ref={textInputRef}
                             value={inputData.text}
                             placeholder={config.inputs.text}
-                            className="bg-text-background! w-full outline-hidden resize-none overflow-y-auto overflow-x-hidden px-3 py-2 min-h-4"
+                            className="bg-text-background! w-full outline-hidden resize-none! overflow-y-auto overflow-x-hidden px-3 py-2 min-h-4"
                             rows={1}
                             onChange={(e) => {
                                 setInputData((prev) => ({
