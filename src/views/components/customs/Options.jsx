@@ -30,7 +30,7 @@ export const OptionsProvider = ({ children }) => {
                         animate={{ x: 0 }}
                         transition={{ duration: 0.3 }}
                         className={
-                            'absolute top-0 w-full h-full bg-black rounded-3xl p-4 z-49'
+                            'absolute top-0 w-full h-screen bg-black rounded-3xl p-4 z-49'
                         }
                     >
                         {form}
