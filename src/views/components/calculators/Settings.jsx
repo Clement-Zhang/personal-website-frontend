@@ -38,7 +38,7 @@ export default function Settings({ data, onChange }) {
                                     value: e.target.value,
                                 })
                             }
-                            className="w-20 rounded-md outline-hidden bg-text-background px-1"
+                            className="w-20 h-6 rounded-md outline-hidden bg-text-background px-1"
                         ></input>
                     </div>
                 );
