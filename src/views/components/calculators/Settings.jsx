@@ -16,6 +16,7 @@ export default function Settings({ data, onChange }) {
                             <img
                                 src={icon}
                                 alt="explain"
+                                className="shrink-0 grow-0"
                                 onMouseEnter={(e) =>
                                     setTooltip({
                                         text: input.explain,
