@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 export default function Navbar() {
     return (
-        <nav className="flex sticky top-0 justify-center *:text-xl bg-black h-12">
+        <nav className="flex sticky top-0 justify-center *:text-xl bg-black h-15 sm:h-12">
             {tabs.map((tab) => (
                 <Link
                     to={tab.path}
