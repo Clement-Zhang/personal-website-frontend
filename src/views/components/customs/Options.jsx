@@ -1,4 +1,4 @@
-import icon from '@/assets/images/calculators/options_l.jpg';
+import icon from '@/assets/images/calculators/optionsL.jpg';
 import { createContext, useContext, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -30,7 +30,7 @@ export const OptionsProvider = ({ children }) => {
                         animate={{ x: 0 }}
                         transition={{ duration: 0.3 }}
                         className={
-                            'absolute max-[425px]:fixed top-0 max-[425px]:left-0 max-[425px]:w-screen w-full h-screen overflow-y-auto bg-black rounded-3xl p-4 z-49 flex flex-col items-center'
+                            'absolute top-0 max-[425px]:w-screen w-full h-screen overflow-y-auto bg-black rounded-3xl p-4 z-49 flex flex-col items-center'
                         }
                     >
                         {form}
