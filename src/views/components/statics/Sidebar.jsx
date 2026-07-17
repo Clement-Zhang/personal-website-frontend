@@ -16,7 +16,7 @@ export default function Sidebar() {
                     <img
                         src={icon}
                         alt="extend sidebar"
-                        className="relative right-0 cursor-pointer"
+                        className="relative w-6 h-6 right-0 cursor-pointer"
                         onClick={toggleExtend}
                     ></img>
                     {tabs.map((tab) => (
