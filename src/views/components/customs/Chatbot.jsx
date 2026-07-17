@@ -1,7 +1,7 @@
-import send from '../../../assets/images/send.jpg';
-import { stream } from '../../../services/socket.service';
+import send from '@/assets/images/send.jpg';
+import { stream } from '@/services/socket.service';
 import LoadBackend from '../layouts/LoadBackend';
-import { defaults } from '../../../configs/chatbots/dating.config';
+import { defaults } from '@/configs/chatbots/dating.config';
 import { useState, useRef, useEffect } from 'react';
 
 export default function Chatbot({

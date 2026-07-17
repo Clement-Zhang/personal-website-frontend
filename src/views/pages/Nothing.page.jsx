@@ -1,4 +1,4 @@
-import img from '../../assets/images/underConstruction.jpg';
+import img from '@/assets/images/underConstruction.jpg';
 
 export default function Nothing() {
     return (

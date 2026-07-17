@@ -1,4 +1,4 @@
-import icon from '../../../assets/images/calculators/hackers/explain.jpg';
+import icon from '@/assets/images/calculators/hackers/explain.jpg';
 import Tooltip from './Tooltip';
 import { useState } from 'react';
 

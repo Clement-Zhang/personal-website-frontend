@@ -1,11 +1,11 @@
 import {
     settings,
     programs,
-} from '../../../configs/calculators/hackers.config';
+} from '@/configs/calculators/hackers.config';
 import { useOptions } from '../../components/customs/Options';
 import Section from '../../components/customs/Section';
 import Settings from '../../components/calculators/Settings';
-import program_tree from '../../../assets/images/calculators/hackers/program tree.jpg';
+import program_tree from '@/assets/images/calculators/hackers/program tree.jpg';
 import { useState, useEffect } from 'react';
 
 export default function Hackers() {

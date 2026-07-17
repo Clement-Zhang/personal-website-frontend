@@ -1,5 +1,5 @@
 import Chatbot from '../components/customs/Chatbot';
-import { dating } from '../../configs/chatbots/dating.config';
+import { dating } from '@/configs/chatbots/dating.config';
 
 export default function Dating() {
     return (
