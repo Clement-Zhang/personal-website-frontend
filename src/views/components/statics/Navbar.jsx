@@ -1,4 +1,4 @@
-import tabs from '@/configs/websiteTabs.config.js';
+import tabs from '@/configs/tabs/website.config';
 import { Link } from 'react-router-dom';
 
 export default function Navbar() {

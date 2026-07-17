@@ -1,4 +1,4 @@
-import tabs from '@/configs/calculatorTabs';
+import tabs from '@/configs/tabs/calculators.config';
 import { Link } from 'react-router-dom';
 
 export default function Sidebar() {
