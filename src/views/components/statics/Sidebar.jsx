@@ -12,7 +12,7 @@ export default function Sidebar() {
     return (
         <>
             <div className="md:hidden">
-                <nav className="flex flex-col top-0 bg-gray-700 w-12 min-h-screen">
+                <nav className="flex flex-col top-0 bg-gray-700 w-12 min-h-screen items-center">
                     <img
                         src={icon}
                         alt="extend sidebar"
