@@ -33,7 +33,7 @@ export default function Sidebar() {
                 <img
                     src={icon}
                     alt="sidebar"
-                    className="z-50"
+                    className="m-4 z-50"
                     onClick={toggleSidebar}
                 ></img>
             </div>
