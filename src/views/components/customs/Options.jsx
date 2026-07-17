@@ -30,12 +30,12 @@ export const OptionsProvider = ({ children }) => {
                         animate={{ x: 0 }}
                         transition={{ duration: 0.3 }}
                         className={
-                            'absolute top-0 w-full h-screen bg-black rounded-3xl p-4 z-49'
+                            'absolute top-0 w-full h-screen bg-black rounded-3xl p-4 z-49 flex flex-col'
                         }
                     >
                         {form}
                         <button
-                            className="absolute bottom-0 left-1/2 m-4 w-12 bg-text-background text-black rounded-md!"
+                            className="left-1/2 m-4 w-12 bg-text-background text-black rounded-md!"
                             onClick={() => {
                                 apply();
                                 toggleOptions();
