@@ -14,19 +14,19 @@ export const settings = [
     },
 ];
 
-export const programs = [
-    'beam',
-    'ice wall',
-    'shuriken',
-    'data leech',
-    'protector',
-    'blaster',
-    'worm',
-    'shocker',
-    'battering ram',
-    'kraken',
-    'maniac',
-    'access',
-    'wraith',
-    'portal',
-];
+export const programs = {
+    beam: [0, 0],
+    'ice wall': [0, 0],
+    shuriken: [0, 0],
+    'data leech': [0, 0],
+    protector: [0, 0],
+    blaster: [0, 0],
+    worm: [0, 0],
+    shocker: [0, 0],
+    'battering ram': [0, 0],
+    kraken: [0, 0],
+    maniac: [0, 0],
+    access: [0, 0],
+    wraith: [0, 0],
+    portal: [0, 0],
+};

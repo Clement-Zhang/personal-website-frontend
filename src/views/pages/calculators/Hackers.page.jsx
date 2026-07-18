@@ -21,7 +21,7 @@ export default function Hackers() {
     );
     const [programsData, setProgramsData] = useState(
         programs.reduce((acc, program) => {
-            acc[program] = 1;
+            acc[program] = 0;
             return acc;
         }, {}),
     );
