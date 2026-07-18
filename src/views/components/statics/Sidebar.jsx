@@ -14,7 +14,7 @@ export default function Sidebar() {
         <AnimatePresence>
             {
                 <motion.nav
-                    layout
+                    // layout
                     transition={transition}
                     className={
                         'flex flex-col top-0 bg-gray-700 min-h-screen ' +
@@ -32,7 +32,7 @@ export default function Sidebar() {
                             <div className="grid">
                                 <motion.img
                                     src={tab.icon}
-                                    layout
+                                    // layout
                                     animate={{
                                         opacity: extend ? 1 : 0,
                                     }}
@@ -41,7 +41,7 @@ export default function Sidebar() {
                                 ></motion.img>
                                 <motion.img
                                     src={tab.iconAlt}
-                                    layout
+                                    // layout
                                     animate={{
                                         opacity: extend ? 0 : 1,
                                     }}
