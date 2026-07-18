@@ -22,7 +22,7 @@ export default function Characters({ img, characters, inputs, onChange }) {
                         left: inputs[program][0]+"%",
                         top: inputs[program][1]+"%",
                     }}
-                    className="absolute"
+                    className="absolute w-6 outline-hidden bg-text-background text-right"
                 ></input>
             ))}
         </div>
