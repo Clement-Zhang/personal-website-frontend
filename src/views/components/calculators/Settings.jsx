@@ -5,7 +5,7 @@ import { useState } from 'react';
 export default function Settings({ settings, onChange }) {
     const [tooltip, setTooltip] = useState(null);
     return (
-        <form className="flex flex-col xl:flex-row gap-1 **:flex! **:gap-1!">
+        <div className="flex flex-col xl:flex-row gap-1 **:flex! **:gap-1!">
             <Tooltip spec={tooltip} />
             {settings.map((input) => (
                 <div key={input.name}>
@@ -40,6 +40,6 @@ export default function Settings({ settings, onChange }) {
                     ></input>
                 </div>
             ))}
-        </form>
+        </div>
     );
 }

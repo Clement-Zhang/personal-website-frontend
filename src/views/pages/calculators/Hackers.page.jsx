@@ -1,8 +1,9 @@
 import { settings, programs } from '@/configs/calculators/hackers.config';
+import program_tree from '@/assets/images/calculators/hackers/program tree.jpg';
 import { useOptions } from '../../components/customs/Options';
 import Section from '../../components/customs/Section';
 import Settings from '../../components/calculators/Settings';
-import program_tree from '@/assets/images/calculators/hackers/program tree.jpg';
+import Characters from '../../components/calculators/Characters';
 import { useState, useEffect } from 'react';
 
 export default function Hackers() {
@@ -27,11 +28,17 @@ export default function Hackers() {
         setOptions(
             <div className="flex flex-col lg:flex-row">
                 <Section title="Select Program Levels">
-                    <img
-                        src={program_tree}
-                        className="max-w-full flex justify-center"
-                        alt="program tree"
-                    ></img>
+                    <Characters
+                        img={{ src: program_tree, alt: 'program_tree' }}
+                        characters={programsData}
+                        inputs={programs}
+                        onChange={(input) =>
+                            setProgramsData((prev) => ({
+                                ...prev,
+                                [input.name]: input.value,
+                            }))
+                        }
+                    />
                 </Section>
                 <Section title="Settings">
                     <Settings
