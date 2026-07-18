@@ -40,7 +40,7 @@ export default function Sidebar() {
                                     src={tab.icon}
                                     animate={{
                                         opacity: extend ? 1 : 0,
-                                        width: extend ? 24 : 0,
+                                        width: extend ? 256 : 0,
                                     }}
                                     className="absolute h-12"
                                     transition={{ duration: 0.3 }}
@@ -49,7 +49,7 @@ export default function Sidebar() {
                                     src={tab.iconAlt}
                                     animate={{
                                         opacity: extend ? 0 : 1,
-                                        width: extend ? 0 : 24,
+                                        width: extend ? 0 : 48,
                                     }}
                                     className="absolute h-12"
                                     transition={{ duration: 0.3 }}
