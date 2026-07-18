@@ -21,18 +21,12 @@ export default function Sidebar() {
                         (extend ? 'w-64' : 'w-12')
                     }
                 >
-                    <motion.img
+                    <img
                         src={icon}
                         alt="extend sidebar"
-                        transition={transition}
-                        animate={{
-                            'align-self': extend ? 'flex-start' : 'center',
-                        }}
-                        className={
-                            'relative w-6 h-6 m-2 cursor-pointer md:hidden'
-                        }
+                        className="relative w-6 h-6 m-2 left-0 cursor-pointer md:hidden"
                         onClick={toggleExtend}
-                    ></motion.img>
+                    ></img>
                     {tabs.map((tab) => (
                         <Link to={tab.path} key={tab.path}>
                             <div className="relative">
