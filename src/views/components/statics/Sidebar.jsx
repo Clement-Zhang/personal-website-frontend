@@ -36,7 +36,7 @@ export default function Sidebar() {
                                         opacity: extend ? 1 : 0,
                                         width: extend ? 256 : 48,
                                     }}
-                                    className="absolute h-12"
+                                    className="absolute"
                                     transition={transition}
                                 ></motion.img>
                                 <motion.img
