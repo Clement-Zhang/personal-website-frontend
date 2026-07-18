@@ -1,7 +1,4 @@
-import {
-    settings,
-    programs,
-} from '@/configs/calculators/hackers.config';
+import { settings, programs } from '@/configs/calculators/hackers.config';
 import { useOptions } from '../../components/customs/Options';
 import Section from '../../components/customs/Section';
 import Settings from '../../components/calculators/Settings';
@@ -21,7 +18,7 @@ export default function Hackers() {
     );
     const [programsData, setProgramsData] = useState(
         programs.reduce((acc, program) => {
-            acc[program] = 0;
+            acc[Object.keys(program)[0]] = 0;
             return acc;
         }, {}),
     );
