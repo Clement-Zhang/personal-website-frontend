@@ -30,7 +30,7 @@ export const OptionsProvider = ({ children }) => {
                         exit={{ width: 0 }}
                         animate={{ width: '100%' }}
                         transition={{ duration: 0.3 }}
-                        className="absolute inset-0 overflow-y-auto bg-black rounded-3xl p-4 z-49 flex flex-col items-center"
+                        className="absolute top-0 right-0 h-screen overflow-y-auto bg-black rounded-3xl p-4 z-49 flex flex-col items-center"
                     >
                         {form}
                         <button
