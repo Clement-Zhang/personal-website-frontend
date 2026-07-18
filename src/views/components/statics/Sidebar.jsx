@@ -16,14 +16,17 @@ export default function Sidebar() {
                     animate={{ width: extend ? 256 : 48 }}
                     transition={{ duration: 0.3 }}
                     className={
-                        'flex flex-col top-0 bg-gray-700 min-h-screen items-center ' +
+                        'flex flex-col top-0 bg-gray-700 min-h-screen ' +
                         (extend ? 'w-64' : 'w-12')
                     }
                 >
                     <img
                         src={icon}
                         alt="extend sidebar"
-                        className="relative w-6 h-6 m-2 cursor-pointer md:hidden"
+                        className={
+                            'relative w-6 h-6 m-2 cursor-pointer md:hidden ' +
+                            (extend ? 'self-start' : 'self-center')
+                        }
                         onClick={toggleExtend}
                     ></img>
                     {tabs.map((tab) => (
