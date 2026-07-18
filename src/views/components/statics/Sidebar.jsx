@@ -32,7 +32,7 @@ export default function Sidebar() {
                     {tabs.map((tab) => (
                         <Link to={tab.path} key={tab.path}>
                             <motion.div
-                                className="relative h-6"
+                                className="relative h-12"
                                 animate={{ width: extend ? 256 : 48 }}
                                 transition={{ duration: 0.3 }}
                             >
