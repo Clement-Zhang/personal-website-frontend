@@ -11,7 +11,7 @@ export default function Sidebar() {
     }
     return (
         <AnimatePresence>
-            {extend && (
+            {
                 <motion.div
                     animate={{ width: extend ? 256 : 48 }}
                     transition={{ duration: 0.3 }}
@@ -32,7 +32,7 @@ export default function Sidebar() {
                         ))}
                     </nav>
                 </motion.div>
-            )}
+            }
         </AnimatePresence>
     );
 }
