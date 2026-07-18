@@ -14,7 +14,7 @@ export default function Sidebar() {
         <AnimatePresence>
             {
                 <motion.nav
-                    animate={{ width: extend ? 256 : 48 }}
+                    layout
                     transition={transition}
                     className={
                         'flex flex-col top-0 bg-gray-700 min-h-screen ' +
@@ -29,23 +29,23 @@ export default function Sidebar() {
                     ></img>
                     {tabs.map((tab) => (
                         <Link to={tab.path} key={tab.path}>
-                            <div className="relative">
+                            <div className="grid">
                                 <motion.img
                                     src={tab.icon}
+                                    layout
                                     animate={{
                                         opacity: extend ? 1 : 0,
-                                        width: extend ? 256 : 48,
                                     }}
-                                    className="absolute"
+                                    className="col-start-1 row-start-1 w-full"
                                     transition={transition}
                                 ></motion.img>
                                 <motion.img
                                     src={tab.iconAlt}
+                                    layout
                                     animate={{
                                         opacity: extend ? 0 : 1,
-                                        width: extend ? 256 : 48,
                                     }}
-                                    className="absolute h-12"
+                                    className="col-start-1 row-start-1 w-full"
                                     transition={transition}
                                 ></motion.img>
                             </div>
