@@ -1,5 +1,6 @@
 import tabs from '@/configs/tabs/calculators.config';
 import icon from '@/assets/images/calculators/optionsS.jpg';
+import transition from '@/configs/animations.config';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -14,21 +15,24 @@ export default function Sidebar() {
             {
                 <motion.nav
                     animate={{ width: extend ? 256 : 48 }}
-                    transition={{ duration: 0.3 }}
+                    transition={transition}
                     className={
                         'flex flex-col top-0 bg-gray-700 min-h-screen ' +
                         (extend ? 'w-64' : 'w-12')
                     }
                 >
-                    <img
+                    <motion.img
                         src={icon}
                         alt="extend sidebar"
+                        transition={transition}
+                        animate={{
+                            'align-self': extend ? 'flex-start' : 'center',
+                        }}
                         className={
-                            'relative w-6 h-6 m-2 cursor-pointer md:hidden ' +
-                            (extend ? 'self-start' : 'self-center')
+                            'relative w-6 h-6 m-2 cursor-pointer md:hidden'
                         }
                         onClick={toggleExtend}
-                    ></img>
+                    ></motion.img>
                     {tabs.map((tab) => (
                         <Link to={tab.path} key={tab.path}>
                             <div className="relative">
@@ -39,7 +43,7 @@ export default function Sidebar() {
                                         width: extend ? 256 : 48,
                                     }}
                                     className="absolute h-12"
-                                    transition={{ duration: 0.3 }}
+                                    transition={transition}
                                 ></motion.img>
                                 <motion.img
                                     src={tab.iconAlt}
@@ -48,7 +52,7 @@ export default function Sidebar() {
                                         width: extend ? 256 : 48,
                                     }}
                                     className="absolute h-12"
-                                    transition={{ duration: 0.3 }}
+                                    transition={transition}
                                 ></motion.img>
                             </div>
                         </Link>
