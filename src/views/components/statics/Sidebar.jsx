@@ -31,16 +31,12 @@ export default function Sidebar() {
                     ></img>
                     {tabs.map((tab) => (
                         <Link to={tab.path} key={tab.path}>
-                            <motion.div
-                                className="relative"
-                                animate={{ width: extend ? 256 : 48 }}
-                                transition={{ duration: 0.3 }}
-                            >
+                            <div className="relative">
                                 <motion.img
                                     src={tab.icon}
                                     animate={{
                                         opacity: extend ? 1 : 0,
-                                        width: extend ? 256 : 0,
+                                        width: extend ? 256 : 48,
                                     }}
                                     className="absolute h-12"
                                     transition={{ duration: 0.3 }}
@@ -49,12 +45,12 @@ export default function Sidebar() {
                                     src={tab.iconAlt}
                                     animate={{
                                         opacity: extend ? 0 : 1,
-                                        width: extend ? 0 : 48,
+                                        width: extend ? 256 : 48,
                                     }}
                                     className="absolute h-12"
                                     transition={{ duration: 0.3 }}
                                 ></motion.img>
-                            </motion.div>
+                            </div>
                         </Link>
                     ))}
                 </motion.nav>
