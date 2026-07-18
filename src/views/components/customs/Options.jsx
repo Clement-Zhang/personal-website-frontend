@@ -1,4 +1,5 @@
 import icon from '@/assets/images/calculators/optionsL.jpg';
+import { transition } from '@/configs/animations.config';
 import { createContext, useContext, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -25,12 +26,11 @@ export const OptionsProvider = ({ children }) => {
             <AnimatePresence>
                 {open && (
                     <motion.div
-                        key="options"
-                        initial={{ x: '100vw' }}
-                        exit={{ x: '100vw' }}
+                        initial={{ x: '100%' }}
+                        exit={{ x: '100%' }}
                         animate={{ x: 0 }}
-                        transition={{ duration: 0.3 }}
-                        className="absolute top-0 w-full h-screen overflow-y-auto overflow-x-hidden bg-black rounded-3xl p-4 z-49 flex flex-col items-center"
+                        transition={transition}
+                        className="absolute inset-0 w-full h-screen overflow-y-auto overflow-x-hidden bg-black rounded-3xl p-4 z-49 flex flex-col items-center"
                     >
                         {form}
                         <button
