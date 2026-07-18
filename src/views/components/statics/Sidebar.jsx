@@ -31,10 +31,20 @@ export default function Sidebar() {
                     ></img>
                     {tabs.map((tab) => (
                         <Link to={tab.path} key={tab.path}>
-                            <motion.img
-                                src={extend ? tab.icon : tab.iconAlt}
-                                transition={{ duration: 0.3 }}
-                            ></motion.img>
+                            <div classname="relative">
+                                <motion.img
+                                    src={tab.icon}
+                                    animate={{ opacity: extend ? 1 : 0 }}
+                                    className="absolute"
+                                    transition={{ duration: 0.3 }}
+                                ></motion.img>
+                                <motion.img
+                                    src={tab.iconAlt}
+                                    animate={{ opacity: extend ? 0 : 1 }}
+                                    className="absolute"
+                                    transition={{ duration: 0.3 }}
+                                ></motion.img>
+                            </div>
                         </Link>
                     ))}
                 </motion.nav>
