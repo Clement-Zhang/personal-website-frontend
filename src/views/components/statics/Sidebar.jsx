@@ -12,26 +12,26 @@ export default function Sidebar() {
     return (
         <AnimatePresence>
             {
-                <motion.div
+                <motion.nav
                     animate={{ width: extend ? 256 : 48 }}
                     transition={{ duration: 0.3 }}
+                    className={
+                        'flex flex-col top-0 bg-gray-700 min-h-screen items-center ' +
+                        (extend ? 'w-64' : 'w-12')
+                    }
                 >
-                    <nav className="flex flex-col top-0 bg-gray-700 w-12 md:w-64 min-h-screen items-center">
-                        <img
-                            src={icon}
-                            alt="extend sidebar"
-                            className="relative w-6 h-6 m-2 cursor-pointer md:hidden"
-                            onClick={toggleExtend}
-                        ></img>
-                        {tabs.map((tab) => (
-                            <Link to={tab.path} key={tab.path}>
-                                <img
-                                    src={extend ? tab.icon : tab.iconAlt}
-                                ></img>
-                            </Link>
-                        ))}
-                    </nav>
-                </motion.div>
+                    <img
+                        src={icon}
+                        alt="extend sidebar"
+                        className="relative w-6 h-6 m-2 cursor-pointer md:hidden"
+                        onClick={toggleExtend}
+                    ></img>
+                    {tabs.map((tab) => (
+                        <Link to={tab.path} key={tab.path}>
+                            <img src={extend ? tab.icon : tab.iconAlt}></img>
+                        </Link>
+                    ))}
+                </motion.nav>
             }
         </AnimatePresence>
     );
