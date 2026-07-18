@@ -31,7 +31,7 @@ export default function Sidebar() {
                     ></img>
                     {tabs.map((tab) => (
                         <Link to={tab.path} key={tab.path}>
-                            <div classname="relative">
+                            <div className="relative">
                                 <motion.img
                                     src={tab.icon}
                                     animate={{ opacity: extend ? 1 : 0 }}
@@ -41,7 +41,7 @@ export default function Sidebar() {
                                 <motion.img
                                     src={tab.iconAlt}
                                     animate={{ opacity: extend ? 0 : 1 }}
-                                    className="absolute w-12"
+                                    className="absolute"
                                     transition={{ duration: 0.3 }}
                                 ></motion.img>
                             </div>
