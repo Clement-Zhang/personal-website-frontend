@@ -4,7 +4,6 @@ import { useState } from 'react';
 
 export default function Settings({ data, onChange }) {
     const [tooltip, setTooltip] = useState(null);
-    console.log(data);
     return (
         <form className="flex flex-col xl:flex-row gap-1 **:flex! **:gap-1!">
             <Tooltip spec={tooltip} />
