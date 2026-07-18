@@ -41,7 +41,7 @@ export default function Sidebar() {
                                 <motion.img
                                     src={tab.iconAlt}
                                     animate={{ opacity: extend ? 0 : 1 }}
-                                    className="absolute"
+                                    className="absolute w-48"
                                     transition={{ duration: 0.3 }}
                                 ></motion.img>
                             </div>
