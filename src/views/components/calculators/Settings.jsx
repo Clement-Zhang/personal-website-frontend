@@ -2,12 +2,12 @@ import icon from '@/assets/images/calculators/hackers/explain.jpg';
 import Tooltip from './Tooltip';
 import { useState } from 'react';
 
-export default function Settings({ data, onChange }) {
+export default function Settings({ settings, onChange }) {
     const [tooltip, setTooltip] = useState(null);
     return (
         <form className="flex flex-col xl:flex-row gap-1 **:flex! **:gap-1!">
             <Tooltip spec={tooltip} />
-            {data.map((input) => (
+            {settings.map((input) => (
                 <div key={input.name}>
                     <label htmlFor={input.name}>
                         <p className="shrink-0">{input.name}</p>

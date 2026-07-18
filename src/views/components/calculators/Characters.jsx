@@ -1,3 +1,1 @@
-export default function Characters({ data, onChange }) {
-    
-}
+export default function Characters({ characters, levels, onChange }) {}

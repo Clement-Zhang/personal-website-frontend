@@ -35,7 +35,7 @@ export default function Hackers() {
                 </Section>
                 <Section title="Settings">
                     <Settings
-                        data={settingsData}
+                        settings={settingsData}
                         onChange={(input) => {
                             let setting = settingsData.find(
                                 (setting) => setting.name == input.name,
