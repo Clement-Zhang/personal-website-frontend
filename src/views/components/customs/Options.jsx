@@ -26,11 +26,11 @@ export const OptionsProvider = ({ children }) => {
             <AnimatePresence>
                 {open && (
                     <motion.div
-                        initial={{ width: 0 }}
-                        exit={{ width: 0 }}
-                        animate={{ width: '100%' }}
+                        initial={{ x: '100%' }}
+                        animate={{ x: 0 }}
+                        exit={{ x: '100%' }}
                         transition={{ duration: 0.3 }}
-                        className="absolute top-0 h-screen overflow-y-auto bg-black rounded-3xl p-4 z-49 flex flex-col items-center"
+                        className="absolute top-0 w-full h-screen overflow-y-auto bg-black rounded-3xl p-4 z-49 flex flex-col items-center"
                     >
                         {form}
                         <button
