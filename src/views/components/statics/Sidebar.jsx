@@ -1,6 +1,6 @@
 import tabs from '@/configs/tabs/calculators.config';
 import icon from '@/assets/images/calculators/optionsS.jpg';
-import transition from '@/configs/animations.config';
+import { transition } from '@/configs/animations.config';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
