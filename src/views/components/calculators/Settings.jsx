@@ -23,7 +23,7 @@ export default function Settings({ settings, onChange }) {
                                 })
                             }
                             onMouseLeave={() => setTooltip(null)}
-                        ></img>
+                        />
                     </label>
                     <input
                         value={input.value}
@@ -37,7 +37,7 @@ export default function Settings({ settings, onChange }) {
                             })
                         }
                         className="w-20 h-6 rounded-md outline-hidden bg-text-background px-1"
-                    ></input>
+                    />
                 </div>
             ))}
         </div>

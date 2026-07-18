@@ -1,11 +1,25 @@
 export default function Characters({ img, characters, inputs, onChange }) {
     return (
         <div className="relative">
+            <div
+                className="absolute inset-0 cursor-crosshair"
+                onClick={(e) => {
+                    const rect = e.currentTarget.getBoundingClientRect();
+
+                    const x = ((e.clientX - rect.left) / rect.width) * 100;
+                    const y = ((e.clientY - rect.top) / rect.height) * 100;
+
+                    console.log({
+                        x: x.toFixed(2),
+                        y: y.toFixed(2),
+                    });
+                }}
+            />
             <img
                 src={img.src}
                 className="w-full flex justify-center"
                 alt={img.alt}
-            ></img>
+            />
             {Object.keys(inputs).map((program) => (
                 <input
                     value={characters[program]}
@@ -19,11 +33,11 @@ export default function Characters({ img, characters, inputs, onChange }) {
                         })
                     }
                     style={{
-                        left: inputs[program][0]+"%",
-                        top: inputs[program][1]+"%",
+                        left: inputs[program][0] + '%',
+                        top: inputs[program][1] + '%',
                     }}
                     className="absolute w-6 outline-hidden text-right"
-                ></input>
+                />
             ))}
         </div>
     );
