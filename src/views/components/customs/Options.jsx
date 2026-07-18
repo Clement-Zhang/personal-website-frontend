@@ -29,9 +29,8 @@ export const OptionsProvider = ({ children }) => {
                         initial={{ x: '100%' }}
                         exit={{ x: '100%' }}
                         animate={{ x: 0 }}
-                        transition={transition}
-                        className="absolute inset-0 w-full h-screen overflow-y-auto overflow-x-hidden bg-black rounded-3xl p-4 z-49 flex flex-col items-center"
-                        style={{ willChange: 'transform' }}
+                        transition={{ duration: 0.3 }}
+                        className="absolute top-0 w-full h-screen overflow-y-auto bg-black rounded-3xl p-4 z-49 flex flex-col items-center"
                     >
                         {form}
                         <button
