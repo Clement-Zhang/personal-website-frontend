@@ -29,7 +29,7 @@ export default function Hackers() {
                 <Section title="Select Program Levels">
                     <img
                         src={program_tree}
-                        className="w-10/12 flex justify-center"
+                        className="max-h-full flex justify-center"
                         alt="program tree"
                     ></img>
                 </Section>
