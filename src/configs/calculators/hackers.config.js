@@ -25,7 +25,7 @@ export const programs = {
     shocker: 'left-[27.37%] top-[65.09%]',
     'battering ram': 'left-[51.64%] top-[64.81%]',
     kraken: 'left-[71.09%] top-[64.81%]',
-    maniac: 'left-[39.68%] top-[86.43%]',
+    maniac: 'left-[39.68%] top-[86.29%]',
     access: 'left-[90%] top-[36.19%]',
     wraith: 'left-[90%] top-[56.99%]',
     portal: 'left-[90%] top-[77.79%]',
