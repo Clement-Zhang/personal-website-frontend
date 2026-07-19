@@ -15,7 +15,7 @@ export const settings = [
 ];
 
 export const programs = {
-    beam: 'left-[52.17%] top-[3.65%]',
+    beam: 'left-[52.17%] top-[3.3%]',
     'ice wall': 'left-[13.82%] top-[23.36%]',
     shuriken: 'left-[38.97%] top-[23.36%]',
     'data leech': 'left-[65.2%] top-[23.36%]',
