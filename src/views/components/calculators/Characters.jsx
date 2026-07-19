@@ -1,28 +1,24 @@
 export default function Characters({ img, characters, inputs, onChange }) {
     return (
         <div className="relative">
-            <img
-                src={img.src}
-                className="w-full"
-                alt={img.alt}
-            />
+            <img src={img.src} className="w-full" alt={img.alt} />
             {Object.keys(inputs).map((program) => (
                 <input
+                    key={program}
                     value={characters[program]}
                     type="number"
                     step="1"
                     min="0"
                     onChange={(e) =>
                         onChange({
-                            name: input.name,
+                            name: program,
                             value: e.target.value,
                         })
                     }
-                    style={{
-                        left: inputs[program][0] + '%',
-                        top: inputs[program][1] + '%',
-                    }}
-                    className="absolute w-6 outline-hidden text-right"
+                    className={
+                        'absolute w-6 outline-hidden text-right ' +
+                        inputs[program]
+                    }
                 />
             ))}
         </div>
