@@ -1,23 +1,9 @@
 export default function Characters({ img, characters, inputs, onChange }) {
     return (
         <div className="relative">
-            <div
-                className="absolute inset-0 cursor-crosshair"
-                onClick={(e) => {
-                    const rect = e.currentTarget.getBoundingClientRect();
-
-                    const x = ((e.clientX - rect.left) / rect.width) * 100;
-                    const y = ((e.clientY - rect.top) / rect.height) * 100;
-
-                    console.log({
-                        x: x.toFixed(2),
-                        y: y.toFixed(2),
-                    });
-                }}
-            />
             <img
                 src={img.src}
-                className="w-full flex justify-center"
+                className="w-full"
                 alt={img.alt}
             />
             {Object.keys(inputs).map((program) => (
