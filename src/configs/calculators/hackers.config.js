@@ -18,7 +18,7 @@ export const programs = {
     beam: 'left-[53.43%] top-[3.37%] w-[4.41%] h-[2.82%]',
     'ice wall': 'left-[14.97%] top-[23.15%] w-[4.41%] h-[2.82%]',
     shuriken: 'left-[40.14%] top-[23.15%] w-[4.41%] h-[2.82%]',
-    'data leech': 'left-[66.3%] top-[23.14%] w-[4.41%] h-[2.69%]',
+    'data leech': 'left-[66.3%] top-[23.14%] w-[4.32%] h-[2.69%]',
     protector: 'left-[14.81%] top-[43.27%] w-[4.41%] h-[2.82%]',
     blaster: 'left-[40.3%] top-[43.27%] w-[4.41%] h-[2.82%]',
     worm: 'left-[66.37%] top-[43.41%] w-[4.41%] h-[2.82%]',
