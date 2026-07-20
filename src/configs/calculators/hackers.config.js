@@ -18,7 +18,7 @@ export const programs = {
     beam: 'left-[53.52%] top-[3.37%] w-[4.01%] h-[2.82%]',
     'ice wall': 'left-[15.17%] top-[23.15%] w-[4.01%] h-[2.82%]',
     shuriken: 'left-[40.14%] top-[23.15%] w-[4.01%] h-[2.82%]',
-    'data leech': 'left-[66.1%] top-[23.01%] w-[4.01%] h-[2.82%]',
+    'data leech': 'left-[66.3%] top-[23.01%] w-[4.01%] h-[2.82%]',
     protector: 'left-[14.81%] top-[43.14%] w-[4.01%] h-[2.82%]',
     blaster: 'left-[40.5%] top-[43.14%] w-[4.01%] h-[2.82%]',
     worm: 'left-[66.37%] top-[43.28%] w-[4.01%] h-[2.82%]',
@@ -26,7 +26,7 @@ export const programs = {
     'battering ram': 'left-[52.81%] top-[64.95%] w-[4.01%] h-[2.82%]',
     kraken: 'left-[72.44%] top-[64.95%] w-[4.01%] h-[2.82%]',
     maniac: 'left-[40.76%] top-[86.36%] w-[4.01%] h-[2.82%]',
-    access: 'left-[90.9%] top-[36.19%] w-[4.01%] h-[2.82%]',
+    access: 'left-[91.1%] top-[36.19%] w-[4.01%] h-[2.82%]',
     wraith: 'left-[90.9%] top-[56.99%] w-[4.01%] h-[2.82%]',
     portal: 'left-[90.9%] top-[77.79%] w-[4.01%] h-[2.82%]',
 };
