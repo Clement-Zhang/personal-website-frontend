@@ -21,7 +21,7 @@ export const programs = {
     'data leech': 'left-[66.1%] top-[22.94%]',
     protector: 'left-[14.54%] top-[43.07%]',
     blaster: 'left-[40.05%] top-[43.07%]',
-    worm: 'left-[65.92%] top-[43.21%]',
+    worm: 'left-[66.37%] top-[43.21%]',
     shocker: 'left-[28.27%] top-[65.09%]',
     'battering ram': 'left-[52.54%] top-[64.81%]',
     kraken: 'left-[72.17%] top-[64.81%]',
