@@ -15,7 +15,7 @@ export const settings = [
 ];
 
 export const programs = {
-    beam: 'left-[53.07%] top-[3.3%]',
+    beam: 'left-[53.25%] top-[3.3%]',
     'ice wall': 'left-[14.72%] top-[23.08%]',
     shuriken: 'left-[39.87%] top-[23.08%]',
     'data leech': 'left-[66.1%] top-[22.94%]',
@@ -24,7 +24,7 @@ export const programs = {
     worm: 'left-[65.92%] top-[43.21%]',
     shocker: 'left-[28.27%] top-[65.09%]',
     'battering ram': 'left-[52.54%] top-[64.81%]',
-    kraken: 'left-[71.99%] top-[64.81%]',
+    kraken: 'left-[72.17%] top-[64.81%]',
     maniac: 'left-[40.58%] top-[86.29%]',
     access: 'left-[90.9%] top-[36.19%]',
     wraith: 'left-[90.9%] top-[56.99%]',
