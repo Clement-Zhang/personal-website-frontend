@@ -9,6 +9,11 @@
     --color-text-background: #35363a;
     --color-text-color: #c4cfdb;
 }
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
 
 /*
   The default border color has changed to `currentcolor` in Tailwind CSS v4,
