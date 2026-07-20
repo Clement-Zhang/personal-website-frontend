@@ -17,7 +17,7 @@ export default function Characters({ img, characters, inputs, onChange }) {
                             })
                         }
                         className={
-                            'absolute outline-hidden border text-right text-sm! xl:text-base! ' +
+                            'absolute outline-hidden border text-right text-xs! xl:text-base! ' +
                             inputs[program]
                         }
                     />
