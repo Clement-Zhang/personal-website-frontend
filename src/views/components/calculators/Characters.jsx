@@ -17,13 +17,7 @@ export default function Characters({ img, characters, inputs, onChange }) {
                             })
                         }
                         className={
-                            'absolute w-10 outline-hidden border text-right ' +
-                            inputs[program]
-                        }
-                    />
-                    <div
-                        className={
-                            'absolute h-2 w-2 rounded-full bg-red-500 ' +
+                            'absolute outline-hidden border text-right ' +
                             inputs[program]
                         }
                     />
