@@ -11,11 +11,11 @@ export const useOptions = () => {
 
 export const OptionsProvider = ({ children }) => {
     const [form, setForm] = useState(null);
-    const [apply, setApply] = useState(null);
+    const [submit, setSubmit] = useState(null);
     const [open, setOpen] = useState(false);
-    function setOptions(form, apply) {
+    function setOptions(form, submit) {
         setForm(form);
-        setApply(() => apply);
+        setSubmit(() => submit);
     }
     function toggleOptions() {
         setOpen((prev) => !prev);
@@ -30,18 +30,9 @@ export const OptionsProvider = ({ children }) => {
                         animate={{ x: 0 }}
                         exit={{ x: '100%' }}
                         transition={{ duration: 0.3 }}
-                        className="absolute top-0 w-full h-screen overflow-y-auto bg-black rounded-3xl p-4 z-49 flex flex-col items-center"
+                        className="absolute top-0 w-full h-screen overflow-y-auto bg-black rounded-3xl p-4 z-49"
                     >
                         {form}
-                        <button
-                            className="m-4 w-12 bg-text-background text-black rounded-md!"
-                            onClick={() => {
-                                apply();
-                                toggleOptions();
-                            }}
-                        >
-                            Apply
-                        </button>
                     </motion.div>
                 )}
             </AnimatePresence>
@@ -49,7 +40,10 @@ export const OptionsProvider = ({ children }) => {
                 src={icon}
                 alt="options"
                 className="absolute top-0 right-0 m-4 cursor-pointer z-50"
-                onClick={toggleOptions}
+                onClick={() => {
+                    open && submit();
+                    toggleOptions();
+                }}
             ></img>
         </OptionsContext.Provider>
     );
