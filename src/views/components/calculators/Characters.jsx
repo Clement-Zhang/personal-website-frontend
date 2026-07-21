@@ -21,13 +21,16 @@ export default function Characters({ img, characters, onChange }) {
                         const min = Number(element.min);
                         onChange({
                             name: program,
-                            value: Math.max(
-                                Math.round(
-                                    (element.value - min) / element.step,
-                                ) *
-                                    element.step +
+                            value: Math.min(
+                                Math.max(
+                                    Math.round(
+                                        (element.value - min) / element.step,
+                                    ) *
+                                        element.step +
+                                        min,
                                     min,
-                                min,
+                                ),
+                                element.max,
                             ),
                         });
                     }}
