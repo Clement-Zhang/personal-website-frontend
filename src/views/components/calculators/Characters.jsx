@@ -17,13 +17,13 @@ export default function Characters({ img, characters, onChange }) {
                         })
                     }
                     onBlur={(e) => {
-                        const input = e.target;
-                        const min = Number(input.min);
+                        const element = e.target;
+                        const min = Number(element.min);
                         onChange({
                             name: program,
                             value:
-                                Math.round((input.value - min) / input.step) *
-                                    input.step +
+                                Math.round((element.value - min) / element.step) *
+                                    element.step +
                                 min,
                         });
                     }}

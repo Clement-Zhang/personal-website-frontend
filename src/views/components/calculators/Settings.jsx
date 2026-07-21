@@ -37,24 +37,24 @@ export default function Settings({ settings, onChange }) {
                             });
                         }}
                         onBlur={(e) => {
-                            const input = e.target;
-                            const min = Number(input.min);
+                            const element = e.target;
+                            const min = Number(element.min);
                             console.log({
                                 name: input.name,
                                 value:
                                     Math.round(
-                                        (input.value - min) / input.step,
+                                        (element.value - min) / element.step,
                                     ) *
-                                        input.step +
+                                        element.step +
                                     min,
                             });
                             onChange({
-                                name: input.name,
+                                name: element.name,
                                 value:
                                     Math.round(
-                                        (input.value - min) / input.step,
+                                        (element.value - min) / element.step,
                                     ) *
-                                        input.step +
+                                        element.step +
                                     min,
                             });
                         }}
