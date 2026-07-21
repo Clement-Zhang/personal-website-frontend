@@ -49,7 +49,7 @@ export default function Settings({ settings, onChange }) {
                                     min,
                             });
                             onChange({
-                                name: element.name,
+                                name: input.name,
                                 value:
                                     Math.round(
                                         (element.value - min) / element.step,
