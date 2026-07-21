@@ -41,7 +41,7 @@ export default function Settings({ settings, onChange }) {
                             const input = e.target;
                             const min = Number(input.min);
                             onChange({
-                                name: program,
+                                name: input.name,
                                 value:
                                     Math.round(
                                         (input.value - min) / input.step,
