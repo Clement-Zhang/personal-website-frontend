@@ -47,7 +47,7 @@ export default function Settings({ settings, onChange }) {
                                 input.min;
                             console.log(
                                 input.value - input.min,
-                                input.step,
+                                (input.value - input.min) / input.step,
                                 Math.round(
                                     (input.value - input.min) / input.step,
                                 ),
