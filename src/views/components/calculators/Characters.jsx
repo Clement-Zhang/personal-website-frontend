@@ -20,7 +20,7 @@ export default function Characters({ img, characters, onChange }) {
                         const element = e.target;
                         const min = Number(element.min);
                         onChange({
-                            name: input.name,
+                            name: program,
                             value: Math.max(
                                 Math.round(
                                     (element.value - min) / element.step,
