@@ -39,7 +39,7 @@ export default function Settings({ settings, onChange }) {
                         }}
                         onBlur={(e) => {
                             const input = e.target;
-
+                            const min = Number(input.min);
                             input.value =
                                 Math.round(
                                     (input.value - input.min) / input.step,
