@@ -40,10 +40,15 @@ export default function Settings({ settings, onChange }) {
                         onBlur={(e) => {
                             const input = e.target;
                             const min = Number(input.min);
-                            input.value =
-                                Math.round((input.value - min) / input.step) *
-                                    input.step +
-                                min;
+                            onChange({
+                                name: program,
+                                value:
+                                    Math.round(
+                                        (input.value - min) / input.step,
+                                    ) *
+                                        input.step +
+                                    min,
+                            });
                         }}
                         className="w-20 h-6 rounded-md outline-hidden bg-text-background px-1"
                     />
