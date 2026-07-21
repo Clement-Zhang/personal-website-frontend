@@ -40,4 +40,4 @@ for (let program in programs) {
     programs[program] = { style: programs[program], value: 0, max: 21 };
 }
 
-programs['beam cannon'].min = 1;
+programs['beam cannon'] = { ...programs['beam cannon'], value: 1, min: 1 };
