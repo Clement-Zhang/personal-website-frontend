@@ -47,7 +47,7 @@ export default function Settings({ settings, onChange }) {
                                     ) *
                                         element.step +
                                         min,
-                                    0,
+                                    min,
                                 ),
                             });
                         }}
