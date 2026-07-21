@@ -20,11 +20,15 @@ export default function Characters({ img, characters, onChange }) {
                         const element = e.target;
                         const min = Number(element.min);
                         onChange({
-                            name: program,
-                            value:
-                                Math.round((element.value - min) / element.step) *
+                            name: input.name,
+                            value: Math.max(
+                                Math.round(
+                                    (element.value - min) / element.step,
+                                ) *
                                     element.step +
+                                    min,
                                 min,
+                            ),
                         });
                     }}
                     className={
