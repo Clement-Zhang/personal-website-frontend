@@ -14,6 +14,11 @@ export const settings = [
     },
 ];
 
+settings.forEach((setting) => {
+    setting.value = setting.default;
+    delete setting.default;
+});
+
 export const programs = {
     beam: 'left-[53.43%] top-[3.37%] w-[4.41%] h-[2.82%]',
     'ice wall': 'left-[14.97%] top-[23.15%] w-[4.41%] h-[2.82%]',
@@ -30,3 +35,7 @@ export const programs = {
     wraith: 'left-[90.9%] top-[56.99%] w-[4.41%] h-[2.69%]',
     portal: 'left-[90.9%] top-[77.79%] w-[4.41%] h-[2.82%]',
 };
+
+for (let program in programs) {
+    programs[program] = { style: programs[program], value: 0, max: 21 };
+}

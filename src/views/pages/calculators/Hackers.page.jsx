@@ -7,22 +7,8 @@ import Characters from '../../components/calculators/Characters';
 import { useState, useEffect } from 'react';
 
 export default function Hackers() {
-    const [settingsData, setSettingsData] = useState(
-        settings.reduce((acc, setting) => {
-            if (setting.default) {
-                setting.value = setting.default;
-                delete setting.default;
-            }
-            acc.push(setting);
-            return acc;
-        }, []),
-    );
-    const [programsData, setProgramsData] = useState(
-        Object.keys(programs).reduce((acc, program) => {
-            acc[program] = 0;
-            return acc;
-        }, {}),
-    );
+    const [settingsData, setSettingsData] = useState(settings);
+    const [programsData, setProgramsData] = useState(programs);
     const { setOptions } = useOptions();
     useEffect(() => {
         setOptions(
@@ -31,20 +17,17 @@ export default function Hackers() {
                     <Characters
                         img={{ src: program_tree, alt: 'program_tree' }}
                         characters={programsData}
-                        inputs={programs}
-                        onChange={(input) =>
-                            setProgramsData((prev) => ({
-                                ...prev,
-                                [input.name]: input.value,
-                            }))
-                        }
+                        onChange={(input) => {
+                            programsData[input.name].value = input.value;
+                            setProgramsData({ ...programsData });
+                        }}
                     />
                 </Section>
                 <Section title="Settings">
                     <Settings
                         settings={settingsData}
                         onChange={(input) => {
-                            let setting = settingsData.find(
+                            const setting = settingsData.find(
                                 (setting) => setting.name == input.name,
                             );
                             setting.value = input.value;
