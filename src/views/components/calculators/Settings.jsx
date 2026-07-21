@@ -53,6 +53,9 @@ export default function Settings({ settings, onChange }) {
                                 ),
                                 Math.round(
                                     (input.value - input.min) / input.step,
+                                ) * input.step,
+                                Math.round(
+                                    (input.value - input.min) / input.step,
                                 ) *
                                     input.step +
                                     input.min,
