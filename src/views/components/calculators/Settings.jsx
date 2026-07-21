@@ -30,12 +30,13 @@ export default function Settings({ settings, onChange }) {
                         type="number"
                         step="100"
                         min={input.min || 0}
-                        onChange={(e) =>
+                        onChange={(e) => {
                             onChange({
                                 name: input.name,
                                 value: e.target.value,
-                            })
-                        }
+                            });
+                            console.log(settings);
+                        }}
                         onBlur={(e) => {
                             const input = e.target;
                             input.value =
@@ -44,6 +45,7 @@ export default function Settings({ settings, onChange }) {
                                 ) *
                                     input.step +
                                 input.min;
+                            console.log(settings);
                         }}
                         className="w-20 h-6 rounded-md outline-hidden bg-text-background px-1"
                     />
