@@ -39,23 +39,15 @@ export default function Settings({ settings, onChange }) {
                         onBlur={(e) => {
                             const element = e.target;
                             const min = Number(element.min);
-                            console.log({
-                                name: input.name,
-                                value:
-                                    Math.round(
-                                        (element.value - min) / element.step,
-                                    ) *
-                                        element.step +
-                                    min,
-                            });
                             onChange({
                                 name: input.name,
-                                value:
+                                value: Math.max(
                                     Math.round(
                                         (element.value - min) / element.step,
                                     ) *
                                         element.step +
-                                    min,
+                                        min,
+                                ),
                             });
                         }}
                         className="w-20 h-6 rounded-md outline-hidden bg-text-background px-1"
