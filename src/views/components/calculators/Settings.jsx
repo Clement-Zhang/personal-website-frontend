@@ -45,6 +45,18 @@ export default function Settings({ settings, onChange }) {
                                 ) *
                                     input.step +
                                 input.min;
+                            console.log(
+                                input.value - input.min,
+                                input.step,
+                                Math.round(
+                                    (input.value - input.min) / input.step,
+                                ),
+                                Math.round(
+                                    (input.value - input.min) / input.step,
+                                ) *
+                                    input.step +
+                                    input.min,
+                            );
                             console.log(settings);
                         }}
                         className="w-20 h-6 rounded-md outline-hidden bg-text-background px-1"
