@@ -44,7 +44,7 @@ export const OptionsProvider = ({ children }) => {
                     open && submit();
                     toggleOptions();
                 }}
-            ></img>
+            />
         </OptionsContext.Provider>
     );
 };

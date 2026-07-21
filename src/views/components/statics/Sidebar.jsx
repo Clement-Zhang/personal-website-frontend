@@ -26,29 +26,10 @@ export default function Sidebar() {
                         alt="extend sidebar"
                         className="relative w-6 h-6 m-2 left-0 cursor-pointer md:hidden"
                         onClick={toggleExtend}
-                    ></img>
+                    />
                     {tabs.map((tab) => (
                         <Link to={tab.path} key={tab.path}>
-                            <div className="grid">
-                                <motion.img
-                                    src={tab.icon}
-                                    layout
-                                    animate={{
-                                        opacity: extend ? 1 : 0,
-                                    }}
-                                    className="col-start-1 row-start-1 w-full"
-                                    transition={transition}
-                                ></motion.img>
-                                <motion.img
-                                    src={tab.iconAlt}
-                                    layout
-                                    animate={{
-                                        opacity: extend ? 0 : 1,
-                                    }}
-                                    className="col-start-1 row-start-1 w-full"
-                                    transition={transition}
-                                ></motion.img>
-                            </div>
+                            <img src={extend ? tab.icon : tab.iconAlt} />
                         </Link>
                     ))}
                 </motion.nav>
