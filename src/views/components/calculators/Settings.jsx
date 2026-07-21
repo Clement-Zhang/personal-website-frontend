@@ -35,12 +35,20 @@ export default function Settings({ settings, onChange }) {
                                 name: input.name,
                                 value: e.target.value,
                             });
-                            console.log(settings);
                         }}
                         onBlur={(e) => {
                             const input = e.target;
                             const min = Number(input.min);
                             onChange({
+                                name: input.name,
+                                value:
+                                    Math.round(
+                                        (input.value - min) / input.step,
+                                    ) *
+                                        input.step +
+                                    min,
+                            });
+                            console.log({
                                 name: input.name,
                                 value:
                                     Math.round(
