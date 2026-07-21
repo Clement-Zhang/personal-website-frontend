@@ -36,6 +36,15 @@ export default function Settings({ settings, onChange }) {
                                 value: e.target.value,
                             })
                         }
+                        onBlur={(e) => {
+                            const input = e.target;
+                            input.value =
+                                Math.round(
+                                    (input.value - input.min) / input.step,
+                                ) *
+                                    input.step +
+                                input.min;
+                        }}
                         className="w-20 h-6 rounded-md outline-hidden bg-text-background px-1"
                     />
                 </div>

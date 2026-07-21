@@ -16,6 +16,13 @@ export default function Characters({ img, characters, onChange }) {
                             value: e.target.value,
                         })
                     }
+                    onBlur={(e) => {
+                        const input = e.target;
+                        input.value =
+                            Math.round((input.value - input.min) / input.step) *
+                                input.step +
+                            input.min;
+                    }}
                     className={
                         'absolute outline-hidden border text-right text-xs! xl:text-base! ' +
                         characters[program].style
