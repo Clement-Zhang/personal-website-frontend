@@ -8,7 +8,7 @@ export default function Characters({ img, characters, onChange }) {
                     value={characters[program].value}
                     type="number"
                     step="1"
-                    min="0"
+                    min={characters[program].min || 0}
                     max={characters[program].max}
                     onChange={(e) =>
                         onChange({

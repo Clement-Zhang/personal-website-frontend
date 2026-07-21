@@ -20,7 +20,7 @@ settings.forEach((setting) => {
 });
 
 export const programs = {
-    beam: 'left-[53.43%] top-[3.37%] w-[4.41%] h-[2.82%]',
+    'beam cannon': 'left-[53.43%] top-[3.37%] w-[4.41%] h-[2.82%]',
     'ice wall': 'left-[14.97%] top-[23.15%] w-[4.41%] h-[2.82%]',
     shuriken: 'left-[40.14%] top-[23.15%] w-[4.41%] h-[2.82%]',
     'data leech': 'left-[66.3%] top-[23.14%] w-[4.32%] h-[2.69%]',
@@ -39,3 +39,5 @@ export const programs = {
 for (let program in programs) {
     programs[program] = { style: programs[program], value: 0, max: 21 };
 }
+
+programs['beam cannon'].min = 1;
