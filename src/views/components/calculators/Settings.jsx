@@ -41,26 +41,19 @@ export default function Settings({ settings, onChange }) {
                             const input = e.target;
                             const min = Number(input.min);
                             input.value =
-                                Math.round(
-                                    (input.value - input.min) / input.step,
-                                ) *
+                                Math.round((input.value - min) / input.step) *
                                     input.step +
-                                input.min;
+                                min;
                             console.log(
-                                input.value - input.min,
-                                (input.value - input.min) / input.step,
-                                Math.round(
-                                    (input.value - input.min) / input.step,
-                                ),
-                                Math.round(
-                                    (input.value - input.min) / input.step,
-                                ) * input.step,
-                                Math.round(
-                                    (input.value - input.min) / input.step,
-                                ) *
+                                input.value - min,
+                                (input.value - min) / input.step,
+                                Math.round((input.value - min) / input.step),
+                                Math.round((input.value - min) / input.step) *
+                                    input.step,
+                                Math.round((input.value - min) / input.step) *
                                     input.step +
-                                    input.min,
-                                input.min,
+                                    min,
+                                min,
                             );
                             console.log(settings);
                         }}
