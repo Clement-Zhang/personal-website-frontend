@@ -27,6 +27,7 @@ export default function Settings({ settings, onChange }) {
                         />
                     </label>
                     <CorrectingInput
+                        id={true}
                         name={setting.name}
                         item={setting}
                         onChange={onChange}

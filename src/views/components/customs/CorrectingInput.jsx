@@ -1,6 +1,13 @@
-export default function CorrectingInput({ name, item, styles, onChange }) {
+export default function CorrectingInput({
+    id = false,
+    name,
+    item,
+    styles,
+    onChange,
+}) {
     return (
         <input
+            {...(id && { id: id })}
             key={name}
             value={item.value}
             type="number"
