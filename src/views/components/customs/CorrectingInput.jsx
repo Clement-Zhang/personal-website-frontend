@@ -8,7 +8,6 @@ export default function CorrectingInput({
     return (
         <input
             {...(id && { id: name })}
-            key={name}
             value={item.value}
             type="number"
             onChange={(e) => {
