@@ -1,4 +1,4 @@
-import { settings, programs } from '@/configs/calculators/hackers.config';
+import { getSettings, getPrograms } from '@/configs/calculators/hackers.config';
 import program_tree from '@/assets/images/calculators/hackers/program tree.jpg';
 import { useOptions } from '../../components/customs/Options';
 import Section from '../../components/customs/Section';
@@ -7,8 +7,8 @@ import Characters from '../../components/calculators/Characters';
 import { useState, useEffect } from 'react';
 
 export default function Hackers() {
-    const [settingsData, setSettingsData] = useState(settings);
-    const [programsData, setProgramsData] = useState(programs);
+    const [settingsData, setSettingsData] = useState(getSettings);
+    const [programsData, setProgramsData] = useState(getPrograms);
     const { setOptions } = useOptions();
     useEffect(() => {
         setOptions(
