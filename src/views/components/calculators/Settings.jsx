@@ -8,7 +8,7 @@ export default function Settings({ settings, onChange }) {
     return (
         <div className="flex flex-col xl:flex-row gap-1 **:flex! **:gap-1!">
             <Tooltip spec={tooltip} />
-            {settings.map((setting, index) => (
+            {settings.map((setting) => (
                 <div key={setting.name}>
                     <label htmlFor={setting.name}>
                         <p className="shrink-0">{setting.name}</p>
@@ -27,7 +27,7 @@ export default function Settings({ settings, onChange }) {
                         />
                     </label>
                     <CorrectingInput
-                        key={setting.name}
+                        name={setting.name}
                         item={setting}
                         onChange={onChange}
                         styles="w-20 h-6 rounded-md outline-hidden bg-text-background px-1"

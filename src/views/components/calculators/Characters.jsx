@@ -6,7 +6,7 @@ export default function Characters({ img, characters, onChange }) {
             <img src={img.src} className="w-full" alt={img.alt} />
             {Object.keys(characters).map((program) => (
                 <CorrectingInput
-                    key={program}
+                    name={program}
                     item={characters[program]}
                     onChange={onChange}
                     styles={
