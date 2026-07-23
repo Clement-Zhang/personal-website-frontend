@@ -36,15 +36,7 @@
         "start": "vite",
         "build": "vite build",
         "serve": "vite preview",
-        "test": "react-scripts test",
-        "eject": "react-scripts eject",
         "tsc": "tsc"
-    },
-    "eslintConfig": {
-        "extends": [
-            "react-app",
-            "react-app/jest"
-        ]
     },
     "browserslist": {
         "production": [
