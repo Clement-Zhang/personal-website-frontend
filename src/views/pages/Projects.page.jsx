@@ -1,4 +1,4 @@
-import Heading from '../components/customs/Heading';
+import Heading from '../components/common/Heading';
 import { projects } from '@/data/projects';
 
 export default function Projects() {

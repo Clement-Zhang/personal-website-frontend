@@ -1,4 +1,4 @@
-import Heading from './Heading';
+import Heading from '../common/Heading';
 
 export default function Section({ title, children }) {
     return (

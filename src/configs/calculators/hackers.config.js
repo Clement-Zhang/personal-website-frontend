@@ -16,6 +16,7 @@ export const settings = [
 
 settings.forEach((setting) => {
     setting.value = setting.default;
+    setting.step = 100;
     delete setting.default;
 });
 

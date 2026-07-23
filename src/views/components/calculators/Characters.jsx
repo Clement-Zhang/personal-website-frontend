@@ -1,40 +1,15 @@
+import CorrectingInput from '../customs/CorrectingInput';
+
 export default function Characters({ img, characters, onChange }) {
     return (
         <div className="relative">
             <img src={img.src} className="w-full" alt={img.alt} />
             {Object.keys(characters).map((program) => (
-                <input
+                <CorrectingInput
                     key={program}
-                    value={characters[program].value}
-                    type="number"
-                    step="1"
-                    min={characters[program].min || 0}
-                    max={characters[program].max}
-                    onChange={(e) =>
-                        onChange({
-                            name: program,
-                            value: e.target.value,
-                        })
-                    }
-                    onBlur={(e) => {
-                        const element = e.target;
-                        const min = Number(element.min);
-                        onChange({
-                            name: program,
-                            value: Math.min(
-                                Math.max(
-                                    Math.round(
-                                        (element.value - min) / element.step,
-                                    ) *
-                                        element.step +
-                                        min,
-                                    min,
-                                ),
-                                element.max,
-                            ),
-                        });
-                    }}
-                    className={
+                    item={characters[program]}
+                    onChange={onChange}
+                    styles={
                         'absolute outline-hidden border text-right text-xs! xl:text-base! ' +
                         characters[program].style
                     }

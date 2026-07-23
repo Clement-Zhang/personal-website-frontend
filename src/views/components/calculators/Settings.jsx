@@ -1,5 +1,6 @@
 import icon from '@/assets/images/calculators/hackers/explain.jpg';
 import Tooltip from './Tooltip';
+import CorrectingInput from '../customs/CorrectingInput';
 import { useState } from 'react';
 
 export default function Settings({ settings, onChange }) {
@@ -7,17 +8,17 @@ export default function Settings({ settings, onChange }) {
     return (
         <div className="flex flex-col xl:flex-row gap-1 **:flex! **:gap-1!">
             <Tooltip spec={tooltip} />
-            {settings.map((input) => (
-                <div key={input.name}>
-                    <label htmlFor={input.name}>
-                        <p className="shrink-0">{input.name}</p>
+            {settings.map((setting, index) => (
+                <div key={setting.name}>
+                    <label htmlFor={setting.name}>
+                        <p className="shrink-0">{setting.name}</p>
                         <img
                             src={icon}
                             alt="explain"
                             className="h-6 w-6 shrink-0"
                             onMouseEnter={(e) =>
                                 setTooltip({
-                                    text: input.explain,
+                                    text: setting.explain,
                                     activeIcon:
                                         e.target.getBoundingClientRect(),
                                 })
@@ -25,33 +26,10 @@ export default function Settings({ settings, onChange }) {
                             onMouseLeave={() => setTooltip(null)}
                         />
                     </label>
-                    <input
-                        value={input.value}
-                        type="number"
-                        step="100"
-                        min={input.min || 0}
-                        onChange={(e) => {
-                            onChange({
-                                name: input.name,
-                                value: e.target.value,
-                            });
-                        }}
-                        onBlur={(e) => {
-                            const element = e.target;
-                            const min = Number(element.min);
-                            onChange({
-                                name: input.name,
-                                value: Math.max(
-                                    Math.round(
-                                        (element.value - min) / element.step,
-                                    ) *
-                                        element.step +
-                                        min,
-                                    min,
-                                ),
-                            });
-                        }}
-                        className="w-20 h-6 rounded-md outline-hidden bg-text-background px-1"
+                    <CorrectingInput
+                        item={setting}
+                        onChange={onChange}
+                        styles="w-20 h-6 rounded-md outline-hidden bg-text-background px-1"
                     />
                 </div>
             ))}
