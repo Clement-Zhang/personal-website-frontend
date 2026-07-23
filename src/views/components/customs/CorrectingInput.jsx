@@ -4,12 +4,16 @@ export default function CorrectingInput({ key, item, styles, onChange }) {
             key={key}
             value={item.value}
             type="number"
-            onChange={(e) =>
+            onChange={(e) => {
+                console.log({
+                    name: key,
+                    value: e.target.value,
+                });
                 onChange({
                     name: key,
                     value: e.target.value,
-                })
-            }
+                });
+            }}
             onBlur={() => {
                 const min = item.min || 0;
                 const step = item.step || 1;
