@@ -27,6 +27,7 @@ export default function Settings({ settings, onChange }) {
                         />
                     </label>
                     <CorrectingInput
+                        key={setting.name}
                         item={setting}
                         onChange={onChange}
                         styles="w-20 h-6 rounded-md outline-hidden bg-text-background px-1"

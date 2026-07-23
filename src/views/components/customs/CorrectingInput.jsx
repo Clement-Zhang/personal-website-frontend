@@ -1,12 +1,12 @@
-export default function CorrectingInput({ key = '', item, styles, onChange }) {
+export default function CorrectingInput({ key, item, styles, onChange }) {
     return (
         <input
-            {...(key && { key: key })}
+            key={key}
             value={item.value}
             type="number"
             onChange={(e) =>
                 onChange({
-                    name: item,
+                    name: key,
                     value: e.target.value,
                 })
             }
@@ -19,7 +19,7 @@ export default function CorrectingInput({ key = '', item, styles, onChange }) {
                 );
                 value = item.max ? Math.min(value, item.max) : value;
                 onChange({
-                    name: item,
+                    name: key,
                     value: value,
                 });
             }}
