@@ -8,7 +8,7 @@ export default function Tooltip({ spec }) {
             const rect = tooltipRef.current.getBoundingClientRect();
             const icon = spec.activeIcon;
             let edge = '';
-            let align = '';
+            let align = null;
             let center = [
                 icon.left + icon.width / 2,
                 icon.top + icon.height / 2,
@@ -23,8 +23,10 @@ export default function Tooltip({ spec }) {
                 edge = 'bottom';
             } else if (icon.left - rect.width - spacing > 0) {
                 edge = 'left';
-            } else {
+            } else if (icon.right + rect.width + spacing < window.innerWidth) {
                 edge = 'right';
+            } else {
+                edge = null;
             }
             if (edge == 'top' || edge == 'bottom') {
                 if (
@@ -37,8 +39,10 @@ export default function Tooltip({ spec }) {
                     window.innerWidth
                 ) {
                     align = 'left';
-                } else {
+                } else if (icon.right - rect.width - spacing > 0) {
                     align = 'right';
+                } else {
+                    edge = null;
                 }
             } else {
                 if (
@@ -51,15 +55,18 @@ export default function Tooltip({ spec }) {
                     window.innerHeight
                 ) {
                     align = 'top';
-                } else {
+                } else if (icon.bottom - rect.height - spacing > 0) {
                     align = 'bottom';
+                } else {
+                    edge = null;
                 }
             }
             const position = {
-                top: { bottom: window.innerHeight - icon.top - spacing },
+                top: { bottom: window.innerHeight - icon.top + spacing },
                 bottom: { top: icon.bottom + spacing },
-                left: { right: window.innerWidth - icon.left - spacing },
+                left: { right: window.innerWidth - icon.left + spacing },
                 right: { left: icon.right + spacing },
+                null: {},
             }[edge];
             Object.assign(
                 position,
@@ -68,6 +75,7 @@ export default function Tooltip({ spec }) {
                     right: { right: window.innerWidth - icon.right },
                     top: { top: icon.top },
                     bottom: { bottom: window.innerHeight - icon.bottom },
+                    null: null,
                 }[align],
             );
             if (align == 'middle') {
@@ -80,7 +88,7 @@ export default function Tooltip({ spec }) {
     }, [spec]);
     return (
         <>
-            {spec && (
+            {spec && tooltipPosition && (
                 <p
                     ref={tooltipRef}
                     className="fixed bg-text-background text-zinc-900 rounded-md max-w-80"
