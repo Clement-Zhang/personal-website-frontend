@@ -31,9 +31,8 @@ export const OptionsProvider = ({ children }) => {
                         exit={{ x: '100%' }}
                         transition={{ duration: 0.3 }}
                         onAnimationComplete={(animation) =>
-                            animation.x == 0
-                                ? window.dispatchEvent(new Event('resize'))
-                                : null
+                            animation.x == 0 &&
+                            window.dispatchEvent(new Event('resize'))
                         }
                         className="absolute top-0 w-full h-screen overflow-y-auto bg-black rounded-3xl p-4 z-49"
                     >
