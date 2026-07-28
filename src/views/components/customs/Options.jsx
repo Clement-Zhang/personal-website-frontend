@@ -34,7 +34,7 @@ export const OptionsProvider = ({ children }) => {
                             animation.x == 0 &&
                             window.dispatchEvent(new Event('resize'))
                         }
-                        className="absolute top-0 w-full h-screen overflow-y-auto bg-black rounded-3xl p-4 z-49"
+                        className="absolute top-0 w-full h-screen max-h-screen overflow-y-auto bg-black rounded-3xl p-4 z-49"
                     >
                         {form}
                     </motion.div>
