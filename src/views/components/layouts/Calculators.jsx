@@ -3,11 +3,11 @@ import { Outlet } from 'react-router';
 
 export default function Calculators() {
     return (
-        <div className="flex overflow-x-clip">
+        <div className="flex">
             <div className="shrink-0">
                 <Sidebar />
             </div>
-            <div className="flex-1 relative">
+            <div className="flex-1 relative overflow-x-clip">
                 <Outlet />
             </div>
         </div>
