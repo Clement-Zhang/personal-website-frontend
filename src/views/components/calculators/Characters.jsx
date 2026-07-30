@@ -11,7 +11,7 @@ export default function Characters({ img, characters, onChange }) {
                     item={characters[program]}
                     onChange={onChange}
                     styles={
-                        'absolute outline-hidden border text-right text-xs! xl:text-base! ' +
+                        'absolute text-right text-xs! xl:text-base! ' +
                         characters[program].style
                     }
                 />

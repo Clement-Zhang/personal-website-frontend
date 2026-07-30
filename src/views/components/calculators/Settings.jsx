@@ -31,7 +31,7 @@ export default function Settings({ settings, onChange }) {
                         name={setting.name}
                         item={setting}
                         onChange={onChange}
-                        styles="w-20 h-6 rounded-md outline-hidden bg-text-background px-1"
+                        styles="w-20 h-6 rounded-md bg-text-background px-1"
                     />
                 </div>
             ))}

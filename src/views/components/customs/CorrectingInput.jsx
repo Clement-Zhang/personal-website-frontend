@@ -33,7 +33,7 @@ export default function CorrectingInput({
                     value: value,
                 });
             }}
-            className={styles}
+            className={'outline-hidden ' + styles}
         />
     );
 }
