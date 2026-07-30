@@ -1,6 +1,5 @@
 import tabs from '@/configs/tabs/calculators.config';
 import icon from '@/assets/images/calculators/optionsS.jpg';
-import { transition } from '@/configs/animations.config';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -15,7 +14,6 @@ export default function Sidebar() {
             {
                 <motion.nav
                     layout
-                    transition={transition}
                     className={
                         'flex flex-col top-0 bg-gray-700 min-h-screen ' +
                         (extend ? 'w-64' : 'w-12')

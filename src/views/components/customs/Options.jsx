@@ -1,5 +1,4 @@
 import icon from '@/assets/images/calculators/optionsL.jpg';
-import { transition } from '@/configs/animations.config';
 import { createContext, useContext, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -29,11 +28,6 @@ export const OptionsProvider = ({ children }) => {
                         initial={{ x: '100%' }}
                         animate={{ x: 0 }}
                         exit={{ x: '100%' }}
-                        transition={{ duration: 0.3 }}
-                        onAnimationComplete={(animation) =>
-                            animation.x == 0 &&
-                            window.dispatchEvent(new Event('resize'))
-                        }
                         className="absolute top-0 w-full h-screen overflow-y-auto bg-black rounded-3xl p-4 z-49"
                     >
                         {form}
