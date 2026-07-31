@@ -1,14 +1,17 @@
 import { getSettings, getPrograms } from '@/configs/calculators/hackers.config';
+import { nodes } from '@/configs/calculators/hackers.config';
 import program_tree from '@/assets/images/calculators/hackers/program tree.jpg';
 import { useOptions } from '../../components/customs/Options';
 import Section from '../../components/customs/Section';
 import Settings from '../../components/calculators/Settings';
 import Characters from '../../components/calculators/Characters';
+import ImageSelect from '../../components/customs/ImageSelect';
 import { useState, useEffect } from 'react';
 
 export default function Hackers() {
     const [settingsData, setSettingsData] = useState(getSettings);
     const [programsData, setProgramsData] = useState(getPrograms);
+    const [attacker, setAttacker] = useState(nodes[0].value);
     const { setOptions } = useOptions();
     useEffect(() => {
         setOptions(
@@ -39,5 +42,16 @@ export default function Hackers() {
             () => 0,
         );
     }, [settingsData, programsData]);
-    return <h1 className="text-8xl!">Hackers</h1>;
+    return (
+        <>
+            <Section title="Attacker Node">
+                <ImageSelect
+                    value={attacker}
+                    onChange={setAttacker}
+                    options={nodes}
+                />
+            </Section>
+            <Section title="Defender Nodes"></Section>
+        </>
+    );
 }
