@@ -43,7 +43,7 @@ export default function Hackers() {
         );
     }, [settingsData, programsData]);
     return (
-        <>
+        <div className="flex">
             <Section title="Attacker Node">
                 <ImageSelect
                     value={attacker}
@@ -52,6 +52,6 @@ export default function Hackers() {
                 />
             </Section>
             <Section title="Defender Nodes"></Section>
-        </>
+        </div>
     );
 }
