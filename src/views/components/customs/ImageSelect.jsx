@@ -11,7 +11,7 @@ export default function ImageSelect({ value, onChange, options }) {
             <img
                 src={selected.image}
                 alt={selected.value}
-                className="cursor-pointer"
+                className="cursor-pointer border"
                 onClick={() => setOpen((prev) => !prev)}
             />
             <AnimatePresence>
