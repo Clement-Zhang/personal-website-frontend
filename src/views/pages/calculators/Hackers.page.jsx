@@ -45,7 +45,7 @@ export default function Hackers() {
     return (
         <div className="flex">
             <Section title="Attacker Node">
-                <div className="flex">
+                <div className="flex justify-center">
                     <div className="flex flex-col">
                         <p>Node Type</p>
                         <ImageSelect
