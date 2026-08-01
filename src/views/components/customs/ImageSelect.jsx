@@ -7,7 +7,7 @@ export default function ImageSelect({ value, onChange, options }) {
         options.find((option) => option.value == value),
     );
     return (
-        <div className="relative" onBlur={() => setOpen(false)}>
+        <div className="relative w-12" onBlur={() => setOpen(false)}>
             <img
                 src={selected.image}
                 alt={selected.value}
