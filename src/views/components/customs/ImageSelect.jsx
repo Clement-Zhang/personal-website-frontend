@@ -25,7 +25,7 @@ export default function ImageSelect({ value, onChange, options }) {
                         {options.map((option) => (
                             <li
                                 key={option.value}
-                                className="cursor-pointer"
+                                className="cursor-pointer border"
                                 onClick={() => {
                                     onChange(option.value);
                                     setSelected(option);
