@@ -45,11 +45,16 @@ export default function Hackers() {
     return (
         <div className="flex">
             <Section title="Attacker Node">
-                <ImageSelect
-                    value={attacker}
-                    onChange={setAttacker}
-                    options={nodes}
-                />
+                <div className="flex">
+                    <div className="flex flex-col">
+                        <p>Node Type</p>
+                        <ImageSelect
+                            value={attacker}
+                            onChange={setAttacker}
+                            options={nodes}
+                        />
+                    </div>
+                </div>
             </Section>
             <Section title="Defender Nodes"></Section>
         </div>
