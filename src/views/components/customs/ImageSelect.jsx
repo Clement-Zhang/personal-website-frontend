@@ -18,7 +18,7 @@ export default function ImageSelect({ value, onChange, options }) {
                     alt={selected.value}
                     className="cursor-pointer border w-12"
                 />
-                <img src={down} alt="down arrow" className="w-2 h-2" />
+                <img src={arrow} alt="down arrow" className="w-2 h-2" />
             </div>
 
             <AnimatePresence>
