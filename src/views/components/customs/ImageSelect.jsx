@@ -1,3 +1,4 @@
+import arrow from '@/assets/images/calculators/down.jpg';
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -8,12 +9,18 @@ export default function ImageSelect({ value, onChange, options }) {
     );
     return (
         <div className="relative" onBlur={() => setOpen(false)}>
-            <img
-                src={selected.image}
-                alt={selected.value}
-                className="cursor-pointer border w-12"
+            <div
+                className="flex items-center"
                 onClick={() => setOpen((prev) => !prev)}
-            />
+            >
+                <img
+                    src={selected.image}
+                    alt={selected.value}
+                    className="cursor-pointer border w-12"
+                />
+                <img src={down} alt="down arrow" className="w-2 h-2" />
+            </div>
+
             <AnimatePresence>
                 {open && (
                     <motion.ul
