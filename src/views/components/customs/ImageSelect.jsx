@@ -10,13 +10,13 @@ export default function ImageSelect({ value, onChange, options }) {
     return (
         <div className="relative" onBlur={() => setOpen(false)}>
             <div
-                className="flex items-center"
+                className="flex items-center cursor-pointer"
                 onClick={() => setOpen((prev) => !prev)}
             >
                 <img
                     src={selected.image}
                     alt={selected.value}
-                    className="cursor-pointer border w-12"
+                    className="border w-12"
                 />
                 <img src={arrow} alt="down arrow" className="w-2 h-2" />
             </div>
