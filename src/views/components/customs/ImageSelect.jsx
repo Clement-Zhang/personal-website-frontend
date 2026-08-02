@@ -16,7 +16,7 @@ export default function ImageSelect({ value, onChange, options }) {
                 <img
                     src={selected.image}
                     alt={selected.value}
-                    className="w-11.5"
+                    className="w-12"
                 />
                 <img src={arrow} alt="down arrow" className="size-3" />
             </div>
@@ -27,12 +27,12 @@ export default function ImageSelect({ value, onChange, options }) {
                         initial={{ scaleY: 0 }}
                         animate={{ scaleY: 1 }}
                         exit={{ scaleY: 0 }}
-                        className="absolute top-full list-none ps-0 origin-top **:w-12"
+                        className="absolute top-full list-none ps-0 origin-top **:m-px"
                     >
                         {options.map((option) => (
                             <li
                                 key={option.value}
-                                className="cursor-pointer border"
+                                className="cursor-pointer"
                                 onClick={() => {
                                     onChange(option.value);
                                     setSelected(option);
