@@ -14,3 +14,4 @@ new calculator / new main-site tab → use skills new-calculator / new-website-t
 
 backend: .env VITE_GENERIC_BACKEND, VITE_DATING_BACKEND_SOCKET, VITE_DATING_BACKEND_HTTP. Mount: store.jsx (RTK, single 'generic' slice) dispatches start() → GET $VITE_GENERIC_BACKEND/wake (cold-start); LoadBackend layout blocks on loading. Dating chatbot: socket.io — socket.service stream() resolves on {type:'end'} msg; request()=emitWithAck.
 deploy: Vercel; vercel.json rewrites /showcase/* + /sim/* → separate Vercel apps (not this SPA).
+verification: NEVER run the project locally (dev server/build/start) — user verifies by committing + checking the deploy. Don't offer/ask to run it.

@@ -16,7 +16,7 @@ export default function ImageSelect({ value, onChange, options }) {
                 <img
                     src={selected.image}
                     alt={selected.value}
-                    className="w-12"
+                    className="w-11.75"
                 />
                 <img src={arrow} alt="down arrow" className="size-3" />
             </div>
