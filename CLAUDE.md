@@ -1,6 +1,6 @@
 # clement-zhang personal site (Vite+React18 SPA, JSX)
 
-No lint/test scripts; jest+RTL installed but zero tests.
+No lint/test scripts; jest+RTL installed but zero tests. build→build/ not dist.
 tsconfig: source is JSX; ts only for @/*→src/ alias (also vite.config.js) + editor.
 styling: Tailwind v4 CSS-first — tokens in @theme in src/assets/css/App.css (no tailwind.config). ALSO Bootstrap 5.3 CDN in index.html (data-bs-theme=dark) — both active. Anims: framer-motion.
 naming: views/pages/*.page.jsx, configs/*.config.js, services/*.service.js. views/components/: layouts(route shells)|statics(Navbar,Sidebar)|customs(reusable: Options,Chatbot,CorrectingInput,Section)|calculators(Settings,Characters,Tooltip)|common.
