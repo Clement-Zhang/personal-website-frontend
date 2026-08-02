@@ -27,7 +27,7 @@ export default function ImageSelect({ value, onChange, options }) {
                         initial={{ scaleY: 0 }}
                         animate={{ scaleY: 1 }}
                         exit={{ scaleY: 0 }}
-                        className="absolute top-full list-none ps-0 origin-top **:my-px *:w-12"
+                        className="absolute top-full list-none ps-0 origin-top **:my-px **:w-12"
                     >
                         {options.map((option) => (
                             <li
