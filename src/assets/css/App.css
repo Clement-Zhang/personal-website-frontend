@@ -29,6 +29,6 @@ input[type='number']::-webkit-outer-spin-button {
     ::before,
     ::backdrop,
     ::file-selector-button {
-        border-color: var(--color-gray-200, currentcolor);
+        border-color: var(--bs-border-color, currentcolor);
     }
 }
