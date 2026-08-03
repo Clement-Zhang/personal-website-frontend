@@ -8,7 +8,7 @@ export default function ImageSelect({ value, onChange, options }) {
         options.find((option) => option.value == value),
     );
     return (
-        <div className="relative max-h-100 overflow-auto" onBlur={() => setOpen(false)}>
+        <div className="relative" onBlur={() => setOpen(false)}>
             <div
                 className="flex items-center border-y border-e cursor-pointer"
                 onClick={() => setOpen((prev) => !prev)}
@@ -27,7 +27,7 @@ export default function ImageSelect({ value, onChange, options }) {
                         initial={{ scaleY: 0 }}
                         animate={{ scaleY: 1 }}
                         exit={{ scaleY: 0 }}
-                        className="absolute top-full list-none ps-0 origin-top **:my-px **:w-12"
+                        className="absolute top-full list-none ps-0 origin-top **:my-px **:w-12 max-h-100 overflow-auto"
                     >
                         {options.map((option) => (
                             <li
