@@ -15,7 +15,7 @@ export default function Sidebar() {
                 <motion.nav
                     layout
                     className={
-                        'flex flex-col top-0 bg-gray-700 min-h-screen ' +
+                        'flex flex-col top-0 bg-gray-700 h-screen ' +
                         (extend ? 'w-64' : 'w-12')
                     }
                 >

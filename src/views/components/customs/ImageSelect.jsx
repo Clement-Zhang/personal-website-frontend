@@ -8,7 +8,7 @@ export default function ImageSelect({ value, onChange, options }) {
         options.find((option) => option.value == value),
     );
     return (
-        <div className="relative" onBlur={() => setOpen(false)}>
+        <div className="relative max-h-100 overflow-auto" onBlur={() => setOpen(false)}>
             <div
                 className="flex items-center border-y border-e cursor-pointer"
                 onClick={() => setOpen((prev) => !prev)}
