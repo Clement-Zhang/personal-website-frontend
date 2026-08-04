@@ -14,7 +14,6 @@ export default function Hackers() {
     const [programsData, setProgramsData] = useState(getPrograms);
     const [attacker, setAttacker] = useState(nodes[0].value);
     const [attackerLevel, setAttackerLevel] = useState(attackerLevels[0].value);
-    console.log(attackerLevel);
     const { setOptions } = useOptions();
     useEffect(() => {
         setOptions(
@@ -65,7 +64,7 @@ export default function Hackers() {
                                 setAttacker(level);
                                 console.log(level);
                             }}
-                            options={nodes}
+                            options={attackerLevels}
                         />
                     </div>
                 </div>
