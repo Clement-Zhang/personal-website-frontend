@@ -17,6 +17,9 @@ export const attackerLevels = Object.entries(
         { eager: true, import: 'default' },
     ),
 ).reduce((acc, [path, url]) => {
-    acc.push({ image: url, value: path.split('/').at(-1) });
+    acc.push({
+        image: url,
+        value: path.split('/').at(-1).slice(0, -4).split('-').at(0),
+    });
     return acc;
 }, []);
