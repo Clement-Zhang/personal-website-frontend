@@ -1,5 +1,6 @@
 import { getSettings, getPrograms } from '@/configs/calculators/hackers.config';
 import { nodes } from '@/data/calculators/hackers';
+import { attackerLevels } from '../../../data/calculators/hackers';
 import program_tree from '@/assets/images/calculators/hackers/program tree.jpg';
 import { useOptions } from '../../components/customs/Options';
 import Section from '../../components/customs/Section';
@@ -12,6 +13,7 @@ export default function Hackers() {
     const [settingsData, setSettingsData] = useState(getSettings);
     const [programsData, setProgramsData] = useState(getPrograms);
     const [attacker, setAttacker] = useState(nodes[0].value);
+    const [attackerLevel, setAttackerLevel] = useState(attackerLevels[0].value);
     const { setOptions } = useOptions();
     useEffect(() => {
         setOptions(
@@ -51,6 +53,17 @@ export default function Hackers() {
                         <ImageSelect
                             value={attacker}
                             onChange={setAttacker}
+                            options={nodes}
+                        />
+                    </div>
+                    <div className="flex flex-col items-center">
+                        <p>Node Level</p>
+                        <ImageSelect
+                            value={attackerLevel}
+                            onChange={(level) => {
+                                setAttacker(level);
+                                console.log(level);
+                            }}
                             options={nodes}
                         />
                     </div>
