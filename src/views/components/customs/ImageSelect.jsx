@@ -30,6 +30,7 @@ export default function ImageSelect({ value, onChange, options }) {
                         animate={{ scaleY: 1 }}
                         exit={{ scaleY: 0 }}
                         className="absolute top-full list-none ps-0 origin-top **:my-px **:w-12 max-h-50 overflow-auto"
+                        onMouseDown={(e) => e.preventDefault()}
                     >
                         {options.map((option) => (
                             <li
