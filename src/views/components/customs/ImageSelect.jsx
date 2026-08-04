@@ -8,18 +8,20 @@ export default function ImageSelect({ value, onChange, options }) {
         options.find((option) => option.value == value),
     );
     return (
-        <div className="relative" onBlur={() => setOpen(false)}>
-            <div
+        <div className="relative">
+            <button
+                type="button"
                 className="flex items-center border-y border-e cursor-pointer"
                 onClick={() => setOpen((prev) => !prev)}
+                onBlur={() => setOpen(false)}
             >
                 <img
                     src={selected.image}
                     alt={selected.value}
-                    className='w-12'
+                    className="w-12"
                 />
                 <img src={arrow} alt="down arrow" className="size-3" />
-            </div>
+            </button>
 
             <AnimatePresence>
                 {open && (
@@ -27,7 +29,7 @@ export default function ImageSelect({ value, onChange, options }) {
                         initial={{ scaleY: 0 }}
                         animate={{ scaleY: 1 }}
                         exit={{ scaleY: 0 }}
-                        className="absolute top-full list-none ps-0 origin-top **:my-px **:w-12 max-h-100 overflow-auto"
+                        className="absolute top-full list-none ps-0 origin-top **:my-px **:w-12 max-h-50 overflow-auto"
                     >
                         {options.map((option) => (
                             <li
