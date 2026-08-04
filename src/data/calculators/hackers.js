@@ -22,4 +22,4 @@ export const attackerLevels = Object.entries(
         value: path.split('/').at(-1).slice(0, -4).split('-').at(0),
     });
     return acc;
-}, []);
+}, []).sort((before, after)=>before.value - after.value)

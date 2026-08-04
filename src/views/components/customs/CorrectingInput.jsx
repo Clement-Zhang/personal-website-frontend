@@ -11,10 +11,6 @@ export default function CorrectingInput({
             value={item.value}
             type="number"
             onChange={(e) => {
-                console.log({
-                    name: name,
-                    value: e.target.value,
-                });
                 onChange({
                     name: name,
                     value: e.target.value,
