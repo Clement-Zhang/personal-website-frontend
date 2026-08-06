@@ -1,6 +1,6 @@
 import { getSettings, getPrograms } from '@/configs/calculators/hackers.config';
-import { nodes } from '@/data/calculators/hackers';
-import { attackerLevels } from '../../../data/calculators/hackers';
+import { topLevel } from '@/data/calculators/hackers';
+// import { attackerLevels } from '../../../data/calculators/hackers';
 import program_tree from '@/assets/images/calculators/hackers/program tree.jpg';
 import { useOptions } from '../../components/customs/Options';
 import Section from '../../components/customs/Section';
@@ -12,8 +12,8 @@ import { useState, useEffect } from 'react';
 export default function Hackers() {
     const [settingsData, setSettingsData] = useState(getSettings);
     const [programsData, setProgramsData] = useState(getPrograms);
-    const [attacker, setAttacker] = useState(nodes[0].value);
-    const [attackerLevel, setAttackerLevel] = useState(attackerLevels[0].value);
+    const [attacker, setAttacker] = useState(topLevel[0].value);
+    // const [attackerLevel, setAttackerLevel] = useState(attackerLevels[0].value);
     const { setOptions } = useOptions();
     useEffect(() => {
         setOptions(
@@ -53,10 +53,10 @@ export default function Hackers() {
                         <ImageSelect
                             value={attacker}
                             onChange={setAttacker}
-                            options={nodes}
+                            options={topLevel}
                         />
                     </div>
-                    <div className="flex flex-col items-center">
+                    {/* <div className="flex flex-col items-center">
                         <p>Node Level</p>
                         <ImageSelect
                             value={attackerLevel}
@@ -66,7 +66,7 @@ export default function Hackers() {
                             }}
                             options={attackerLevels}
                         />
-                    </div>
+                    </div> */}
                 </div>
             </Section>
             <Section title="Defender Nodes"></Section>
