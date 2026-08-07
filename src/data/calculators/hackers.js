@@ -46,6 +46,7 @@ export const lowLevels = Object.entries(allNodes).reduce(
     (acc, [node, levels]) => {
         acc[node] = levels.reduce((acc, level) => {
             acc.push({ value: level.value[0], image: level.image });
+            return acc;
         }, []);
         return acc;
     },
