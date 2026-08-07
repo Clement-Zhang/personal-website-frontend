@@ -7,7 +7,7 @@ const Order = Object.freeze({
 });
 
 function rank(node) {
-    Order[node] ?? 5;
+    return Order[node] ?? 5;
 }
 
 const allNodes = Object.entries(
