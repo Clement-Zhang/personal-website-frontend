@@ -32,7 +32,9 @@ const allNodes = Object.entries(
 }, {});
 
 Object.values(allNodes).forEach((levels) => {
-    levels.sort((before, after) => before.value[1] - after.value[0]);
+    levels.sort(
+        (before, after) => before.value[1] || before.value[0] - after.value[0],
+    );
 });
 
 export const topLevel = Object.entries(allNodes)

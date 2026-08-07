@@ -13,7 +13,9 @@ export default function Hackers() {
     const [settingsData, setSettingsData] = useState(getSettings);
     const [programsData, setProgramsData] = useState(getPrograms);
     const [attacker, setAttacker] = useState(topLevel[0].value);
-    const [attackerLevel, setAttackerLevel] = useState(lowLevels[attacker][0].value);
+    const [attackerLevel, setAttackerLevel] = useState(
+        lowLevels[attacker][0].value,
+    );
     const { setOptions } = useOptions();
     useEffect(() => {
         setOptions(
@@ -52,13 +54,17 @@ export default function Hackers() {
                         <p>Node Type</p>
                         <ImageSelect
                             value={attacker}
-                            onChange={setAttacker}
+                            onChange={(attacker) => {
+                                setAttacker(attacker);
+                                setAttackerLevel(lowLevels[attacker][0].value)
+                            }}
                             options={topLevel}
                         />
                     </div>
                     <div className="flex flex-col items-center">
                         <p>Node Level</p>
                         <ImageSelect
+                            key={attacker}
                             value={attackerLevel}
                             onChange={(level) => {
                                 setAttackerLevel(level);
