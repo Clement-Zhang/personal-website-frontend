@@ -1,3 +1,15 @@
+const Order = Object.freeze({
+    scanner: 0,
+    squid: 1,
+    core: 2,
+    evolver: 3,
+    compiler: 4,
+});
+
+function rank(node) {
+    Order[node] ?? 5;
+}
+
 const allNodes = Object.entries(
     import.meta.glob(
         '../../assets/images/calculators/hackers/gameImgs/nodes/*/*.jpg',
@@ -19,14 +31,13 @@ const allNodes = Object.entries(
     return acc;
 }, {});
 
-for (let node in allNodes) {
-    allNodes[node].sort((before, after) => before.value[1] - after.value[0]);
-}
+Object.values(allNodes).forEach((levels) => {
+    levels.sort((before, after) => before.value[1] - after.value[0]);
+});
 
-export const topLevel = Object.entries(allNodes).reduce(
-    (acc, [node, levels]) => {
+export const topLevel = Object.entries(allNodes)
+    .reduce((acc, [node, levels]) => {
         acc.push({ value: node, image: levels.at(-1).image });
         return acc;
-    },
-    [],
-);
+    }, [])
+    .sort((before, after) => rank(before.value) - rank(after.value));
