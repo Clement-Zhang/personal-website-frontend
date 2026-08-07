@@ -1,6 +1,7 @@
 import { getSettings, getPrograms } from '@/configs/calculators/hackers.config';
 import { topLevel } from '@/data/calculators/hackers';
 import { lowLevels } from '../../../data/calculators/hackers';
+console.log(lowLevels);
 import program_tree from '@/assets/images/calculators/hackers/program tree.jpg';
 import { useOptions } from '../../components/customs/Options';
 import Section from '../../components/customs/Section';
@@ -56,7 +57,7 @@ export default function Hackers() {
                             value={attacker}
                             onChange={(attacker) => {
                                 setAttacker(attacker);
-                                setAttackerLevel(lowLevels[attacker][0].value)
+                                setAttackerLevel(lowLevels[attacker][0].value);
                             }}
                             options={topLevel}
                         />
