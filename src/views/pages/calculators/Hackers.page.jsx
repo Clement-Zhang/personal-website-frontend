@@ -13,7 +13,6 @@ export default function Hackers() {
     const [settingsData, setSettingsData] = useState(getSettings);
     const [programsData, setProgramsData] = useState(getPrograms);
     const [attacker, setAttacker] = useState(topLevel[0].value);
-    console.log(topLevel);
     // const [attackerLevel, setAttackerLevel] = useState(attackerLevels[0].value);
     const { setOptions } = useOptions();
     useEffect(() => {
