@@ -43,12 +43,12 @@ export const topLevel = Object.entries(allNodes)
     .sort((before, after) => rank(before.value) - rank(after.value));
 
 export const lowLevels = Object.entries(allNodes).reduce(
-    (acc, [node, levels]) => {
-        acc[node] = levels.reduce((acc, level) => {
-            acc.push({ value: level.value[0], image: level.image });
-            return acc;
+    (dict, [node, levels]) => {
+        dict[node] = levels.reduce((arr, level) => {
+            arr.push({ value: level.value[0], image: level.image });
+            return arr;
         }, []);
-        return acc;
+        return dict;
     },
     {},
 );
