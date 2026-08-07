@@ -40,4 +40,8 @@ export const topLevel = Object.entries(allNodes)
         acc.push({ value: node, image: levels.at(-1).image });
         return acc;
     }, [])
-    .sort((before, after) => rank(before.value) - rank(after.value));
+    .sort((before, after) => {
+        console.log(before.value, after.value);
+        console.log(rank(before.value), rank(after.value));
+        return rank(before.value) - rank(after.value);
+    });
