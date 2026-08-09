@@ -7,51 +7,40 @@ const Order = Object.freeze({
 });
 
 function rank(node) {
-    return Order[node] ?? 5;
+    return Order[node] ?? Object.keys(Order).length;
 }
 
+// {node:[{image,range}]}
 const allNodes = Object.entries(
     import.meta.glob(
-        '../../assets/images/calculators/hackers/gameImgs/nodes/*/*.jpg',
+        '@/assets/images/calculators/hackers/gameImgs/nodes/*/*.jpg',
         { eager: true, import: 'default' },
     ),
 ).reduce((acc, [path, url]) => {
-    const node = path.split('/').at(-2);
-    acc[node]
-        ? acc[node].push({
-              image: url,
-              value: path.split('/').at(-1).slice(0, -4).split('-'),
-          })
-        : (acc[node] = [
-              {
-                  image: url,
-                  value: path.split('/').at(-1).slice(0, -4).split('-'),
-              },
-          ]);
+    const segments = path.split('/');
+    const node = segments.at(-2);
+    (acc[node] ??= []).push({
+        image: url,
+        range: segments.at(-1).split('.')[0].split('-'),
+    });
     return acc;
 }, {});
 
 Object.values(allNodes).forEach((levels) => {
     levels.sort(
-        (before, after) =>
-            Number(before.value[1] || before.value[0]) - Number(after.value[0]),
+        (before, after) => Number(before.range[0]) - Number(after.range[0]),
     );
 });
 
+// [{value,image}]
 export const topLevel = Object.entries(allNodes)
-    .reduce((acc, [node, levels]) => {
-        acc.push({ value: node, image: levels.at(-1).image });
-        return acc;
-    }, [])
+    .map(([node, levels]) => ({ value: node, image: levels.at(-1).image }))
     .sort((before, after) => rank(before.value) - rank(after.value));
 
-export const lowLevels = Object.entries(allNodes).reduce(
-    (dict, [node, levels]) => {
-        dict[node] = levels.reduce((arr, level) => {
-            arr.push({ value: level.value[0], image: level.image });
-            return arr;
-        }, []);
-        return dict;
-    },
-    {},
+// {node:[{image,value}]}
+export const lowLevels = Object.fromEntries(
+    Object.entries(allNodes).map(([node, levels]) => [
+        node,
+        levels.map(({ range, image }) => ({ value: range[0], image })),
+    ]),
 );

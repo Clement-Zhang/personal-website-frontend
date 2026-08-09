@@ -1,7 +1,5 @@
 import { getSettings, getPrograms } from '@/configs/calculators/hackers.config';
-import { topLevel } from '@/data/calculators/hackers';
-import { lowLevels } from '../../../data/calculators/hackers';
-console.log(lowLevels);
+import { topLevel, lowLevels } from '@/data/calculators/hackers';
 import program_tree from '@/assets/images/calculators/hackers/program tree.jpg';
 import { useOptions } from '../../components/customs/Options';
 import Section from '../../components/customs/Section';
