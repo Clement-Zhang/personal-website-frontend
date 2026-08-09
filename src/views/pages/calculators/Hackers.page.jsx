@@ -11,10 +11,10 @@ import { useState, useEffect } from 'react';
 export default function Hackers() {
     const [settingsData, setSettingsData] = useState(getSettings);
     const [programsData, setProgramsData] = useState(getPrograms);
-    const [attacker, setAttacker] = useState(topLevel[0].value);
-    const [attackerLevel, setAttackerLevel] = useState(
-        lowLevels[attacker][0].value,
-    );
+    const [attacker, setAttacker] = useState({
+        node: topLevel[0].value,
+        level: lowLevels[topLevel[0].value][0].value,
+    });
     const { setOptions } = useOptions();
     useEffect(() => {
         setOptions(
@@ -48,14 +48,17 @@ export default function Hackers() {
     return (
         <div className="flex">
             <Section title="Attacker Node">
-                <div className="flex justify-center gap-x-3">
+                <div className="flex justify-center gap-x-3 border">
                     <div className="flex flex-col items-center">
                         <p>Node Type</p>
                         <ImageSelect
-                            value={attacker}
+                            value={attacker.node}
                             onChange={(attacker) => {
-                                setAttacker(attacker);
-                                setAttackerLevel(lowLevels[attacker][0].value);
+                                setAttacker((prev) => ({
+                                    ...prev,
+                                    node: attacker,
+                                    level: lowLevels[attacker][0].value,
+                                }));
                             }}
                             options={topLevel}
                         />
@@ -63,12 +66,15 @@ export default function Hackers() {
                     <div className="flex flex-col items-center">
                         <p>Node Level</p>
                         <ImageSelect
-                            key={attacker}
-                            value={attackerLevel}
+                            key={attacker.node}
+                            value={attacker.level}
                             onChange={(level) => {
-                                setAttackerLevel(level);
+                                setAttacker((prev) => ({
+                                    ...prev,
+                                    level: level,
+                                }));
                             }}
-                            options={lowLevels[attacker]}
+                            options={lowLevels[attacker.node]}
                         />
                     </div>
                 </div>
