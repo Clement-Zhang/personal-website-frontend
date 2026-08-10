@@ -14,14 +14,14 @@ export default function Hackers() {
     const [state, setState] = useState({
         'Attacker Node': [
             {
-                type: topLevel[0].value,
-                level: lowLevels[topLevel[0].value][0].value,
+                type: topLevel['Attacker Node'][0].value,
+                level: lowLevels[topLevel['Attacker Node'][0].value][0].value,
             },
         ],
         'Defender Nodes': [
             {
-                type: topLevel[0].value,
-                level: lowLevels[topLevel[0].value][0].value,
+                type: topLevel['Defender Nodes'][0].value,
+                level: lowLevels[topLevel['Defender Nodes'][0].value][0].value,
             },
         ],
     });
