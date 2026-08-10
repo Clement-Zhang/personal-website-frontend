@@ -11,9 +11,13 @@ import { useState, useEffect } from 'react';
 export default function Hackers() {
     const [settingsData, setSettingsData] = useState(getSettings);
     const [programsData, setProgramsData] = useState(getPrograms);
-    const [attacker, setAttacker] = useState({
-        node: topLevel[0].value,
-        level: lowLevels[topLevel[0].value][0].value,
+    const [state, setState] = useState({
+        'Attacker Node': [
+            {
+                type: topLevel[0].value,
+                level: lowLevels[topLevel[0].value][0].value,
+            },
+        ],
     });
     const { setOptions } = useOptions();
     useEffect(() => {
@@ -47,41 +51,42 @@ export default function Hackers() {
     }, [settingsData, programsData]);
     return (
         <div className="flex">
-            <Section title="Attacker Node">
-                <div className="flex justify-center">
-                    <div className="flex w-fit p-1 gap-x-3 border">
-                        <div className="flex flex-col items-center">
-                            <p>Node Type</p>
-                            <ImageSelect
-                                value={attacker.node}
-                                onChange={(attacker) => {
-                                    setAttacker((prev) => ({
-                                        ...prev,
-                                        node: attacker,
-                                        level: lowLevels[attacker][0].value,
-                                    }));
-                                }}
-                                options={topLevel}
-                            />
-                        </div>
-                        <div className="flex flex-col items-center">
-                            <p>Node Level</p>
-                            <ImageSelect
-                                key={attacker.node}
-                                value={attacker.level}
-                                onChange={(level) => {
-                                    setAttacker((prev) => ({
-                                        ...prev,
-                                        level: level,
-                                    }));
-                                }}
-                                options={lowLevels[attacker.node]}
-                            />
-                        </div>
+            {Object.entries(state).map(([side, nodes]) => {
+                <Section title={side}>
+                    <div className="flex justify-center">
+                        {nodes.map((node, index) => {
+                            <div className="flex w-fit p-1 gap-x-3 border">
+                                <div className="flex flex-col items-center">
+                                    <p>Node Type</p>
+                                    <ImageSelect
+                                        value={node.type}
+                                        onChange={(type) => {
+                                            const tmp = state[side][index];
+                                            tmp.type = type;
+                                            tmp.level =
+                                                lowLevels[type][0].value;
+                                            setState({ ...state });
+                                        }}
+                                        options={topLevel}
+                                    />
+                                </div>
+                                <div className="flex flex-col items-center">
+                                    <p>Node Level</p>
+                                    <ImageSelect
+                                        key={node.type}
+                                        value={node.level}
+                                        onChange={(level) => {
+                                            state[side][index].level = level;
+                                            setState({ ...state });
+                                        }}
+                                        options={lowLevels[node.type]}
+                                    />
+                                </div>
+                            </div>;
+                        })}
                     </div>
-                </div>
-            </Section>
-            <Section title="Defender Nodes"></Section>
+                </Section>;
+            })}
         </div>
     );
 }
