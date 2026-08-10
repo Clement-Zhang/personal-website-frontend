@@ -18,6 +18,12 @@ export default function Hackers() {
                 level: lowLevels[topLevel[0].value][0].value,
             },
         ],
+        'Defender Nodes': [
+            {
+                type: topLevel[0].value,
+                level: lowLevels[topLevel[0].value][0].value,
+            },
+        ],
     });
     const { setOptions } = useOptions();
     useEffect(() => {
