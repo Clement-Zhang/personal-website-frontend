@@ -51,10 +51,10 @@ export default function Hackers() {
     }, [settingsData, programsData]);
     return (
         <div className="flex">
-            {Object.entries(state).map(([side, nodes]) => {
+            {Object.entries(state).map(([side, nodes]) => (
                 <Section title={side}>
                     <div className="flex justify-center">
-                        {nodes.map((node, index) => {
+                        {nodes.map((node, index) => (
                             <div className="flex w-fit p-1 gap-x-3 border">
                                 <div className="flex flex-col items-center">
                                     <p>Node Type</p>
@@ -82,11 +82,11 @@ export default function Hackers() {
                                         options={lowLevels[node.type]}
                                     />
                                 </div>
-                            </div>;
-                        })}
+                            </div>
+                        ))}
                     </div>
-                </Section>;
-            })}
+                </Section>
+            ))}
         </div>
     );
 }
