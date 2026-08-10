@@ -4,6 +4,9 @@ const Order = Object.freeze({
     core: 2,
     evolver: 3,
     compiler: 4,
+    bice: 5,
+    turret: 6,
+    sentry: 7,
 });
 
 function rank(node) {
