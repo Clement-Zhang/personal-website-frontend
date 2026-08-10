@@ -1,5 +1,5 @@
 import { getSettings, getPrograms } from '@/configs/calculators/hackers.config';
-import { topLevel, lowLevels, rank } from '@/data/calculators/hackers';
+import { topLevel, lowLevels } from '@/data/calculators/hackers';
 import program_tree from '@/assets/images/calculators/hackers/program tree.jpg';
 import { useOptions } from '../../components/customs/Options';
 import Section from '../../components/customs/Section';
@@ -73,11 +73,7 @@ export default function Hackers() {
                                                 lowLevels[type][0].value;
                                             setState({ ...state });
                                         }}
-                                        options={topLevel.toSorted(
-                                            (before, after) =>
-                                                rank(before.value, side) -
-                                                rank(after.value, side),
-                                        )}
+                                        options={topLevel[side]}
                                     />
                                 </div>
                                 <div className="flex flex-col items-center">

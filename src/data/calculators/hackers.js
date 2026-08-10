@@ -1,10 +1,19 @@
-const Order = Object.freeze({
-    'Attacker Node': { scanner: 0, squid: 1, core: 2, evolver: 3, compiler: 4 },
-    'Defender Nodes': { bice: 0, turret: 1, sentry: 2 },
+const AttackerOrder = Object.freeze({
+    scanner: 0,
+    squid: 1,
+    core: 2,
+    evolver: 3,
+    compiler: 4,
 });
 
-export function rank(node, side) {
-    return Order[side][node] ?? Object.keys(Order[side]).length;
+const DefenderOrder = Object.freeze({
+    bice: 0,
+    turret: 1,
+    sentry: 2,
+});
+
+function rank(ranking, node) {
+    return ranking[node] ?? Object.keys(ranking).length;
 }
 
 // {node:[{image,range}]}
@@ -30,10 +39,22 @@ Object.values(allNodes).forEach((levels) => {
 });
 
 // [{value,image}]
-export const topLevel = Object.entries(allNodes).map(([node, levels]) => ({
-    value: node,
-    image: levels.at(-1).image,
-}));
+export const topLevel = {
+    'Attacker Node': Object.entries(allNodes)
+        .map(([node, levels]) => ({ value: node, image: levels.at(-1).image }))
+        .sort(
+            (before, after) =>
+                rank(AttackerOrder, before.value) -
+                rank(AttackerOrder, after.value),
+        ),
+    'Defender Nodes': Object.entries(allNodes)
+        .map(([node, levels]) => ({ value: node, image: levels.at(-1).image }))
+        .sort(
+            (before, after) =>
+                rank(DefenderOrder, before.value) -
+                rank(DefenderOrder, after.value),
+        ),
+};
 
 // {node:[{image,value}]}
 export const lowLevels = Object.fromEntries(
