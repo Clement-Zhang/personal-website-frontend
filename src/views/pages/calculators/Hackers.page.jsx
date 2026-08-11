@@ -87,7 +87,7 @@ export default function Hackers() {
                                 </div>
                             </div>
                         ))}
-                        {index == 2 && (
+                        {index == 1 && (
                             <img
                                 className="bg-blue-500"
                                 src={add}
