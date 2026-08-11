@@ -92,6 +92,10 @@ export default function Hackers() {
                                 className="bg-blue-500 object-none"
                                 src={add}
                                 alt="add another node"
+                                onClick={() => {
+                                    state[side].push(resetNode('node'));
+                                    setState({ ...state });
+                                }}
                             />
                         )}
                     </div>
