@@ -17,10 +17,10 @@ export default function ImageSelect({ value, onChange, options }) {
             >
                 <img
                     src={selected.image}
-                    alt={selected.value}
+                    alt={selected.value + ' selected'}
                     className="w-12"
                 />
-                <img src={arrow} alt="down arrow" className="size-3" />
+                <img src={arrow} alt="dropdown" className="size-3" />
             </button>
 
             <AnimatePresence>

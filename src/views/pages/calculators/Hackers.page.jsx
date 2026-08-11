@@ -1,6 +1,7 @@
 import { getSettings, getPrograms } from '@/configs/calculators/hackers.config';
 import { topLevel, lowLevels } from '@/data/calculators/hackers';
 import program_tree from '@/assets/images/calculators/hackers/program tree.jpg';
+import add from '@/assets/images/calculators/add.jpg';
 import { useOptions } from '../../components/customs/Options';
 import Section from '../../components/customs/Section';
 import Settings from '../../components/calculators/Settings';
@@ -55,7 +56,7 @@ export default function Hackers() {
     }, [settingsData, programsData]);
     return (
         <div className="flex">
-            {Object.entries(state).map(([side, nodes]) => (
+            {Object.entries(state).map(([side, nodes], index) => (
                 <Section title={side}>
                     <div className="flex justify-center">
                         {nodes.map((node, index) => (
@@ -86,6 +87,13 @@ export default function Hackers() {
                                 </div>
                             </div>
                         ))}
+                        {index == 2 && (
+                            <img
+                                className="bg-blue-500"
+                                src={add}
+                                alt="add another node"
+                            />
+                        )}
                     </div>
                 </Section>
             ))}
