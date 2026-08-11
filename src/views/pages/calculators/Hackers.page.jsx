@@ -89,7 +89,7 @@ export default function Hackers() {
                         ))}
                         {index == 1 && (
                             <img
-                                className="bg-blue-500"
+                                className="bg-blue-500 h-6"
                                 src={add}
                                 alt="add another node"
                             />
