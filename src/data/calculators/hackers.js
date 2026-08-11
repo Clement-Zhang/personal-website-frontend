@@ -1,16 +1,4 @@
-const AttackerOrder = Object.freeze({
-    scanner: 0,
-    squid: 1,
-    core: 2,
-    evolver: 3,
-    compiler: 4,
-});
-
-const DefenderOrder = Object.freeze({
-    bice: 0,
-    turret: 1,
-    sentry: 2,
-});
+import { sides } from '@/configs/calculators/hackers.config';
 
 function rank(ranking, node) {
     return ranking[node] ?? Object.keys(ranking).length;
@@ -38,23 +26,21 @@ Object.values(allNodes).forEach((levels) => {
     );
 });
 
-// [{value,image}]
-export const topLevel = {
-    'Attacker Node': Object.entries(allNodes)
-        .map(([node, levels]) => ({ value: node, image: levels.at(-1).image }))
-        .sort(
-            (before, after) =>
-                rank(AttackerOrder, before.value) -
-                rank(AttackerOrder, after.value),
-        ),
-    'Defender Nodes': Object.entries(allNodes)
-        .map(([node, levels]) => ({ value: node, image: levels.at(-1).image }))
-        .sort(
-            (before, after) =>
-                rank(DefenderOrder, before.value) -
-                rank(DefenderOrder, after.value),
-        ),
-};
+// {side:[{image,value}]}
+export const topLevel = Object.fromEntries(
+    Object.entries(sides).map(([side, ranking]) => [
+        side,
+        Object.entries(allNodes)
+            .map(([node, levels]) => ({
+                value: node,
+                image: levels.at(-1).image,
+            }))
+            .sort(
+                (before, after) =>
+                    rank(ranking, before.value) - rank(ranking, after.value),
+            ),
+    ]),
+);
 
 // {node:[{image,value}]}
 export const lowLevels = Object.fromEntries(

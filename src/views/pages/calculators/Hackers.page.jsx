@@ -8,23 +8,21 @@ import Characters from '../../components/calculators/Characters';
 import ImageSelect from '../../components/customs/ImageSelect';
 import { useState, useEffect } from 'react';
 
+function resetNode(type) {
+    return { type, level: lowLevels[type][0].value };
+}
+
 export default function Hackers() {
     const [settingsData, setSettingsData] = useState(getSettings);
     const [programsData, setProgramsData] = useState(getPrograms);
-    const [state, setState] = useState({
-        'Attacker Node': [
-            {
-                type: topLevel['Attacker Node'][0].value,
-                level: lowLevels[topLevel['Attacker Node'][0].value][0].value,
-            },
-        ],
-        'Defender Nodes': [
-            {
-                type: topLevel['Defender Nodes'][0].value,
-                level: lowLevels[topLevel['Defender Nodes'][0].value][0].value,
-            },
-        ],
-    });
+    const [state, setState] = useState(() =>
+        Object.fromEntries(
+            Object.entries(topLevel).map(([side, nodes]) => [
+                side,
+                [resetNode(nodes[0].value)],
+            ]),
+        ),
+    );
     const { setOptions } = useOptions();
     useEffect(() => {
         setOptions(
@@ -67,10 +65,8 @@ export default function Hackers() {
                                     <ImageSelect
                                         value={node.type}
                                         onChange={(type) => {
-                                            const tmp = state[side][index];
-                                            tmp.type = type;
-                                            tmp.level =
-                                                lowLevels[type][0].value;
+                                            state[side][index] =
+                                                resetNode(type);
                                             setState({ ...state });
                                         }}
                                         options={topLevel[side]}
