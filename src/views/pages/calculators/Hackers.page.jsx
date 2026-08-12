@@ -89,14 +89,14 @@ export default function Hackers() {
                         ))}
                         {index == 1 && (
                             <button
-                                className="bg-blue-500"
+                                className="bg-blue-500 flex items-center"
                                 type="button"
                                 onClick={() => {
                                     state[side].push(resetNode('node'));
                                     setState({ ...state });
                                 }}
                             >
-                                <img className='m-auto' src={add} alt="add another node" />
+                                <img src={add} alt="add another node" />
                             </button>
                         )}
                     </div>
