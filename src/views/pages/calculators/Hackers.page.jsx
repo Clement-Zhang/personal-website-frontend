@@ -57,7 +57,7 @@ export default function Hackers() {
     return (
         <div className="flex">
             {Object.entries(state).map(([side, nodes], index) => (
-                <Section title={side}>
+                <Section key={nodes} title={side}>
                     <div className="flex justify-center">
                         {nodes.map((node, index) => (
                             <div className="flex w-fit p-1 gap-x-3 border">
