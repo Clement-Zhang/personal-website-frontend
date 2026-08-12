@@ -92,7 +92,9 @@ export default function Hackers() {
                                 className="bg-blue-500 flex items-center"
                                 type="button"
                                 onClick={() => {
-                                    state[side].push(resetNode('node'));
+                                    state[side].push(
+                                        resetNode(topLevel[side][0].value),
+                                    );
                                     setState({ ...state });
                                     console.log(state);
                                 }}
