@@ -88,15 +88,16 @@ export default function Hackers() {
                             </div>
                         ))}
                         {index == 1 && (
-                            <div
-                                className="bg-blue-500 object-none"
+                            <button
+                                className="bg-blue-500"
+                                type="button"
                                 onClick={() => {
                                     state[side].push(resetNode('node'));
                                     setState({ ...state });
                                 }}
                             >
-                                <img src={add} alt="add another node" />
-                            </div>
+                                <img className='m-auto' src={add} alt="add another node" />
+                            </button>
                         )}
                     </div>
                 </Section>
