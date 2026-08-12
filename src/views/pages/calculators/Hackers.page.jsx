@@ -94,6 +94,7 @@ export default function Hackers() {
                                 onClick={() => {
                                     state[side].push(resetNode('node'));
                                     setState({ ...state });
+                                    console.log(state);
                                 }}
                             >
                                 <img src={add} alt="add another node" />
