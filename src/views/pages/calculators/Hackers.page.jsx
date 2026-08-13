@@ -99,7 +99,7 @@ export default function Hackers() {
                                             console.log(state);
                                         }}
                                     >
-                                        <img src={add} alt="add another node" />
+                                        <img src={remove} alt="add another node" />
                                     </button>
                                 )}
                             </div>
