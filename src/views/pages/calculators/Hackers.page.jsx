@@ -61,7 +61,7 @@ export default function Hackers() {
                 <Section title={side}>
                     <div className="flex justify-center">
                         {nodes.map((node, index) => (
-                            <div className="flex flex-col items-center">
+                            <div className="flex flex-col justify-between items-center">
                                 <div className="flex w-fit p-1 gap-x-3 border">
                                     <div className="flex flex-col items-center">
                                         <p>Node Type</p>
@@ -91,7 +91,7 @@ export default function Hackers() {
                                 </div>
                                 {nodes.length > 1 && (
                                     <button
-                                        className="bg-red-500 justify-self-end flex items-center"
+                                        className="bg-red-500 flex items-center"
                                         type="button"
                                         onClick={() => {
                                             state[side].splice(index, 1);
