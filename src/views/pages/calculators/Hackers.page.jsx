@@ -62,33 +62,56 @@ export default function Hackers() {
                     <div className="flex justify-center">
                         {nodes.map((node, index) => (
                             <div className="flex flex-col justify-between items-center">
-                                <div className="flex w-fit p-1 gap-x-3 border">
-                                    <div className="flex flex-col items-center">
-                                        <p>Node Type</p>
-                                        <ImageSelect
-                                            value={node.type}
-                                            onChange={(type) => {
-                                                state[side][index] =
-                                                    resetNode(type);
-                                                setState({ ...state });
-                                            }}
-                                            options={topLevel[side]}
-                                        />
+                                <>
+                                    <div className="flex w-fit p-1 gap-x-3 border">
+                                        <div className="flex flex-col items-center">
+                                            <p>Node Type</p>
+                                            <ImageSelect
+                                                value={node.type}
+                                                onChange={(type) => {
+                                                    state[side][index] =
+                                                        resetNode(type);
+                                                    setState({ ...state });
+                                                }}
+                                                options={topLevel[side]}
+                                            />
+                                        </div>
+                                        <div className="flex flex-col items-center">
+                                            <p>Node Level</p>
+                                            <ImageSelect
+                                                key={node.type}
+                                                value={node.level}
+                                                onChange={(level) => {
+                                                    state[side][index].level =
+                                                        level;
+                                                    setState({ ...state });
+                                                }}
+                                                options={lowLevels[node.type]}
+                                            />
+                                        </div>
                                     </div>
-                                    <div className="flex flex-col items-center">
-                                        <p>Node Level</p>
-                                        <ImageSelect
-                                            key={node.type}
-                                            value={node.level}
-                                            onChange={(level) => {
-                                                state[side][index].level =
-                                                    level;
-                                                setState({ ...state });
-                                            }}
-                                            options={lowLevels[node.type]}
-                                        />
-                                    </div>
-                                </div>
+                                    {nodes.length > 1 &&
+                                        index == nodes.length - 1 && (
+                                            <button
+                                                className="bg-blue-500 flex items-center"
+                                                type="button"
+                                                onClick={() => {
+                                                    state[side].push(
+                                                        resetNode(
+                                                            topLevel[side][0]
+                                                                .value,
+                                                        ),
+                                                    );
+                                                    setState({ ...state });
+                                                }}
+                                            >
+                                                <img
+                                                    src={add}
+                                                    alt="add another node"
+                                                />
+                                            </button>
+                                        )}
+                                </>
                                 {nodes.length > 1 && (
                                     <button
                                         className="bg-red-500 flex items-center"
@@ -96,29 +119,16 @@ export default function Hackers() {
                                         onClick={() => {
                                             state[side].splice(index, 1);
                                             setState({ ...state });
-                                            console.log(state);
                                         }}
                                     >
-                                        <img src={remove} alt="add another node" />
+                                        <img
+                                            src={remove}
+                                            alt="add another node"
+                                        />
                                     </button>
                                 )}
                             </div>
                         ))}
-                        {index == 1 && (
-                            <button
-                                className="bg-blue-500 flex items-center"
-                                type="button"
-                                onClick={() => {
-                                    state[side].push(
-                                        resetNode(topLevel[side][0].value),
-                                    );
-                                    setState({ ...state });
-                                    console.log(state);
-                                }}
-                            >
-                                <img src={add} alt="add another node" />
-                            </button>
-                        )}
                     </div>
                 </Section>
             ))}
