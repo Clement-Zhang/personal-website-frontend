@@ -91,7 +91,7 @@ export default function Hackers() {
                                 </div>
                                 {nodes.length > 1 && (
                                     <button
-                                        className="bg-red-500 flex items-center"
+                                        className="bg-red-500 self-end flex items-center"
                                         type="button"
                                         onClick={() => {
                                             state[side].splice(index, 1);
