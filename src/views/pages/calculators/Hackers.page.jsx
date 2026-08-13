@@ -2,6 +2,7 @@ import { getSettings, getPrograms } from '@/configs/calculators/hackers.config';
 import { topLevel, lowLevels } from '@/data/calculators/hackers';
 import program_tree from '@/assets/images/calculators/hackers/program tree.jpg';
 import add from '@/assets/images/calculators/add.jpg';
+import remove from '@/assets/images/calculators/remove.jpg';
 import { useOptions } from '../../components/customs/Options';
 import Section from '../../components/customs/Section';
 import Settings from '../../components/calculators/Settings';
@@ -57,34 +58,50 @@ export default function Hackers() {
     return (
         <div className="flex">
             {Object.entries(state).map(([side, nodes], index) => (
-                <Section key={nodes} title={side}>
+                <Section title={side}>
                     <div className="flex justify-center">
                         {nodes.map((node, index) => (
-                            <div className="flex w-fit p-1 gap-x-3 border">
-                                <div className="flex flex-col items-center">
-                                    <p>Node Type</p>
-                                    <ImageSelect
-                                        value={node.type}
-                                        onChange={(type) => {
-                                            state[side][index] =
-                                                resetNode(type);
-                                            setState({ ...state });
-                                        }}
-                                        options={topLevel[side]}
-                                    />
+                            <div className="flex flex-col items-center">
+                                <div className="flex w-fit p-1 gap-x-3 border">
+                                    <div className="flex flex-col items-center">
+                                        <p>Node Type</p>
+                                        <ImageSelect
+                                            value={node.type}
+                                            onChange={(type) => {
+                                                state[side][index] =
+                                                    resetNode(type);
+                                                setState({ ...state });
+                                            }}
+                                            options={topLevel[side]}
+                                        />
+                                    </div>
+                                    <div className="flex flex-col items-center">
+                                        <p>Node Level</p>
+                                        <ImageSelect
+                                            key={node.type}
+                                            value={node.level}
+                                            onChange={(level) => {
+                                                state[side][index].level =
+                                                    level;
+                                                setState({ ...state });
+                                            }}
+                                            options={lowLevels[node.type]}
+                                        />
+                                    </div>
                                 </div>
-                                <div className="flex flex-col items-center">
-                                    <p>Node Level</p>
-                                    <ImageSelect
-                                        key={node.type}
-                                        value={node.level}
-                                        onChange={(level) => {
-                                            state[side][index].level = level;
+                                {nodes.length > 1 && (
+                                    <button
+                                        className="bg-red-500 flex items-center"
+                                        type="button"
+                                        onClick={() => {
+                                            state[side].splice(index, 1);
                                             setState({ ...state });
+                                            console.log(state);
                                         }}
-                                        options={lowLevels[node.type]}
-                                    />
-                                </div>
+                                    >
+                                        <img src={add} alt="add another node" />
+                                    </button>
+                                )}
                             </div>
                         ))}
                         {index == 1 && (
