@@ -60,7 +60,7 @@ export default function Hackers() {
             {Object.entries(state).map(([side, nodes], index) => (
                 <Section title={side}>
                     <div className="flex justify-center">
-                        {nodes.map((node, index) => (
+                        {nodes.map((node, location) => (
                             <div className="flex flex-col justify-between items-center">
                                 <>
                                     <div className="flex w-fit p-1 gap-x-3 border">
@@ -90,8 +90,8 @@ export default function Hackers() {
                                             />
                                         </div>
                                     </div>
-                                    {nodes.length > 1 &&
-                                        index == nodes.length - 1 && (
+                                    {index == 2 &&
+                                        location == nodes.length - 1 && (
                                             <button
                                                 className="bg-blue-500 flex items-center"
                                                 type="button"
@@ -112,7 +112,7 @@ export default function Hackers() {
                                             </button>
                                         )}
                                 </>
-                                {nodes.length > 1 && (
+                                {index == 2 && (
                                     <button
                                         className="bg-red-500 flex items-center"
                                         type="button"
