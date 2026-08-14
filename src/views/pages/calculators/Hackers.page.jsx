@@ -66,7 +66,7 @@ export default function Hackers() {
                     <div className="flex justify-center">
                         {nodes.map((node, index) => (
                             <div className="flex flex-col justify-between items-center">
-                                <>
+                                <div className="flex">
                                     <div className="flex w-fit p-1 gap-x-3 border">
                                         <div className="flex flex-col items-center">
                                             <p>Node Type</p>
@@ -115,7 +115,7 @@ export default function Hackers() {
                                                 />
                                             </button>
                                         )}
-                                </>
+                                </div>
                                 {sides[side].tags.includes('defenders') &&
                                     nodes.length > 1 && (
                                         <button
