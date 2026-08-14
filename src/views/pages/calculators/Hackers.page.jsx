@@ -67,7 +67,7 @@ export default function Hackers() {
                         {nodes.map((node, index) => (
                             <div className="flex flex-col justify-between items-center">
                                 <div className="flex">
-                                    <div className="flex w-fit p-1 gap-x-3 border">
+                                    <div className="flex w-fit h-full p-1 gap-x-3 border">
                                         <div className="flex flex-col items-center">
                                             <p>Node Type</p>
                                             <ImageSelect
