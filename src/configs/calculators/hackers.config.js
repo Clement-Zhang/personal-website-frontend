@@ -1,13 +1,19 @@
-// side label -> node display priority; nodes not listed sort last
+// {side:{tags,ranking}}
 export const sides = Object.freeze({
     'Attacker Node': Object.freeze({
-        scanner: 0,
-        squid: 1,
-        core: 2,
-        evolver: 3,
-        compiler: 4,
+        tags: Object.freeze([]),
+        ranking: Object.freeze({
+            scanner: 0,
+            squid: 1,
+            core: 2,
+            evolver: 3,
+            compiler: 4,
+        }),
     }),
-    'Defender Nodes': Object.freeze({ bice: 0, turret: 1, sentry: 2 }),
+    'Defender Nodes': Object.freeze({
+        tags: Object.freeze(['defenders']),
+        ranking: Object.freeze({ bice: 0, turret: 1, sentry: 2 }),
+    }),
 });
 
 export const getSettings = () =>

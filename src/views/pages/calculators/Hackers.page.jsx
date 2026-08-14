@@ -1,4 +1,8 @@
-import { getSettings, getPrograms } from '@/configs/calculators/hackers.config';
+import {
+    getSettings,
+    getPrograms,
+    sides,
+} from '@/configs/calculators/hackers.config';
 import { topLevel, lowLevels } from '@/data/calculators/hackers';
 import program_tree from '@/assets/images/calculators/hackers/program tree.jpg';
 import add from '@/assets/images/calculators/add.jpg';
@@ -57,10 +61,10 @@ export default function Hackers() {
     }, [settingsData, programsData]);
     return (
         <div className="flex">
-            {Object.entries(state).map(([side, nodes], index) => (
+            {Object.entries(state).map(([side, nodes]) => (
                 <Section title={side}>
                     <div className="flex justify-center">
-                        {nodes.map((node, location) => (
+                        {nodes.map((node, index) => (
                             <div className="flex flex-col justify-between items-center">
                                 <>
                                     <div className="flex w-fit p-1 gap-x-3 border">
@@ -90,8 +94,8 @@ export default function Hackers() {
                                             />
                                         </div>
                                     </div>
-                                    {index == 2 &&
-                                        location == nodes.length - 1 && (
+                                    {sides[side].tags.includes('defenders') &&
+                                        node == nodes.at(-1) && (
                                             <button
                                                 className="bg-blue-500 flex items-center"
                                                 type="button"
@@ -112,21 +116,22 @@ export default function Hackers() {
                                             </button>
                                         )}
                                 </>
-                                {index == 2 && (
-                                    <button
-                                        className="bg-red-500 flex items-center"
-                                        type="button"
-                                        onClick={() => {
-                                            state[side].splice(index, 1);
-                                            setState({ ...state });
-                                        }}
-                                    >
-                                        <img
-                                            src={remove}
-                                            alt="add another node"
-                                        />
-                                    </button>
-                                )}
+                                {sides[side].tags.includes('defenders') &&
+                                    nodes.length > 1 && (
+                                        <button
+                                            className="bg-red-500 flex items-center"
+                                            type="button"
+                                            onClick={() => {
+                                                state[side].splice(index, 1);
+                                                setState({ ...state });
+                                            }}
+                                        >
+                                            <img
+                                                src={remove}
+                                                alt="add another node"
+                                            />
+                                        </button>
+                                    )}
                             </div>
                         ))}
                     </div>

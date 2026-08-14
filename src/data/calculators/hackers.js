@@ -28,7 +28,7 @@ Object.values(allNodes).forEach((levels) => {
 
 // {side:[{image,value}]}
 export const topLevel = Object.fromEntries(
-    Object.entries(sides).map(([side, ranking]) => [
+    Object.entries(sides).map(([side, { ranking }]) => [
         side,
         Object.entries(allNodes)
             .map(([node, levels]) => ({
