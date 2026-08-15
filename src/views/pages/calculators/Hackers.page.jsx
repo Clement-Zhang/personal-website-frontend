@@ -116,7 +116,7 @@ export default function Hackers() {
                                 {sides[side].tags.includes('defenders') &&
                                     nodes.length > 1 && (
                                         <button
-                                            className="bg-red-500 flex items-center justify-self-center size-fit"
+                                            className="bg-red-500 flex items-center justify-self-center row-start-2 size-fit"
                                             type="button"
                                             onClick={() => {
                                                 state[side].splice(index, 1);
