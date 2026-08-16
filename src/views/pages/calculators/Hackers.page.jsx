@@ -65,7 +65,7 @@ export default function Hackers() {
                 <Section title={side}>
                     <div className="flex justify-center">
                         {nodes.map((node, index) => (
-                            <div className="grid grid-cols-[auto_auto] grid-rows-[auto_auto]">
+                            <div className="grid grid-cols-[auto_auto] grid-rows-[1fr_auto]">
                                 <div className="flex w-fit p-1 gap-x-3 border">
                                     <div className="flex flex-col items-center">
                                         <p>Node Type</p>
