@@ -3,7 +3,7 @@ import {
     getPrograms,
     sides,
 } from '@/configs/calculators/hackers.config';
-import { topLevel, lowLevels } from '@/data/calculators/hackers';
+import { topLevel, levels } from '@/data/calculators/hackers';
 import program_tree from '@/assets/images/calculators/hackers/program tree.jpg';
 import add from '@/assets/images/calculators/add.jpg';
 import remove from '@/assets/images/calculators/remove.jpg';
@@ -14,8 +14,12 @@ import Characters from '../../components/calculators/Characters';
 import ImageSelect from '../../components/customs/ImageSelect';
 import { useState, useEffect } from 'react';
 
-function resetNode(type) {
-    return { type, level: lowLevels[type][0].value };
+function bias(side) {
+    return sides[side].tags.includes('defenders') ? 'high' : 'low';
+}
+
+function resetNode(side, type) {
+    return { type, level: levels[type][bias(side)][0].value };
 }
 
 export default function Hackers() {
@@ -25,7 +29,7 @@ export default function Hackers() {
         Object.fromEntries(
             Object.entries(topLevel).map(([side, nodes]) => [
                 side,
-                [resetNode(nodes[0].value)],
+                [resetNode(side, nodes[0].value)],
             ]),
         ),
     );
@@ -72,8 +76,10 @@ export default function Hackers() {
                                         <ImageSelect
                                             value={node.type}
                                             onChange={(type) => {
-                                                state[side][index] =
-                                                    resetNode(type);
+                                                state[side][index] = resetNode(
+                                                    side,
+                                                    type,
+                                                );
                                                 setState({ ...state });
                                             }}
                                             options={topLevel[side]}
@@ -89,7 +95,9 @@ export default function Hackers() {
                                                     level;
                                                 setState({ ...state });
                                             }}
-                                            options={lowLevels[node.type]}
+                                            options={
+                                                levels[node.type][bias(side)]
+                                            }
                                         />
                                     </div>
                                 </div>
@@ -101,6 +109,7 @@ export default function Hackers() {
                                             onClick={() => {
                                                 state[side].push(
                                                     resetNode(
+                                                        side,
                                                         topLevel[side][0].value,
                                                     ),
                                                 );

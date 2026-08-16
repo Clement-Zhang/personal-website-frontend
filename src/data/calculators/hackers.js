@@ -42,10 +42,16 @@ export const topLevel = Object.fromEntries(
     ]),
 );
 
-// {node:[{image,value}]}
-export const lowLevels = Object.fromEntries(
+// {node:{low:[image,value],high:[image,value]}}
+export const levels = Object.fromEntries(
     Object.entries(allNodes).map(([node, levels]) => [
         node,
-        levels.map(({ range, image }) => ({ value: range[0], image })),
+        {
+            low: levels.map(({ range, image }) => ({ value: range[0], image })),
+            high: levels.map(({ range, image }) => ({
+                value: range[1],
+                image,
+            })),
+        },
     ]),
 );
