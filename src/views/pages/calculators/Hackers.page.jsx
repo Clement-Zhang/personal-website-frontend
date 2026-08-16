@@ -65,7 +65,7 @@ export default function Hackers() {
                 <Section title={side}>
                     <div className="flex justify-center">
                         {nodes.map((node, index) => (
-                            <div className="grid grid-cols-2 grid-rows-2">
+                            <div className="grid grid-cols-[auto_auto] grid-rows-[auto_auto]">
                                 <div className="flex w-fit p-1 gap-x-3 border">
                                     <div className="flex flex-col items-center">
                                         <p>Node Type</p>
@@ -96,7 +96,7 @@ export default function Hackers() {
                                 {sides[side].tags.includes('defenders') &&
                                     node == nodes.at(-1) && (
                                         <button
-                                            className="bg-blue-500 flex w-fit items-center"
+                                            className="bg-blue-500 flex items-center"
                                             type="button"
                                             onClick={() => {
                                                 state[side].push(
@@ -116,7 +116,7 @@ export default function Hackers() {
                                 {sides[side].tags.includes('defenders') &&
                                     nodes.length > 1 && (
                                         <button
-                                            className="bg-red-500 flex items-center justify-self-center row-start-2 size-fit"
+                                            className="bg-red-500 flex items-center justify-self-center row-start-2"
                                             type="button"
                                             onClick={() => {
                                                 state[side].splice(index, 1);
