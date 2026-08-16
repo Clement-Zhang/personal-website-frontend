@@ -64,7 +64,7 @@ export default function Hackers() {
         );
     }, [settingsData, programsData]);
     return (
-        <div className="flex">
+        <div className="flex lg:flex-row flex-col">
             {Object.entries(state).map(([side, nodes]) => (
                 <Section title={side}>
                     <div className="flex justify-center">

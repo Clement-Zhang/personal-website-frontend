@@ -7,7 +7,6 @@ export default function ImageSelect({ value, onChange, options }) {
     const [selected, setSelected] = useState(
         options.find((option) => option.value == value),
     );
-    console.log(options);
     return (
         <div className="relative">
             <button
