@@ -15,7 +15,7 @@ const allNodes = Object.entries(
     const node = segments.at(-2);
     (acc[node] ??= []).push({
         image: url,
-        range: segments.at(-1).split('.')[0].split('-'),
+        range: (segments.at(-1).split('.')[0] + '-1').split('-').slice(0, 2),
     });
     return acc;
 }, {});
@@ -49,7 +49,7 @@ export const levels = Object.fromEntries(
         {
             low: levels.map(({ range, image }) => ({ value: range[0], image })),
             high: levels.map(({ range, image }) => ({
-                value: range[1] ?? 0,
+                value: range[1] ?? range[0],
                 image,
             })),
         },
