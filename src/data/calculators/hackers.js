@@ -49,7 +49,7 @@ export const levels = Object.fromEntries(
         {
             low: levels.map(({ range, image }) => ({ value: range[0], image })),
             high: levels.map(({ range, image }) => ({
-                value: range[1] ?? range[0],
+                value: range[1],
                 image,
             })),
         },
