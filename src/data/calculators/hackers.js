@@ -1,11 +1,24 @@
-import { sides } from '@/configs/calculators/hackers.config';
+import { sides, programsRanking } from '@/configs/calculators/hackers.config';
 
 function rank(ranking, node) {
     return ranking[node] ?? Object.keys(ranking).length;
 }
 
+// [[program,url]]
+export const programs = Object.entries(
+    import.meta.glob(
+        '@/assets/images/calculators/hackers/gameImgs/programs/*.jpg',
+        { eager: true, import: 'default' },
+    ),
+)
+    .map(([path, url]) => [path.split('/').at(-1).split('.')[0], url])
+    .sort(
+        (before, after) =>
+            rank(programsRanking, before[0]) - rank(programsRanking, after[0]),
+    );
+
 // {node:[{image,range}]}
-const allNodes = Object.entries(
+const nodes = Object.entries(
     import.meta.glob(
         '@/assets/images/calculators/hackers/gameImgs/nodes/*/*.jpg',
         { eager: true, import: 'default' },
@@ -20,7 +33,7 @@ const allNodes = Object.entries(
     return acc;
 }, {});
 
-Object.values(allNodes).forEach((levels) => {
+Object.values(nodes).forEach((levels) => {
     levels.sort(
         (before, after) => Number(before.range[0]) - Number(after.range[0]),
     );
@@ -30,7 +43,7 @@ Object.values(allNodes).forEach((levels) => {
 export const topLevel = Object.fromEntries(
     Object.entries(sides).map(([side, { ranking }]) => [
         side,
-        Object.entries(allNodes)
+        Object.entries(nodes)
             .map(([node, levels]) => ({
                 value: node,
                 image: levels.at(-1).image,
@@ -44,7 +57,7 @@ export const topLevel = Object.fromEntries(
 
 // {node:{low:[image,value],high:[image,value]}}
 export const levels = Object.fromEntries(
-    Object.entries(allNodes).map(([node, levels]) => [
+    Object.entries(nodes).map(([node, levels]) => [
         node,
         {
             low: levels.map(({ range, image }) => ({ value: range[0], image })),

@@ -16,6 +16,14 @@ export const sides = Object.freeze({
     }),
 });
 
+export const programsRanking = Object.freeze({
+    beam: 0,
+    shuriken: 1,
+    blaster: 2,
+    wall: 3,
+    protector: 4,
+});
+
 export const getSettings = () =>
     [
         {
@@ -39,15 +47,15 @@ export const getSettings = () =>
 
 export const getPrograms = () => {
     const programs = {
-        'beam cannon': 'left-[53.43%] top-[3.37%] w-[4.41%] h-[2.82%]',
-        'ice wall': 'left-[14.97%] top-[23.15%] w-[4.41%] h-[2.82%]',
+        beam: 'left-[53.43%] top-[3.37%] w-[4.41%] h-[2.82%]',
+        wall: 'left-[14.97%] top-[23.15%] w-[4.41%] h-[2.82%]',
         shuriken: 'left-[40.14%] top-[23.15%] w-[4.41%] h-[2.82%]',
-        'data leech': 'left-[66.3%] top-[23.14%] w-[4.32%] h-[2.69%]',
+        leech: 'left-[66.3%] top-[23.14%] w-[4.32%] h-[2.69%]',
         protector: 'left-[14.81%] top-[43.27%] w-[4.41%] h-[2.82%]',
         blaster: 'left-[40.3%] top-[43.27%] w-[4.41%] h-[2.82%]',
         worm: 'left-[66.37%] top-[43.41%] w-[4.41%] h-[2.82%]',
         shocker: 'left-[28.52%] top-[65.16%] w-[4.41%] h-[2.82%]',
-        'battering ram': 'left-[52.81%] top-[64.95%] w-[4.41%] h-[2.82%]',
+        ram: 'left-[52.81%] top-[64.95%] w-[4.41%] h-[2.82%]',
         kraken: 'left-[72.35%] top-[64.95%] w-[4.41%] h-[2.69%]',
         maniac: 'left-[40.76%] top-[86.36%] w-[4.41%] h-[2.82%]',
         access: 'left-[91.01%] top-[36.19%] w-[4.41%] h-[2.69%]',
@@ -57,6 +65,6 @@ export const getPrograms = () => {
     for (let program in programs) {
         programs[program] = { style: programs[program], value: 0, max: 21 };
     }
-    programs['beam cannon'] = { ...programs['beam cannon'], value: 1, min: 1 };
+    programs['beam'] = { ...programs['beam'], value: 1, min: 1 };
     return programs;
 };

@@ -3,7 +3,7 @@ import {
     getPrograms,
     sides,
 } from '@/configs/calculators/hackers.config';
-import { topLevel, levels } from '@/data/calculators/hackers';
+import { topLevel, levels, programs } from '@/data/calculators/hackers';
 import program_tree from '@/assets/images/calculators/hackers/program tree.jpg';
 import add from '@/assets/images/calculators/add.jpg';
 import remove from '@/assets/images/calculators/remove.jpg';
@@ -33,6 +33,7 @@ export default function Hackers() {
             ]),
         ),
     );
+    console.log(programs);
     const { setOptions } = useOptions();
     useEffect(() => {
         setOptions(
