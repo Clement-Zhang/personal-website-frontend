@@ -33,7 +33,7 @@ export default function Hackers() {
             ]),
         ),
     );
-    console.log(programs);
+    const [loadout, setLoadout] = useState([]);
     const { setOptions } = useOptions();
     useEffect(() => {
         setOptions(
@@ -141,6 +141,11 @@ export default function Hackers() {
                                     )}
                             </div>
                         ))}
+                        {sides[side].tags.includes('attacker') && (
+                            <div className="flex justify-stretch">
+                                <h1>Loadout:</h1>
+                            </div>
+                        )}
                     </div>
                 </Section>
             ))}

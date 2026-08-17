@@ -1,7 +1,7 @@
 // {side:{tags,ranking}}
 export const sides = Object.freeze({
     'Attacker Node': Object.freeze({
-        tags: Object.freeze([]),
+        tags: Object.freeze(['attacker']),
         ranking: Object.freeze({
             scanner: 0,
             squid: 1,
