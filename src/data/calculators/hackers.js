@@ -4,17 +4,21 @@ function rank(ranking, node) {
     return ranking[node] ?? Object.keys(ranking).length;
 }
 
-// [[program,url]]
+// [{image,value}]
 export const programs = Object.entries(
     import.meta.glob(
         '@/assets/images/calculators/hackers/gameImgs/programs/*.jpg',
         { eager: true, import: 'default' },
     ),
 )
-    .map(([path, url]) => [path.split('/').at(-1).split('.')[0], url])
+    .map(([path, url]) => ({
+        value: path.split('/').at(-1).split('.')[0],
+        image: url,
+    }))
     .sort(
         (before, after) =>
-            rank(programsRanking, before[0]) - rank(programsRanking, after[0]),
+            rank(programsRanking, before.value) -
+            rank(programsRanking, after.value),
     );
 
 // {node:[{image,range}]}
