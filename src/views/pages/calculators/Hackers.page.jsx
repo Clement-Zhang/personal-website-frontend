@@ -147,7 +147,7 @@ export default function Hackers() {
                                 </div>
                                 {sides[side].tags.includes('attacker') && (
                                     <div className="flex justify-stretch">
-                                        <h2>Loadout:</h2>
+                                        <h3>Loadout:</h2>
                                     </div>
                                 )}
                             </div>
