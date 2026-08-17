@@ -24,6 +24,7 @@ export const programsRanking = Object.freeze({
     protector: 4,
 });
 
+// [{name,value,min,explain,step}]
 export const getSettings = () =>
     [
         {
@@ -45,6 +46,7 @@ export const getSettings = () =>
         step: 100,
     }));
 
+// {program:{name,value,style,min?,max}}, beam's min is from tutorial
 export const getPrograms = () => {
     const programs = {
         beam: 'left-[53.43%] top-[3.37%] w-[4.41%] h-[2.82%]',
