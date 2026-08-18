@@ -2,7 +2,7 @@ import arrow from '@/assets/images/calculators/down.jpg';
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
-export default function ImageSelect({ value, onChange, options }) {
+export default function ImageSelect({ value, onChange, options, width="w-12" }) {
     const [open, setOpen] = useState(false);
     const [selected, setSelected] = useState(
         options.find((option) => option.value == value),
@@ -18,7 +18,7 @@ export default function ImageSelect({ value, onChange, options }) {
                 <img
                     src={selected.image}
                     alt={selected.value + ' selected'}
-                    className="w-12"
+                    className={width}
                 />
                 <img src={arrow} alt="dropdown" className="size-3" />
             </button>
@@ -29,7 +29,7 @@ export default function ImageSelect({ value, onChange, options }) {
                         initial={{ scaleY: 0 }}
                         animate={{ scaleY: 1 }}
                         exit={{ scaleY: 0 }}
-                        className="absolute top-full list-none ps-0 origin-top **:my-px **:w-12 max-h-50 overflow-auto"
+                        className="absolute top-full list-none ps-0 origin-top **:my-px max-h-50 overflow-auto"
                         onMouseDown={(e) => e.preventDefault()}
                     >
                         {options.map((option) => (
@@ -42,7 +42,7 @@ export default function ImageSelect({ value, onChange, options }) {
                                     setOpen(false);
                                 }}
                             >
-                                <img src={option.image} alt={option.value} />
+                                <img src={option.image} alt={option.value} className={width}/>
                             </li>
                         ))}
                     </motion.ul>
