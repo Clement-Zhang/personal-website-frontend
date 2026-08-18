@@ -2,7 +2,13 @@ import arrow from '@/assets/images/calculators/down.jpg';
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
-export default function ImageSelect({ value, onChange, options, width="w-12" }) {
+export default function ImageSelect({
+    value,
+    onChange,
+    options,
+    imgWidth = 'w-12',
+    arrowWidth = 'w-3',
+}) {
     const [open, setOpen] = useState(false);
     const [selected, setSelected] = useState(
         options.find((option) => option.value == value),
@@ -18,9 +24,9 @@ export default function ImageSelect({ value, onChange, options, width="w-12" }) 
                 <img
                     src={selected.image}
                     alt={selected.value + ' selected'}
-                    className={width}
+                    className={imgWidth}
                 />
-                <img src={arrow} alt="dropdown" className="size-3" />
+                <img src={arrow} alt="dropdown" className={arrowWidth} />
             </button>
 
             <AnimatePresence>
@@ -42,7 +48,11 @@ export default function ImageSelect({ value, onChange, options, width="w-12" }) 
                                     setOpen(false);
                                 }}
                             >
-                                <img src={option.image} alt={option.value} className={width}/>
+                                <img
+                                    src={option.image}
+                                    alt={option.value}
+                                    className={imgWidth}
+                                />
                             </li>
                         ))}
                     </motion.ul>
