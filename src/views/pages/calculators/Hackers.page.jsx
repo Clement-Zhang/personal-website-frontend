@@ -152,7 +152,7 @@ export default function Hackers() {
                                             <ImageSelect
                                                 value={program}
                                                 onChange={(value) => {
-                                                    loadout[i] = program;
+                                                    loadout[i] = value;
                                                     setLoadout([...loadout]);
                                                 }}
                                                 options={programs}
