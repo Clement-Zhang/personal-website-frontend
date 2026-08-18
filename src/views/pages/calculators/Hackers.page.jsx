@@ -146,7 +146,7 @@ export default function Hackers() {
                                         )}
                                 </div>
                                 {sides[side].tags.includes('attacker') && (
-                                    <div className="flex justify-stretch m-2">
+                                    <div className="flex justify-stretch items-center m-2">
                                         <h6>Loadout:</h6>
                                         {loadout.map((program, index) => (
                                             <ImageSelect
