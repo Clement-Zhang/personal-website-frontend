@@ -1,5 +1,5 @@
 import tabs from '@/configs/tabs/calculators.config';
-import icon from '@/assets/images/calculators/optionsS.jpg';
+import icon from '@/assets/images/calculators/options.jpg';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';

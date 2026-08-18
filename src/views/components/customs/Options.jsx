@@ -1,4 +1,4 @@
-import icon from '@/assets/images/calculators/optionsL.jpg';
+import icon from '@/assets/images/calculators/options.jpg';
 import { createContext, useContext, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
