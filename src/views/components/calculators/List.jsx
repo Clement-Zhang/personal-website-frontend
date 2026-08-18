@@ -1,3 +1,6 @@
+import add from '@/assets/images/calculators/add.jpg';
+import remove from '@/assets/images/calculators/remove.jpg';
+
 export default function List({ items, append, remove }) {
     return (
         <div className="flex justify-center">
