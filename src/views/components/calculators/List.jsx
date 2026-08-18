@@ -1,5 +1,5 @@
-import add from '@/assets/images/calculators/add.jpg';
-import remove from '@/assets/images/calculators/remove.jpg';
+import appendIcon from '@/assets/images/calculators/add.jpg';
+import removeIcon from '@/assets/images/calculators/remove.jpg';
 
 export default function List({ items, append, remove }) {
     return (
@@ -13,7 +13,7 @@ export default function List({ items, append, remove }) {
                             type="button"
                             onClick={append.operation}
                         >
-                            <img src={add} alt="append another element" />
+                            <img src={appendIcon} alt="append another element" />
                         </button>
                     )}
                     {remove.condition() && (
@@ -23,7 +23,7 @@ export default function List({ items, append, remove }) {
                             onClick={remove.operation}
                         >
                             <img
-                                src={remove}
+                                src={removeIcon}
                                 alt={'remove element at position ' + index}
                             />
                         </button>
