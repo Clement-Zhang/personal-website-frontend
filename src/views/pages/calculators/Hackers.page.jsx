@@ -154,9 +154,10 @@ export default function Hackers() {
                                                 onChange={(value) => {
                                                     loadout[i] = value;
                                                     setLoadout([...loadout]);
+                                                    console.log(loadout);
                                                 }}
                                                 options={programs}
-                                                width='w-5'
+                                                width="w-5"
                                             />
                                         ))}
                                     </div>
