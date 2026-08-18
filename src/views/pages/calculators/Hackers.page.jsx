@@ -33,7 +33,7 @@ export default function Hackers() {
             ]),
         ),
     );
-    const [loadout, setLoadout] = useState([]);
+    const [loadout, setLoadout] = useState(['beam']);
     const { setOptions } = useOptions();
     useEffect(() => {
         setOptions(
@@ -148,6 +148,16 @@ export default function Hackers() {
                                 {sides[side].tags.includes('attacker') && (
                                     <div className="flex justify-stretch m-2">
                                         <h6>Loadout:</h6>
+                                        {loadout.map((program, index) => (
+                                            <ImageSelect
+                                                value={program}
+                                                onChange={(value) => {
+                                                    loadout[i] = program;
+                                                    setLoadout([...loadout]);
+                                                }}
+                                                options={programs}
+                                            />
+                                        ))}
                                     </div>
                                 )}
                             </div>
