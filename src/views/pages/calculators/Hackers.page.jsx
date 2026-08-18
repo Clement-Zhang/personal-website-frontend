@@ -146,23 +146,19 @@ export default function Hackers() {
                                         )}
                                 </div>
                                 {sides[side].tags.includes('attacker') && (
-                                    <div className="flex justify-stretch items-center m-2">
-                                        <h6>Loadout:</h6>
-                                        <>
-                                            {loadout.map((program, index) => (
-                                                <ImageSelect
-                                                    value={program}
-                                                    onChange={(value) => {
-                                                        loadout[index] = value;
-                                                        setLoadout([
-                                                            ...loadout,
-                                                        ]);
-                                                    }}
-                                                    options={programs}
-                                                    width="w-10"
-                                                />
-                                            ))}
-                                        </>
+                                    <div className="flex items-center m-2">
+                                        <h6 className="m-1">Loadout:</h6>
+                                        {loadout.map((program, index) => (
+                                            <ImageSelect
+                                                value={program}
+                                                onChange={(value) => {
+                                                    loadout[index] = value;
+                                                    setLoadout([...loadout]);
+                                                }}
+                                                options={programs}
+                                                width="w-10"
+                                            />
+                                        ))}
                                     </div>
                                 )}
                             </div>
