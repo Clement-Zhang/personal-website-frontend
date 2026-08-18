@@ -156,7 +156,7 @@ export default function Hackers() {
                                                     setLoadout([...loadout]);
                                                 }}
                                                 options={programs}
-                                                width="w-10"
+                                                width="w-9"
                                             />
                                         ))}
                                     </div>
