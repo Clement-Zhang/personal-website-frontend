@@ -12,6 +12,7 @@ import Section from '../../components/customs/Section';
 import Settings from '../../components/calculators/Settings';
 import Characters from '../../components/calculators/Characters';
 import ImageSelect from '../../components/customs/ImageSelect';
+import List from '../../components/calculators/List';
 import { useState, useEffect } from 'react';
 
 function bias(side) {
@@ -148,7 +149,7 @@ export default function Hackers() {
                                 {sides[side].tags.includes('attacker') && (
                                     <div className="flex items-center m-2">
                                         <h6 className="m-1">Loadout:</h6>
-                                        {loadout.map((program, index) => (
+                                        {/* {loadout.map((program, index) => (
                                             <ImageSelect
                                                 value={program}
                                                 onChange={(value) => {
@@ -158,7 +159,7 @@ export default function Hackers() {
                                                 options={programs}
                                                 width="w-9"
                                             />
-                                        ))}
+                                        ))} */}
                                     </div>
                                 )}
                             </div>
